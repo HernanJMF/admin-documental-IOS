@@ -1,0 +1,25 @@
+{
+    "status":{
+        "completed": "Completado",
+        "processing": "Procesando",
+        "created": "Creado",
+        "error": "Error",
+        "label": "Estatus",
+        "topic": "Tópico"
+    },
+    "open_window": "Abrir chat en otra ventana",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "confirm_header": "¿Eliminar documento?",
+    "confirm_body": "Atención : La eliminación del documento es permanente. ¿Desea continuar?",
+    "cancel_button": "Cancelar",
+    "delete_button": "Eliminar",
+    "document_deleted": {
+        "title": "Documento eliminado",
+        "content": "El documento fue eliminado exitosamente."
+    },
+    "Unexpected_error": {
+        "title": "Error inesperado",
+        "content": "Se ha producido un error inesperado al intentar eliminar el documento, inténtelo de nuevo más tarde."
+      }
+}

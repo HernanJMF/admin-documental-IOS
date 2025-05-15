@@ -1,0 +1,180 @@
+@import '../../../../assets/styles/base/common-styles/tab-view/tabview.scss';
+@import '../../../../assets/styles/constants/fonts.scss';
+@import '../../../../assets/styles/constants/colors.scss';
+@import '../../../../assets/styles/base/common-styles/buttons/buttons.scss';
+@import '../../../../assets/styles/base/common-styles/inputs/inputs.scss';
+@import '../../../../assets/styles/constants/labels.scss';
+
+
+.section-header{
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 34px;
+    .button-space{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+    }
+}
+
+.carrusel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message{
+    color: $newtoms-table-background;
+    text-align: center;
+    font-family: $newtoms-regular-fonts;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 24px;
+    padding-right: 12%;
+    position: relative;
+    background: $newtoms-secondary-color;
+    .message-img{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+}
+
+.size-box{
+    max-width: 100%;
+    width: 100%;
+}
+
+.newtoms-upload {
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url("../../../../assets/images/Upload.svg");
+    mask-image: url('../../../../assets/images/Upload.svg');
+    width: 21px;
+    height: 24px;
+    padding: 10px;
+    margin-right: 16px;
+    background-color: $newtoms-alias-font-color;
+}
+
+.newtoms-topic-chat {
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url("../../../../assets/images/icono-chat-topic.svg");
+    mask-image: url('../../../../assets/images/icono-chat-topic.svg');
+    background-color: $newtoms-sidebar-icon-color; /* Or any color of your choice. */
+    width: 26px;
+    height: 22px;
+    padding: 12px;
+    margin-right: 16px;
+    background-color: $newtoms-alias-font-color;
+}
+
+.newtoms-document-chat {
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url("../../../../assets/images/Icono-chat-document.svg");
+    mask-image: url('../../../../assets/images/Icono-chat-document.svg');
+    background-color: $newtoms-sidebar-icon-color; /* Or any color of your choice. */
+    width: 26px;
+    height: 22px;
+    padding: 12px;
+    margin-right: 16px;
+    background-color: $newtoms-alias-font-color;
+}
+
+::ng-deep{
+    .p-button {
+        font-size: 24px;
+        height: 100%;
+        width: 100%;
+    }
+    #pr_id_1 .p-carousel-item {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+    .p-button.p-button-outlined {
+      height: 100% !important;
+      width: 100% !important;
+  }
+}
+
+.button-size{
+  width: 100%;
+
+}
+
+@media only screen and (max-width: 1200px) {
+    ::ng-deep{
+        #pr_id_1 .p-carousel-item {
+            flex: 0 0 auto;
+            width: 33.33333333%;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+    ::ng-deep{
+        #pr_id_1 .p-carousel-item {
+            flex: 0 0 auto;
+            width: 50%;
+        }
+    }
+    .button{
+      height: 100%;
+    }
+
+    .button-size{
+      width: 75%;
+
+    }
+
+    .message{
+        padding-right: 18%;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    .message{
+        padding-right: 24%;
+    }
+
+}
+@media only screen and (max-width: 576px) {
+    ::ng-deep{
+        #pr_id_1 .p-carousel-item {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+    }
+
+    .button-size{
+      width: 100%;
+
+    }
+
+    .message{
+        padding-right: 24px;
+        .message-img{
+            position: relative;
+        }
+    }
+
+}

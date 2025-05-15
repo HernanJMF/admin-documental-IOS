@@ -1,0 +1,11 @@
+{
+    "home": "Inicio",
+    "my_documents": "Mis documentos",
+    "chat_analyzer": "Chat",
+    "metrics": "Métricas",
+    "user_management": "Gestión de usuarios",
+    "topics": "Gestión de tópicos",
+    "settings": "Configuración",
+    "support": "Soporte",
+    "logout": "Cerrar sesión"
+}

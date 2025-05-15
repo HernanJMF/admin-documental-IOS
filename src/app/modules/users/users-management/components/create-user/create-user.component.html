@@ -1,0 +1,92 @@
+<form [formGroup]="formGroup" >
+    <div class="row p-formgrid p-grid mt-0 mt-md-3 p-2 p-md-0">
+        <div class="p-field col-md-12 col-12">
+            <label for="First_name">{{page.first_name.label}}</label>
+            <input  type="email"
+                    id="email"
+                    [maxlength]="30"
+                    [minlength]="3"
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['email'].touched && formGroup.controls['email'].errors?.['required']}"
+                    pInputText
+                    formControlName="email"
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.['required']">{{page.first_name.required_error}}</small>
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.['minlength']">{{page.first_name.minimun_error}}</small>
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.['numeric']">
+              {{page.first_name.required_error_number}}
+            </small>
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].hasError('pattern')">{{page.first_name.special_characters_error}}</small>
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.['whitespace']">
+              {{page.first_name.empty_field_error}}
+            </small>
+        </div>
+       <!-- <div class="p-field col-md-6 col-12 mt-3 mt-md-0">
+            <label for="Last_name">{{page.last_name.label}}</label>
+            <input  type="text"
+                    id="Last_name"
+                    [maxlength]="30"
+                    [minlength]="3"
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.['required']}"
+                    pInputText
+                    formControlName="last_name"
+                    required
+                    autofocus
+                    />
+                      <small class="p-error" *ngIf="formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.['required']">{{page.last_name.required_error}}</small>
+                      <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.['minlength']">{{page.last_name.minimun_error}}</small>
+                      <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.['numeric']">
+                        {{page.last_name.required_error_number}}
+                      </small>
+                      <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.['whitespace']">
+                        {{page.last_name.empty_field_error}}
+                      </small>
+                      <small class="p-error" *ngIf="formGroup.controls['last_name'].hasError('pattern')">{{page.last_name.special_characters_error}}</small>
+        </div> -->
+    </div>
+    <div class="row p-formgrid p-grid mt-0 mt-md-3 p-2 p-md-0" *ngIf="!isEdit">
+        <div class="p-field col-md-6 col-12 ">
+            <label for="Email">{{page.email.label}}</label>
+            <input  type="text"
+                    id="Email"
+                    placeholder="{{page.email.placeholder}}"
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['email'].touched && formGroup.controls['email'].errors?.['required']}"
+                    pInputText
+                    formControlName="email"
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['email'].touched && formGroup.controls['email'].invalid">{{page.email.format_error}}</small>
+            <small class="p-error" *ngIf="formGroup.controls['email'].errors?.['whitespace']">
+              {{page.first_name.empty_field_error}}
+            </small>
+          </div>
+        <div class="p-field col-md-6 col-12 mt-3 mt-md-0">
+            <label for="Language">{{page.language.label}}</label>
+            <p-dropdown [options]="languageList"
+                        optionLabel="label"
+                        styleClass="w-100"
+                        appendTo="body"
+                        placeholder="{{page.language.placeholder}}"
+                        [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['language'].touched && formGroup.controls['language'].errors?.['required']}"
+                        formControlName="language">
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['language'].touched && formGroup.controls['language'].errors?.['required']">{{page.language.required_error}}</small>
+          </div>
+    </div>
+    <div class="row p-formgrid p-grid mt-0 mt-md-3 p-2 p-md-0">
+      <div class="p-field col-12 mt-3 mt-md-0">
+        <label for="Topic">{{page.topic.label}}</label>
+        <p-multiSelect
+                        class="custom-ms"
+                        [options]="enabledTopics"
+                        display="chip"
+                        [defaultLabel]="page.topic.placeholder"
+                        formControlName="topic"
+                        appendTo="body"
+                        optionLabel="topic_name"
+
+        ></p-multiSelect>
+        <small class="p-error" *ngIf="formGroup.controls['topic'].touched && formGroup.controls['topic'].errors?.['required']">{{page.topic.required_error}}</small>
+      </div>
+
+    </div>
+
+  </form>

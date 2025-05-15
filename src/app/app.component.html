@@ -1,0 +1,15 @@
+<app-messages></app-messages>
+<app-loading></app-loading>
+<div class="main-layout" [ngClass]="{'light-theme': false,'dark-theme': false}">
+    <div class="sidebar" *ngIf="isLogged">
+        <app-sidebar (changeTheme)="selectedTheme($event)"></app-sidebar>
+    </div>
+    <div class="main" [ngClass]="{'main-disconnect': !isLogged}">
+        <div class="navbar" *ngIf="isLogged">
+            <app-navbar class="w-100" (changeTheme)="selectedTheme($event)"></app-navbar>
+        </div>
+        <div class="content" [ngClass]="{'main-disconnect': !isLogged}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

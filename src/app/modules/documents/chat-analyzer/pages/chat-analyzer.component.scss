@@ -1,0 +1,91 @@
+@import '../../../../../assets/styles/constants/colors.scss';
+
+.panel-body{
+    border-radius: 10px;
+    border: 2px solid $newtoms-chat-border;
+    background: $newtoms-table-background;
+    display: flex;
+    height: 100%;
+    .left-panel{
+        width: 20%;
+        padding: 16px;
+        &.topic{
+            width: 25%;
+        }
+    }
+    .center-panel{
+        width: 80%;
+        padding: 16px;
+        border-left: 1px solid $newtoms-chat-border;
+        &.topic{
+            width: 75%;
+        }
+    }
+
+    .close-panel{
+        width: 0px;
+        padding: 0px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .left-panel{
+        width: 30% !important;
+        &.topic{
+            width: 30% !important;
+        }
+    }
+    .center-panel{
+        width: 70% !important;
+        &.topic{
+            width: 70% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .panel-body{
+        &.topic{
+            border-top-right-radius: 10px !important;
+            border-top-left-radius: 10px !important;
+        }
+        .left-panel{
+            padding: 8px !important;
+            width: 40% !important;
+        }
+        .center-panel{
+            width: 60% !important;
+            padding: 8px !important;
+            .chat-section{
+                width: 100%;
+            }
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .panel-body{
+        border-top-right-radius: 0px !important;
+        border-top-left-radius: 0px !important;
+        &.topic{
+            border-top-right-radius: 0px !important;
+            border-top-left-radius: 0px !important;
+        }
+        .left-panel{
+            width: 0px;
+            padding: 8px !important;
+            display: none;
+            &-active{
+                width: 100% !important;
+                display:flex;
+                height:80vh;
+            }
+        }
+        .center-panel{
+            width: 100% !important;
+            display:flex;
+        }
+    }
+}

@@ -1,0 +1,345 @@
+<!------------CHAT SECTION START------------>
+<div *ngIf="!visibleDetails">
+  <!------------Chat navbar section start------------>
+  <div class="user-bar">
+      <div class="information-section"
+           (click)="showDetails(true)"
+           [ngClass]="{'detail-active': type == 'document'}">
+          <div class="bot-information">
+              <div class="d-flex align-items-center" >
+                  <div class="circle"><i class="newtoms-bot-icon"></i></div>
+                  <div class="name">
+                      {{type == 'topic' ? (document.vector.length > 0 ? document.alias: topicValue.topic_name) : document.alias}}
+                  </div>
+              </div>
+              <!--<div class="d-flex align-items-end h-100 pb-2">
+                  <span class="detail">{{topicValue.topic_name}}</span>
+              </div>-->
+          </div>
+      </div>
+      <div class="icon-section">
+          <i class="pi pi-ellipsis-v option-icon" (click)="op.toggle($event)"></i>
+      </div>
+  </div>
+  <!------------Chat navbar section end------------>
+  <!------------body chat section start------------>
+  <div class="chat-body">
+
+      <p-scrollPanel #sp [style]="{ width: '100%', height: innerWidth < 768 ? 'calc(95vh - 240px)' : 'calc(95vh - 300px)' }">
+
+          <div class="summary" *ngIf="type == 'topic'"> <!------------summary of topic document------------>
+              <p>{{page.topic_summary}}</p>
+          </div>
+
+          <div class="summary"> <!------------Summary message------------>
+              <p>{{summary}}</p>
+          </div>
+
+          <div class="prompts-list" *ngIf="showPrompts"> <!------------Promp list------------>
+              <div class="prompt slide-in-fwd-center" *ngFor="let prompt of promptsList; index as i">
+                   <span class="label">{{prompt}}</span>
+                   <div class="copy-column">
+                      <div  [ngClass]="{'copy-button': !copySelected[i], 'copy-button-active': copySelected[i] }"
+                            (click)="copyPrompt(prompt,i)">
+                          <span *ngIf="!copySelected[i]">{{page.copy}}</span>
+                          <span *ngIf="copySelected[i]">{{page.copied}}</span>
+                      </div>
+                   </div>
+
+              </div>
+          </div>
+
+          <div class="loader" *ngIf="isSummaryActive"> <!------------loading message animation------------>
+              <span>{{page.analyzing_document}}</span>
+              <div class="chat-loader"></div>
+          </div>
+
+          <!------------Messages Section start------------>
+          <div class="box-chat" *ngFor="let message of messages; index as i">
+              <div class="user-details" [ngClass]="{'bot-message': message.talker === 'AI'}">
+                <span class="date">{{page.sent}} {{formatDate(message.interaction_date) | date: 'h:mm a'}}</span>
+                <div [ngClass]="{'user-information': message.talker == 'HUMAN', 'bot-information': message.talker == 'AI'}">
+                      <span class="name">
+                        {{ message.talker === 'HUMAN' ? (language === 'english' ? 'You' : 'Tú') : 'Agrobot' }}
+                      </span>
+                      <div class="circle" *ngIf="message.talker == 'HUMAN'"><i class="newtoms-user-icon"></i></div>
+                      <div class="circle" *ngIf="message.talker == 'AI'"><i class="newtoms-bot-icon"></i></div>
+                    </div>
+              </div>
+              <div class="msg-section" [ngClass]="{'scale-in-center': message.animation}">
+                  <div    [ngClass]="{'user-message-box': message.talker == 'HUMAN', 'bot-message-box': message.talker == 'AI'}"
+                          *ngIf="!(message.message == '...')">
+                      <div class="icons"
+                           *ngIf="message.talker == 'AI' || message.message == '...'">
+                          <i  class="newtoms-copy-icon"
+                              ngxClipboard
+                              (click)="copyQuestionToClipboard(message.message,i)">
+                          </i>
+                          <i  class="newtoms-share-icon"
+                              (click)="showDialog(message.message,i)">
+                          </i>
+                      </div>
+                      <span [innerHTML]="message.talker === 'AI' ? formatMessage(message.message) : message.message">{{message.message}}</span>
+                  </div>
+                  <div    [ngClass]="{'user-message-box': message.talker == 'HUMAN', 'bot-message-box': message.talker == 'AI'}"
+                          *ngIf="(message.message == '...')">
+                      <div class="chat-loader"></div>
+                  </div>
+              </div>
+          </div>
+          <!------------Messages Section end------------>
+      </p-scrollPanel>
+      <!------------Input Question start------------>
+      <div class="input-section" *ngIf="userEmail == null" [ngClass]="{'expired-plan': (topicDocumentList.length == 0 && type == 'topic')}">
+        <p-dropdown [options]="LanguageList"
+                    [(ngModel)]="selectedLanguage"
+                    placeholder="Select language"
+                    optionLabel="name"
+                    class="chat-dropdown"
+                    [disabled]="isWaitingForResponse || isSummaryActive">
+        </p-dropdown>
+        <div class="message-textarea" [ngClass]="{'scroll-active': chatMessage.length > 200}">
+            <textarea   [(ngModel)]="chatMessage"
+                        rows="1"
+                        cols="30"
+                        [maxlength]="2000"
+                        class="chat-textarea"
+                        pInputTextarea
+                        (keydown.enter)="onKeydown($event)"
+                        (keyup.enter)="chatMessage.length > 0 ? sendMessage() : ''"
+                        [autoResize]="true"
+                        [disabled]="isWaitingForResponse || isSummaryActive"></textarea>
+            <span class="characters">{{chatMessage.length}} / 2000</span>
+        </div>
+        <div class="send-section">
+            <i  class="newtoms-icon-message"
+                (click)="chatMessage.length > 0 ? sendMessage() : ''"
+                [ngClass]="{'disabled': isWaitingForResponse}">
+            </i>
+        </div>
+    </div>
+      <!------------Input Question end------------>
+  </div>
+  <!------------body chat section end------------>
+</div>
+<!------------CHAT SECTION END------------>
+
+<!------------DETAILS SECTION START------------>
+<div class="details-section" *ngIf="visibleDetails">
+  <div class="name-section">
+      <div class="back-button" (click)="showDetails(false)">
+          <i class="pi pi-arrow-left back-icon"></i>
+      </div>
+      <div class="bot-information">
+
+          <div class="circle">A</div>
+          <span class="name">
+              {{page.bot}}
+          </span>
+
+      </div>
+  </div>
+
+  <!------------document Details section start------------>
+  <div class="document-information" *ngIf="this.type == 'document'">
+      <div class="document-header">
+          <div class="d-flex align-items-center overflow-hidden">
+              <span class="alias">{{document.alias}}</span>
+          </div>
+      </div>
+      <div class="document-details">
+          <div class="name">
+              <span>{{document.filename + '.' + document.extension}}</span>
+          </div>
+          <div class="info">
+              <span>
+                  {{(document.date | slice:0:10)}}
+              </span>
+              <span>
+                  {{document.size}}
+              </span>
+          </div>
+          <div>
+              <p class="description">
+                  {{visibleDetails ? validateLenght(document.description) : ''}}
+              </p>
+              <div class="chips" *ngIf="document.topic != null">
+                  <div class="topic-chip"><span>{{document.topic}}</span></div>
+              </div>
+          </div>
+
+          <div class="document-preview">
+              <a [href]="fileUrl" target=”_blank”>
+                  See document preview
+                  <i class="pi pi-external-link external-icon"></i>
+              </a>
+          </div>
+      </div>
+  </div>
+   <!------------document Details section end------------>
+
+   <!------------Topic document list responsive start------------>
+  <div class="document-information" *ngIf="innerWidth <= 768 && this.type == 'topic'">
+      <div class="buttons-section">
+          <span class="subtitle">{{page.document_list}}</span>
+      </div>
+      <div class="row m-0">
+          <div class="option col-12 col-sm-6 col-md-4" *ngFor="let document of topicDocumentList">
+              <div class="option-row" (click)="openDocument(document.document_id)">
+                  <i class="newtoms-chat-logo"></i>
+                  <span [pTooltip]="document.alias" class="text">{{document.alias}}</span>
+              </div>
+          </div>
+      </div>
+
+  </div>
+   <!------------Topic Document list responsive end------------>
+
+   <!------------Recent list responsive start------------>
+  <div class="recents-section" *ngIf="innerWidth <= 768 || this.type == 'topic'">
+      <div class="buttons-section">
+          <span class="subtitle">{{page.recents}}</span>
+          <p-button   [label]="page.new_chat"
+                      styleClass="p-button-outlined small"
+                      (click)="showDocumentList()">
+          </p-button>
+      </div>
+      <div class="row m-0">
+          <div class="option col-12 col-sm-6 col-md-4" *ngFor="let document of documentList | slice:0:6">
+              <div class="option-row" (click)="openDocument(document.document_id)">
+                  <i class="newtoms-chat-logo"></i>
+                  <span [pTooltip]="document.alias" class="text">{{document.alias}}</span>
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <!------------Recent list responsive end------------>
+</div>
+<!------------DETAILS SECTION END------------>
+
+<!------------SHARE MODAL START------------>
+<div>
+  <p-dialog   [(visible)]="visible"
+              [style]="{width: '50vw'}"
+              class="modal-section"
+              [breakpoints]="{ '768px': '80vw', '576px': '95vw'}"
+              [draggable]="false"
+              [modal]="true"
+              [resizable]="false">
+      <ng-template pTemplate="header">
+          <div class="d-flex justify-content-center w-100">
+          <span class="modal-section-title">{{page.share_modal.header}}</span>
+          </div>
+      </ng-template>
+      <form [formGroup]="shareFormGroup" >
+          <div class="share-form row m-0">
+              <div class="col-12 mb-3 mb-sm-4">
+                  <div class="justify-content-center">
+                      <span class="label">{{page.share_modal.email.label}}</span>
+                      <input  pInputText
+                              formControlName="email"
+                              [placeholder]="page.share_modal.email.placeholder"
+                              type="text"
+                              class="input-form"
+                              [ngClass]="{'ng-dirty is-invalid': shareFormGroup.controls['email'].touched && shareFormGroup.controls['email'].errors?.['required']}"/>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                      <span *ngIf="shareFormGroup.controls['email'].touched && shareFormGroup.controls['email'].errors?.['required']" class="error-msg invalid-feedback">
+                          {{page.share_modal.email.required_error}}
+                      </span>
+                  </div>
+              </div>
+              <div class="col-12 mb-3 mb-sm-4">
+                  <div class="justify-content-center">
+                      <span class="label">{{page.share_modal.message.label}}</span>
+                      <input  pInputText
+                              formControlName="message"
+                              placeholder=""
+                              type="text"
+                              class="input-form"
+                              [ngClass]="{'ng-dirty is-invalid': shareFormGroup.controls['message'].touched && shareFormGroup.controls['email'].errors?.['required']}"/>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                      <!--<span *ngIf="(formGroup.controls['email'].touched && formGroup.get('fullName').errors?.minlength)" class="error-msg invalid-feedback">
+                          Must have a minimun of 3 characters.
+                      </span>
+                      <span *ngIf="(formGroup.controls['email'].touched && formGroup.get('fullName').errors?.maxlength)" class="error-msg invalid-feedback">
+                          Must have a maximum of 64 characters.
+                      </span>-->
+                  </div>
+              </div>
+          </div>
+          <div class="submit">
+              <button pButton pRipple [label]="page.buttons.cancel" class="p-button-text p-button-danger" (click)="visible = false;"></button>
+              <button pButton pRipple [label]="page.buttons.send" class="p-button-text" [disabled]="!isValid" (click)="shareQuestion()"></button>
+          </div>
+      </form>
+
+  </p-dialog>
+</div>
+<!------------SHARE MODAL END------------>
+
+<!------------OVERLAY OPTION LIST START------------>
+<p-overlayPanel #op>
+  <ng-template pTemplate="content">
+      <div [ngClass]="{'card-menu-body-dark': this.userService.theme == 'dark','card-menu-body-light': this.userService.theme == 'light'}">
+          <div class="card-menu-bottom" (click)="confirmDelete()">
+              <div class="icon mr-3">
+                  <i class="pi pi-trash"></i>
+              </div>
+              <span class="label p-0">
+                  {{page.empty_chat}}
+              </span>
+          </div>
+      </div>
+
+  </ng-template>
+</p-overlayPanel>
+<!------------OVERLAY OPTION LIST END------------>
+
+<!------------CONFIRM MODAL START------------>
+<div class="confirm-dialog-size">
+  <p-confirmDialog #cd [style]="{width: '50vw'}" [breakpoints]="{ '768px': '90vw', '576px': '95vw'}" >
+      <ng-template pTemplate="header">
+          <h3>{{deleteMessage ? page.delete_messages : page.insufficient_credits.title}}</h3>
+      </ng-template>
+      <ng-template pTemplate="footer">
+          <button type="button"
+                      class="p-button-text"
+                      pButton icon="pi pi-times"
+                      [label]="deleteMessage ? page.cancel : this.page.insufficient_credits.back_button"
+                      (click)="cd.reject()" icon="">
+          </button>
+          <button type="button"
+                  class="p-button-text p-button-danger"
+                  pButton icon="pi pi-check"
+                  [label]="deleteMessage ? page.delete : this.page.insufficient_credits.recharge_button"
+                  (click)="cd.accept()" icon="">
+          </button>
+
+      </ng-template>
+  </p-confirmDialog>
+</div>
+<!------------CONFIRM MODAL END------------>
+
+<!------------DOCUMENT LIST START------------>
+<div>
+  <p-dialog   [(visible)]="documentListVisible"
+              [style]="{width: '90vw'}"
+              [breakpoints]="{ '768px': '90vw', '576px': '95vw'}"
+              class="modal-section"
+              [draggable]="false"
+              [resizable]="false"
+              [modal]="true">
+      <ng-template pTemplate="header">
+          <div class="d-flex justify-content-center w-100">
+              <span class="modal-header">{{page.documents}}</span>
+          </div>
+      </ng-template>
+      <div class="pb-3">
+          <app-documents-list [showUpload]="false" [getDocumentList]="loadDocumentList"></app-documents-list>
+      </div>
+  </p-dialog>
+</div>
+<!------------DOCUMENT LIST END------------>

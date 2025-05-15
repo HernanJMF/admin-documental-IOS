@@ -1,0 +1,80 @@
+<div class="row">
+    <!--TITLE SECTION-->
+    <div class="section-header col-12">
+        <div class="title">
+            <span>{{page.welcome_back}}!</span>
+        </div>
+    </div>
+    <!--TITLE SECTION ENDS-->
+    <!--BUTTONS SECTION-->
+    <div class=" row button m-0">
+        <div class="h-100 mb-3 col-lg-6 col-12">
+            <div class="button-space">
+                <p-button   [label]="page.upload_new_document"
+                            styleClass="p-button-outlined"
+                            class="h-100 w-100 button-size"
+                            [ngClass]="{'w-100': innerWidth < 768 ? true : false}"
+                            (click)="router.navigateByUrl('/documents/open');"
+                            >
+
+                            <i class="newtoms-upload"></i>
+                </p-button>
+            </div>
+        </div>
+        <div class="h-100 mb-3 col-lg-6 col-12">
+            <div class="button-space">
+                <p-button   [label]="page.talk_to_your_document"
+                            styleClass="p-button-outlined"
+                            class="h-100 w-100 button-size"
+                            [ngClass]="{'w-100': innerWidth < 768 ? true : false}"
+                            (click)="router.navigateByUrl('/documents');">
+
+                            <i class="newtoms-document-chat"></i>
+                </p-button>
+            </div>
+        </div>
+    </div>
+    <!--BUTTONS SECTION ENDS-->
+
+    <!--CARROUSEL SECTION-->
+    <span *ngIf="documentList && documentList.length > 0" class="subtitle-home">{{ page.last_activity }}</span>
+
+    <div class="col-12 p-0" *ngIf="documentList && documentList.length > 0">
+      <div *ngIf="documentList.length == 1">
+        <div class="p-2 p-md-3 h-100 size-box">
+          <app-document-card class="carrusel h-100" [document]="documentList[0]"></app-document-card>
+        </div>
+      </div>
+      <p-carousel [value]="documentList | slice:0:10"
+                  [numVisible]="4"
+                  [numScroll]="1"
+                  [circular]="true"
+                  [showIndicators]="innerWidth < 768 ? true : false"
+                  [showNavigators]="innerWidth < 768 ? false : true"
+                  [responsiveOptions]="responsiveOptions"
+                  *ngIf="documentList.length > 1" >
+        <ng-template let-documentList pTemplate="item">
+          <div class="p-2 p-md-3 h-100 size-box">
+            <app-document-card class="carrusel h-100" [document]="documentList"></app-document-card>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+    <!--CARROUSEL SECTION ENDS-->
+
+    <!--MESSAGE-->
+    <div class="col-12">
+        <div class="message">
+            <div>
+                <span>{{page.message}}
+                  <b>{{page.sub_message}}</b>
+                </span>
+            </div>
+
+            <div class="message-img">
+                <img src="../../../../../assets/images/upgrade2.png" width="145px">
+            </div>
+        </div>
+    </div>
+</div>
+

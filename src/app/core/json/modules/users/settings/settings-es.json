@@ -1,0 +1,215 @@
+{
+    "message": "¡Mejora tu experiencia con nuestra membresía premium! Acceso ilimitado, funciones exclusivas y más. Actualiza ahora para disfrutar al máximo.",
+    "profile":{
+        "title": "Perfil",
+        "subtitle": "Información básica",
+        "first_name": {
+            "label": "Nombre",
+            "required_error": "El nombre es obligatorio.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "required_error_number": "No se permiten caracteres numéricos.",
+            "empty_field_error": "El campo no permite espacios vacíos",
+            "special_characters_error": "No se permiten caracteres especiales"
+        },
+        "last_name": {
+            "label": "Apellido",
+            "required_error": "El apellido es obligatorio.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "required_error_number": "No se permiten caracteres numéricos.",
+            "empty_field_error": "El campo no permite espacios vacíos",
+            "special_characters_error": "No se permiten caracteres especiales"
+        },
+        "email": {
+            "label": "Correo",
+            "required_error": "El correo es obligatorio."
+        },
+        "role":{
+            "label": "Rol",
+            "required_error": "El rol es obligatorio."
+        },
+        "language":{
+            "label": "Idioma",
+            "placeholder": "Selecciona el idioma",
+            "required_error": "El idioma el obligatorio."
+        },
+        "topic":{
+            "label": "Tópico",
+            "required_error": "El tópico es obligatorio"
+        },
+        "save_button": "Guardar",
+
+        "submitProfile":{
+          "title": "Guardado correctamente",
+          "content": "Los cambios de perfil se han guardado correctamente"
+        },
+
+        "submitProfile_error":{
+            "title": "Error inesperado",
+            "content": "No se ha podido actualizar el perfil, inténtelo más tarde"
+        }
+
+    },
+    "password": {
+        "title": "Contraseña",
+        "subtitle": "Actualizar contraseña",
+        "old_password":{
+            "label": "Contraseña Actual",
+            "required_error": "La contraseña es obligatoria.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres."
+        },
+        "password":{
+            "label": "Nueva contraseña",
+            "required_error": "La contraseña es obligatoria.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres."
+        },
+        "confirm_password":{
+            "label": "Confirmar contraseña",
+            "required_error": "La confirmación es obligatoria.",
+            "match_error": "Las contraseñas no coinciden"
+        },
+        "save_button": "Guardar",
+
+        "submitPassword":{
+          "title": "Su contraseña ha sido actualizada",
+          "content": "Ya puedes utilizar tus credenciales para iniciar sesión"
+      },
+
+      "submitPassword_error":{
+        "title": "Error inesperado",
+        "content": "No se ha podido actualizar la contraseña, inténtelo más tarde"
+      },
+      "submitPassword_oldPassword_error":{
+        "title": "La contraseña actual es incorrecta",
+        "content": "No se pudo actualizar la contraseña porque la contraseña actual es incorrecta"
+      }
+
+    },
+    "membership": {
+        "title": "Membresías",
+        "per_month": "por mes",
+        "renew": "Se renueva el ",
+        "current_plan": "Plan Actual",
+        "renews": "Renueva",
+        "cancel_button": "Cancelar",
+        "top_up_button": "Recargar créditos",
+        "recharge": "Recargar",
+        "credits": "Créditos",
+        "plan_label": {
+            "renew": "Renovar",
+            "upgrade": "Mejorar",
+            "complete": "Completar"
+        },
+        "bullets": [
+            "Realizas un pago único por créditos adicionales, sin cargos mensuales.",
+            "Un crédito equivale a una pregunta.",
+            "Utilice estos créditos para hacer preguntas a sus documentos"
+        ],
+        "open_billing_history": "Abrir historial de facturación",
+        "pricing": {
+            "title": "Elige tu plan",
+            "subtitle": "Creemos que <span class=\"chat2dox-span\"><b>Chat2Dox</b></span> debe ser asequible para usted y su empresa, conozca nuestros planes para cada presupuesto",
+            "mo": "/mo",
+            "free":{
+                "title": "FREE",
+                "price": "$0",
+                "detail": "La mejor opción recién comenzando",
+                "bullets": [
+                    "50 créditos",
+                    "1 Usuario",
+                    "Análisis de documentos y resumen automático con chat AI",
+                    "25MB Limite de carga de archivo"
+                ]
+            },
+            "pro":{
+                "title": "PRO",
+                "price": "$12,99",
+                "detail": "La mejor opción para uso personal.",
+                "bullets": [
+                    "1000 credits",
+                    "1 usuario",
+                    "Análisis de documentos y resumen automático con chat AI incluyendo histórico de contexto",
+                    "25MB Limite de carga de archivo"
+                ]
+            },
+            "teams":{
+                "title": "TEAMS",
+                "price": "$109,99",
+                "detail": "La mejor opción para proyectos complejos",
+                "bullets": [
+                    "10000 credits",
+                    "10 usuarios",
+                    "Análisis de documentos y resumen automático con chat AI incluyendo histórico de contexto",
+                    "25MB Limite de carga de archivo",
+                    "Gestión de tópicos para agrupar y conversar con documentos",
+                    "Panel de administración para gestionar usuarios y documentos"
+                ]
+            },
+            "most_popular": "MÁS POPULAR",
+            "curent_plan": "Plan actual",
+            "select_plan": "Seleccionar plan",
+            "message": {
+                "title": "¿Necesitas un plan personalizado?",
+                "subtitle": "Libera tu potencial con un Chat2Dox personalizado. Conéctese con nosotros para explorar las posibilidades.",
+                "contact_us": "Contacta con nosotros"
+            }
+        },
+        "cancel_modal":{
+            "cancel_title": "¿Cancelar Suscripción?",
+            "cancel_message": "¿Estas seguro que deseas cancelar tu suscripción? podras ver tus antiguas conversaciones, pero no podras subir archivos ni conversar con tus documentos luego de tu proxima fecha de renovación.",
+            "cancel_button": "cancelar suscripción",
+            "back_button": "Volver"
+        },
+        "messages": {
+            "success_cancel_plan": {
+                "title": "El plan ha sido cancelado con éxito",
+                "content": "Los cambios en la membresía se han guardado correctamente"
+            },
+            "upgrade_plan_generic_error": {
+                "title": "Error al cambiar de plan",
+                "content": "Se ha producido un error inesperado que no ha permitido abrir stripe, inténtelo de nuevo más tarde"
+            },
+            "renew_plan_generic_error": {
+                "title": "Error al renovar el plan",
+                "content": "Se ha producido un error inesperado que no ha permitido abrir stripe, inténtelo de nuevo más tarde"
+            },
+            "complete_plan_generic_error": {
+                "title": "Error al completar el plan",
+                "content": "Se ha producido un error inesperado que no ha permitido abrir stripe, inténtelo de nuevo más tarde"
+            },
+            "cancel_plan_generic_error": {
+                "title": "Error al cancelar el plan",
+                "content": "Se ha producido un error inesperado que no ha permitido cancelar el plan, inténtelo de nuevo más tarde"
+            },
+            "buy_credits_generic_error": {
+                "title": "Error al comprar creditos",
+                "content": "Se ha producido un error inesperado que no ha permitido abrir stripe, inténtelo de nuevo más tarde"
+            },
+            "billing_history_generic_error": {
+                "title": "Error al abrir el historial de facturación",
+                "content": "Se ha producido un error inesperado que no ha permitido abrir stripe, inténtelo de nuevo más tarde"
+            }
+        }
+
+    },
+    "business_config": {
+        "title": "Personalización",
+        "subtitle": "Cambiar logotipos web",
+        "expanded_logo": "Logo expandido",
+        "reduced_logo": "Logo reducido",
+        "upload_your_logo": "Sube tu logo",
+        "recommended_size_expanded_logo" : "Dimensiones recomendadas: Minimo: 250x80 Maximo: 750x240 ",
+        "recommended_size_reduced_logo" : "Dimensión recomendada: Minimo: 50x50 Maximo: 150x150",
+        "recommended_size_expanded_logo_error_message" : "Las dimensiones de la imagen deben estar en el rango de 250x80 a 750x240.",
+        "recommended_size_reduced_logo_error_message" : "Las dimensiones de la imagen deben estar en el rango de 50x50 a 150x150.",
+        "save_button": "Guardar",
+        "cancel_button": "Cancelar",
+        "submit_image":{
+            "title": "La imagen se ha subido con exito",
+            "content": "Ya puede visualizar los nuevos logos en su plataforma"
+        },
+        "upload_image_error": {
+            "title": "Error inesperado",
+            "content": "No se pudo subir la imagen, inténtalo de nuevo más tarde."
+        }
+    }
+}

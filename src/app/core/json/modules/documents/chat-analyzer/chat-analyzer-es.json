@@ -1,0 +1,69 @@
+{
+    "documents":{
+        "new_chat": "Nuevo chat",
+        "recents": "Recientes",
+        "document_list": "Documentos del tópico",
+        "documents": "Seleccione un documento o tópico para iniciar un nuevo chat",
+        "document": "Documento",
+        "chat_document": "chatear con documento"
+    },
+    "chat":{
+        "topic_summary": "¡Hola! Bienvenido a Agrobot documental, estoy aquí para iniciar una nueva conversación sobre los tópicos asociados a tu cuenta. ¡Pregúntame!",
+        "copy": "Copiar",
+        "copied": "Copiado",
+        "sent": "Enviado",
+        "you": "Tú",
+        "bot": "Agrobot",
+        "analyzing_document": "Analizando documento",
+        "share_modal":{
+            "header": "Comparte esta pregunta",
+            "email":{
+                "label": "Correo",
+                "placeholder": "Correo",
+                "required_error": "El correo es obligatorio."
+            },
+            "message": {
+                "label": "Agregar mensaje (opcional)"
+            }
+        },
+        "buttons":{
+            "cancel": "Cancelar",
+            "send": "Enviar"
+        },
+
+        "copyQuestion": {
+          "title": "Texto copiado en el portapapeles"
+        },
+
+        "shareQuestion": {
+          "title": "Correo electrónico enviado con éxito"
+        },
+
+        "loadDocumentList_error": {
+          "title": "Error al cargar documentos",
+          "content": "Se ha producido un error inesperado, inténtelo de nuevo más tarde."
+        },
+        "empty_chat": "Vaciar chat",
+        "delete_messages": "¿Eliminar mensajes?",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "confirm_body": "¿Estás seguro que deseas eliminar estos mensajes? No podrás deshacer esta acción.",
+        "message": "¡Bienvenido a Agrobot documental! Aumente su productividad y obtenga respuestas instantáneas de sus documentos más importantes con nuestra IA.",
+        "sub_message": "¡Crea un repositorio de documentos categorizados y comienza a usar el chat!",
+        "new_chat": "Nuevo chat",
+        "recents": "Recientes",
+        "document_list": "Documentos del tópico",
+        "documents": "Seleccione un documento para iniciar un nuevo chat",
+        "insufficient_credits":{
+            "title": "Creditos Insuficientes",
+            "message": "No tienes suficientes créditos para generar preguntar, puedes recargar mas créditos en la sección de perfil",
+            "back_button": "Volver",
+            "recharge_button": "Recargar Creditos"
+        },
+        "no_documents_error": {
+            "title": "No puedes hablar con este tópico",
+            "content": "Este tópico no tiene documentos relacionados. Cargue un nuevo documento y asígnalo a este tópico para iniciar una conversación."
+        },
+        "understood": "Entendido"
+    }
+}

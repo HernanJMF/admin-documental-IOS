@@ -1,0 +1,137 @@
+<!------------HEADER START------------>
+<div class="section-header">
+    <h1 class="title" *ngIf="showUpload">{{page.title}}</h1>
+    <h2 class="subtitle" *ngIf="showUpload">{{page.subtitle}}</h2>
+    <div class="upload-button">
+        <p-button   [label]="page.upload"
+                    styleClass="p-button-outlined"
+                    (click)="uploadChild.showDialog()"
+                    *ngIf="showUpload">
+        </p-button>
+    </div>
+</div>
+<!------------HEADER END------------>
+
+<!------------TABVIEW START------------>
+<div>
+    <p-tabView [(activeIndex)]="activeIndex" (activeIndexChange)="changeIndex($event);">
+        <!------------DOCUMENT LIST SECTION START------------>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span [ngClass]="{'tab-title-inactive': activeIndex, 'tab-title-active': !activeIndex}">{{page.my_document}}</span>
+            </ng-template>
+            <!------------Search section start------------>
+            <div class="row m-0 mb-4">
+                <div class="col-12 col-md-9">
+                    <input  pInputText
+                            [placeholder]="page.document_search"
+                            type="text"
+                            (keyup)="searchDocument()"
+                            [(ngModel)]="search" />
+
+                </div>
+                <div class="col-12 col-md-3 mt-3 mt-md-0">
+                    <p-dropdown [options]="sortList"
+                                [(ngModel)]="sortBy"
+                                (onChange)="sortDocumentList()"
+                                [placeholder]="page.sort_by"
+                                optionLabel="name">
+                    </p-dropdown>
+                </div>
+                <div class="flex align-items-center justify-content-center justify-content-md-end mt-3">
+                    <p-paginator [first]="first"
+                                 [rows]="rows"
+                                 [totalRecords]="documentsCount"
+                                 (onPageChange)="onPageChange($event)"
+                                 [showCurrentPageReport]="true"
+                                 currentPageReportTemplate="{first} - {last} {{page.paginator}} {totalRecords}"
+                                 [showPageLinks]="false"
+                                 [showFirstLastIcon]="false" >
+                    </p-paginator>
+                </div>
+            </div>
+            <!------------Search section end------------>
+
+            <!------------Documents section start------------>
+            <div class="row m-0">
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center" *ngFor="let document of documentList | slice:first:(first+12)">
+                    <app-document-card  [document]="document"
+                                        [showOptions]="showUpload"
+                                        (EditButton)="EditDocument(document)"
+                                        (DeleteButton)="this.loadDocumentList();"
+                                        class="w-100"
+                                        >
+                    </app-document-card>
+                </div>
+            </div>
+            <!------------Documents section end------------>
+
+            <!------------paginator section start------------>
+            <div class="flex align-items-center justify-content-center justify-content-md-end">
+                <p-paginator [first]="first"
+                             [rows]="rows"
+                             [totalRecords]="documentsCount"
+                             (onPageChange)="onPageChange($event)"
+                             [showCurrentPageReport]="true"
+                             currentPageReportTemplate="{first} - {last} {{page.paginator}} {totalRecords}"
+                             [showPageLinks]="false"
+                             [showFirstLastIcon]="false"
+                             *ngIf="documentList.length > 0" >
+                </p-paginator>
+            </div>
+            <!------------paginator section end------------>
+
+        </p-tabPanel>
+        <!------------DOCUMENT LIST SECTION END------------>
+
+        <!------------TOPIC LIST SECTION START------------>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span [ngClass]="{'tab-title-inactive': !activeIndex, 'tab-title-active': activeIndex}">{{page.topic}}</span>
+            </ng-template>
+            <!------------search section start------------>
+            <div class="row m-0 mb-4">
+                <div class="col-12 col-md-9">
+                    <input  pInputText
+                            [placeholder]="page.topic_search"
+                            type="text"
+                            (keyup)="searchTopics()"
+                            [(ngModel)]="searchTopic" />
+                </div>
+                <div class="col-12 col-md-3 mt-3 mt-md-0">
+                    <p-dropdown [options]="sortTopicList"
+                                [(ngModel)]="sortByTopic"
+                                (onChange)="sortTopicsList()"
+                                [placeholder]="page.sort_by"
+                                optionLabel="name">
+                    </p-dropdown>
+                </div>
+            </div>
+            <!------------search section end------------>
+
+            <!------------topics section start------------>
+            <div class="d-flex">
+                <div>
+                    <a class="topic-url" [href]="'/chat-analyzer/topic/'+topic.topic_id" *ngFor="let topic of topicList"
+                       (click)="router.navigateByUrl('/chat-analyzer/topic/'+topic.topic_id);">
+                        <p-chip class="topic-chip">
+                            <div class="p-2">{{topic.topic_name}}</div>
+                            <i class="pi pi-comments"></i>
+                        </p-chip>
+                    </a>
+                </div>
+            </div>
+            <!------------topics section end------------>
+        </p-tabPanel>
+        <!------------TOPIC LIST SECTION END------------>
+    </p-tabView>
+</div>
+<!------------TABVIEW END------------>
+
+<!------------UPLOAD DOCUMENT MODAL START------------>
+<app-document-upload [page]="page.document_upload"
+                     [TopicList]="originalTopicList"
+                     (updateList)="loadDocumentList()">
+
+</app-document-upload>
+<!------------UPLOAD DOCUMENT MODAL END------------>

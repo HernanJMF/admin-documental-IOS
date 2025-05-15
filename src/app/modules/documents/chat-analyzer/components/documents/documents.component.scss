@@ -1,0 +1,144 @@
+@import '../../../../../../assets/styles/base/common-styles/buttons/buttons.scss';
+@import '../../../../../../assets/styles/constants/fonts.scss';
+@import '../../../../../../assets/styles/constants/colors.scss';
+@import '../../../../../../assets/styles/base/common-styles/modal/modal.scss';
+@import '../../../../../../assets/styles/constants/labels.scss';
+
+.sidebar{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    .recents-section{
+      height: 60%;
+        .buttons-section{
+            display: flex;
+            justify-content: space-between;
+            .sidebar-icon{
+                filter: invert(1);
+            }
+        }
+
+        .option{
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .option-row{
+                display: inline-flex;
+                align-items: center;
+                .text{
+                    color: $newtoms-primary-font-color;
+                    text-align: center;
+                    font-family: $newtoms-regular-fonts;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin: 0px 4px;
+                }
+                .option-icon{
+                    cursor: pointer;
+                }
+                .hastag-icon{
+                    font-size: 13px;
+                    color: $newtoms-primary-font-color !important;
+                }
+            }
+
+        }
+        .option:hover{
+            //color: $newtoms-regular-font-color;
+            border: solid 1px $newtoms-success-font-color;
+            border-radius: 10px;
+            border-right: solid 5px $newtoms-success-font-color;
+        }
+
+    }
+}
+
+.document-section{
+    border-top: solid 1px $newtoms-chat-border;
+    margin: 16px -16px 0px;
+    padding: 16px 16px 0px 16px;
+    height: 100%;
+    position: relative;
+
+    .document-icon{
+        position: absolute;
+        left: 0;
+        margin-left: 16px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .comment-chat-icon{
+        position: absolute;
+        right: 0;
+        margin-right: 16px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .preview{
+        height: 85%;
+    }
+}
+
+::ng-deep{
+    .p-image-preview-container>img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .p-image-preview-container {
+        height: 100%;
+    }
+}
+
+.modal-header {
+    color: $newtoms-primary-font-color;
+    font-family: "Montserrat Bold";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 32px;
+}
+
+@media only screen and (max-width: 992px) {
+    .document-section{
+        margin: 8px -8px 0px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .modal-header{
+      font-size: 20px;
+      padding-left: 0px;
+
+    }
+
+}
+
+.newtoms-chat-logo {
+    display: flex;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url("../../../../../../assets/icons/chat-logo.svg");
+    mask-image: url('../../../../../../assets/icons/chat-logo.svg');
+    background-color: $newtoms-primary-font-color; /* Or any color of your choice. */
+    width: 13px;
+    height: 12px;
+    margin-right: 4px;
+}
+
+
+::ng-deep{
+    .p-tooltip {
+        max-width: 16.5rem;
+    }
+}

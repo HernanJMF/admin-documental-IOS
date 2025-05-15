@@ -1,0 +1,77 @@
+
+<div class="sidebar left" (mouseover)="displaySidebar = true" (mouseleave)="displaySidebar = false">
+    <div>
+        <div class="sidebar-body">
+            <div class="logo">
+                <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');" *ngIf="!displaySidebar">
+                    <img [src]="'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + reduceLogo"
+                         width="50px" class="reduced-logo img-fluid" alt="">
+                </a>
+                <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');" *ngIf="displaySidebar">
+                    <img [src]="'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + expandLogo"
+                         width="250px" class="expanded-logo img-fluid" style="padding-left: 16px;" alt="">
+                </a>
+            </div>
+            <div class="menu">
+                <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
+                    <div class="option">
+                        <i class="newtoms-home"></i>
+                        <span *ngIf="displaySidebar" class="text">{{page.home}}</span>
+                    </div>
+                </a>
+                <a class="nav-link"  href="/documents" (click)="router.navigateByUrl('/documents');">
+                    <div class="option">
+                        <i class="newtoms-bag"></i>
+                        <span *ngIf="displaySidebar" class="text">{{page.my_documents}}</span>
+                    </div>
+                </a>
+                <a class="nav-link"  [href]="documentID == '' ? '/documents/open' : '/chat-analyzer/document/'+documentID"
+                    (click)="documentID == '' ? this.router.navigateByUrl('/documents/open') : router.navigateByUrl('/chat-analyzer/document/'+documentID)">
+                    <div class="option">
+                        <i class="newtoms-comment"></i>
+                        <span *ngIf="displaySidebar" class="text">{{page.chat_analyzer}}</span>
+                    </div>
+                </a>
+                <!--<a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
+                    <div class="option">
+                        <img src="../../../../assets/icons/chart-line.svg" width="24px" alt="">
+                        <span *ngIf="displaySidebar" class="text">{{page.metrics}}</span>
+                    </div>
+                </a>-->
+                <a class="nav-link"  href="/users" (click)="router.navigateByUrl('/users');" *ngIf="role == 'ADMIN'">
+                    <div class="option">
+                        <i class="newtoms-users-alt"></i>
+                        <span *ngIf="displaySidebar" class="text">{{page.user_management}}</span>
+                    </div>
+                </a>
+                <a class="nav-link"  href="/users/topics" (click)="router.navigateByUrl('/users/topics');" *ngIf="role == 'ADMIN'">
+                    <div class="option">
+                        <i class="pi pi-hashtag newtoms-hashtag"></i>
+                        <span *ngIf="displaySidebar" class="text">{{page.topics}}</span>
+                    </div>
+                </a>
+           <!--     <a class="nav-link"  href="/settings" (click)="router.navigateByUrl('/settings');">
+                    <div class="option">
+                        <i class="newtoms-cog"></i>
+                        <span *ngIf="displaySidebar" class="text">{{page.settings}}</span>
+                    </div>
+                </a> -->
+                <div class="switch-light">
+                    <i class="newtoms-sun"></i>
+                    <p-inputSwitch [(ngModel)]="theme" class="separation" *ngIf="displaySidebar" (onChange)="selectedTheme($any($event.checked))"></p-inputSwitch>
+                </div>
+                <!--<div class="option" (click)="router.navigateByUrl('/home')">
+                    <img src="../../../../assets/icons/question-circle.svg" width="24px" alt="">
+                    <span *ngIf="displaySidebar" class="text">{{page.support}}</span>
+                </div>-->
+            </div>
+        </div>
+        <div  class="logout">
+            <div class="option" (click)="logout();">
+                <i class="newtoms-signout"></i>
+                <span *ngIf="displaySidebar" class="text">{{page.logout}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="version">V {{version}}</div>
+</div>

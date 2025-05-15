@@ -1,0 +1,77 @@
+@import "../../../constants/fonts.scss";
+@import "../../../constants/colors.scss";
+
+::ng-deep{
+    .p-overlaypanel .p-overlaypanel-content {
+        padding: 0rem;
+        background: transparent; //$newtoms-background-card
+        color: #F5F5F5;
+        border-radius: 10px;
+    }
+    .p-overlaypanel:after, .p-overlaypanel:before {
+        content: none !important;
+    }
+    .p-overlaypanel {
+        background: transparent;
+    }
+}
+
+.card-menu-top, .card-menu-medium, .card-menu-bottom{
+    display: flex;
+    font-size: 14px;
+    display: flex;
+    padding: 16px;
+    cursor: pointer;
+    .icon{
+        margin-right: 8px;
+    }
+    .label{
+        font-family: "Montserrat Regular";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+
+.card-menu-body-dark{
+    background: #1A1D20;
+    color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.card-menu-body-light{
+    background: #e7e6e6;
+    color: black;
+    border-radius: 10px;
+}
+
+
+
+.card-menu{
+  &-top:hover{
+      background-color: rgba(128, 128, 128, 0.2);
+      width: 100%;
+      border-radius: 10px 10px 0px 0px;
+      display: flex;
+  }
+  &-medium:hover{
+      background-color: rgba(128, 128, 128, 0.2);
+      width: 100%;
+      border-radius: 0px;
+      display: flex;
+  }
+  &-bottom:hover{
+      background-color: #F35657;
+      width: 100%;
+      border-radius: 0px 0px 10px 10px;
+      display: flex;
+  }
+
+  &-full:hover{
+    border-radius: 10px;
+
+  }
+
+}

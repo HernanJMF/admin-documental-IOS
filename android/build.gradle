@@ -1,0 +1,39 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Usamos AGP 8.5.0, que es compatible
+        classpath 'com.android.tools.build:gradle:8.5.0'
+        classpath 'com.google.gms:google-services:4.4.2'
+        // Nota: No coloques dependencias de la aplicación aquí.
+    }
+}
+
+apply from: "variables.gradle"
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// ─────────────────────────────────────────────────────
+// Forzamos en todos los subproyectos el uso de Java 17.
+// Esto asegurará que ningún módulo (incluido capacitor-android)
+// se compile con sourceCompatibility o targetCompatibility en 21.
+subprojects {
+    tasks.withType(JavaCompile).configureEach {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+// ─────────────────────────────────────────────────────
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

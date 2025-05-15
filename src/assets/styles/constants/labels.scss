@@ -1,0 +1,107 @@
+@import "../constants/fonts.scss";
+@import "../constants/colors.scss";
+
+.title{
+    color: $newtoms-primary-font-color;
+    text-align: center;
+    font-family: $newtoms-bold-fonts;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin-bottom: 16px;
+}
+.subtitle{
+    color: $newtoms-primary-font-color;
+    text-align: center;
+    font-family: $newtoms-regular-fonts;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.subtitle-home{
+  color: $newtoms-primary-font-color;
+  text-align: start;
+  font-family: $newtoms-bold-fonts;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 14px;
+  margin-top: 14px;
+  padding-left: 6%;
+}
+
+.tab-title-active {
+  text-align: center;
+  color: white;
+  font-family: $newtoms-bold-fonts;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.tab-title-inactive {
+  text-align: center;
+  color: $newtoms-disable-font-color;
+  font-family: $newtoms-bold-fonts;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.upload-title{
+  color: $newtoms-primary-font-color;
+  text-align: center;
+  font-family: $newtoms-semibold-fonts;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: block;
+  .choose{
+    color: $newtoms-choose-font-color;
+    font-family: $newtoms-semibold-fonts;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.filename-title{
+  color: $newtoms-primary-font-color;
+  text-align: center;
+  font-family: $newtoms-bold-fonts;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: block;
+}
+
+.document-section-title{
+  color: $newtoms-primary-font-color;
+  font-family: $newtoms-bold-fonts;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.modal-section-title{
+  color: $newtoms-primary-font-color;
+  text-align: center;
+  font-family: $newtoms-bold-fonts;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-left: 32px;
+}

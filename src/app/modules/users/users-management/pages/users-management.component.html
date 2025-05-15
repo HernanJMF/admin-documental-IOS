@@ -1,0 +1,77 @@
+<div class="section-header">
+  <label class="title">{{page.title}}</label>
+</div>
+<div>
+
+  <!------------Table section start---------->
+  <app-basic-table [headerList]="headerList"
+                   [dataList]="userList"
+                   [headerCustomButtons]="headerButtons"
+                   [customButtons]="customButtons"
+                   (selectedCustomButton)="selectedOptions($event.option, $event.rowData)">
+  </app-basic-table>
+  <!----------Table section end------------>
+
+  <!------------Create user modal start------------>
+  <p-dialog [(visible)]="visibleDialog"
+            [breakpoints]="{ '992px': '60vw', '768px': '80vw', '576px': '95vw'}"
+            (onHide)="child.resetForm()"
+            [style]="{width: '50vw'}"
+            [header]="isEdit ? page.edit_header : page.add_header"
+            [modal]="true"
+            styleClass="p-fluid" >
+
+            <app-create-user
+                        (buttonEnabled)="buttonEnabled($event)"
+                        [enabledTopics]="topicsListEnable"
+                        (updateList)="visibleDialog = false; getUserList();"
+                        [page]="page.create_user"
+                        #child>
+            </app-create-user>
+
+    <ng-template class="m-0" pTemplate="footer">
+
+      <button pButton pRipple [label]="page.buttons.cancel" class="p-button-text p-button-danger" (click)="hideDialog()"></button>
+      <button pButton pRipple [label]="page.buttons.save" class="p-button-text" [disabled]="!buttonIsEnabled" (click)="hideDialog();child.submitCall()"></button>
+
+    </ng-template>
+  </p-dialog>
+  <!------------Create user modal end------------>
+
+</div>
+
+<!------------Create topic modal start------------>
+<app-topics [page]="page.topics"
+            [topicsListEnable]="topicsListEnable"
+            [topicsListDisable]="topicsListDisable"
+            (topicListUpdated)="loadTopicList()">
+</app-topics>
+<!------------Create topic modal start------------>
+
+<!------------Confirm modal delete start----------
+<p-confirmDialog #cd [style]="{ width: '50vw' }" [breakpoints]="{ '768px': '90vw', '576px': '95vw'}">
+  <ng-template pTemplate="header">
+    <h3>{{deleteMessage ? page.confirmation.title : this.page.users_limit_confirmation.title}}</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+            type="button"
+            class="p-button-text"
+            pButton
+            icon=""
+            *ngIf="deleteMessage"
+            [label]="page.confirmation.cancel"
+            (click)="cd.reject()"
+    ></button>
+    <button
+            type="button"
+            [class]="deleteMessage ?  'p-button-text p-button-danger' : 'p-button-text'"
+            pButton
+            icon=""
+            [label]="deleteMessage ? page.confirmation.accept : page.users_limit_confirmation.accept_button"
+            (click)="deleteMessage ? cd.accept() : ''"
+    ></button>
+  </ng-template>
+</p-confirmDialog>
+----------Confirm modal delete end------------>
+

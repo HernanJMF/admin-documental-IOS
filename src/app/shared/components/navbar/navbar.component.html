@@ -1,0 +1,87 @@
+<nav>
+  <p-button class="sidebarButton" (click)="sidebarVisible = !sidebarVisible" icon="pi pi-bars"></p-button>
+</nav>
+
+<p-sidebar [(visible)]="sidebarVisible" position="left">
+        <ng-template pTemplate="header">
+                <div class="logo">
+                        <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
+                                <img src="../../../../assets/images/newtoms-sidebar-logo.png" width="250px" class="img-fluid" alt="">
+                        </a>
+                </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+                <div class="sidebar" >
+                        <div>
+                                <div class="sidebar-body">
+
+                                        <div class="menu p-0">
+                                                <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
+                                                        <div class="option">
+                                                                <i class="newtoms-home"></i>
+                                                                <span class="text">{{page.home}}</span>
+                                                        </div>
+                                                </a>
+                                                <a class="nav-link"  href="/documents" (click)="router.navigateByUrl('/documents');">
+                                                        <div class="option">
+                                                                <i class="newtoms-bag"></i>
+                                                                <span class="text">{{page.my_documents}}</span>
+                                                        </div>
+                                                </a>
+                                                <a class="nav-link"     [href]="documentID == '' ? '/documents/open' : '/chat-analyzer/document/'+documentID"
+                                                                        (click)="documentID == '' ? this.router.navigateByUrl('/documents/open') : router.navigateByUrl('/chat-analyzer/document/'+documentID)">
+                                                <div class="option">
+                                                        <i class="newtoms-comment"></i>
+                                                        <span class="text">{{page.chat_analyzer}}</span>
+                                                </div>
+                                                </a>
+                                               <!-- <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
+                                                        <div class="option">
+                                                                <img src="../../../../assets/icons/chart-line.svg" width="24px" alt="">
+                                                                <span class="text">{{page.metrics}}</span>
+                                                        </div>
+                                                </a>-->
+                                                <a class="nav-link"  href="/users" (click)="router.navigateByUrl('/users');" *ngIf="role == 'ADMIN'">
+                                                        <div class="option">
+                                                                <i class="newtoms-users-alt"></i>
+                                                                <span class="text">{{page.user_management}}</span>
+                                                        </div>
+                                                </a>
+                                                <a class="nav-link"  href="/users/topics" (click)="router.navigateByUrl('/users/topics');" *ngIf="role == 'ADMIN'">
+                                                        <div class="option">
+                                                            <i class="pi pi-hashtag newtoms-hashtag"></i>
+                                                            <span class="text">{{page.topics}}</span>
+                                                        </div>
+                                                </a>
+
+                                                <a class="nav-link"  href="/settings" (click)="router.navigateByUrl('/settings');">
+                                                        <div class="option">
+                                                                <i class="newtoms-cog"></i>
+                                                                <span class="text">{{page.settings}}</span>
+                                                        </div>
+                                                </a>
+
+                                                <div class="switch-light">
+                                                        <i class="newtoms-sun"></i>
+                                                        <p-inputSwitch [(ngModel)]="theme" class="separation"  (onChange)="selectedTheme($any($event.checked))"></p-inputSwitch>
+                                                </div>
+
+                                                <!--<a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
+                                                        <div class="option">
+                                                                <img src="../../../../assets/icons/question-circle.svg" width="24px" alt="">
+                                                                <span class="text">{{page.support}}</span>
+                                                        </div>
+                                                </a>-->
+                                                <div class="option" (click)="logout();">
+                                                        <img src="../../../../assets/icons/signout.svg" width="24px" alt="">
+                                                        <span class="text">{{page.logout}}</span>
+                                                </div>
+
+                                        </div>
+                                </div>
+
+                        </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer"><div class="text-center">V {{version}}</div></ng-template>
+</p-sidebar>

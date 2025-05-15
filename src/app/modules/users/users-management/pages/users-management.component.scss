@@ -1,0 +1,80 @@
+@import '../../../../../assets/styles/constants/fonts.scss';
+@import '../../../../../assets/styles/base/common-styles/tab-view/tabview.scss';
+@import '../../../../../assets/styles/base/common-styles/buttons/buttons.scss';
+@import '../../../../../assets/styles/base/common-styles/inputs/inputs.scss';
+@import '../../../../../assets/styles/base/common-styles/paginator/paginator.scss';
+@import '../../../../../assets/styles/base/common-styles/tables/tables.scss';
+@import '../../../../../assets/styles/base/common-styles/modal/modal.scss';
+@import '../../../../../assets/styles/constants/colors.scss';
+
+.section-header {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  .title {
+    color: $newtoms-primary-font-color;
+    text-align: center;
+    font-family: $newtoms-bold-fonts;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin-bottom: 16px;
+  }
+
+}
+
+.section-body {
+  width: 100%;
+  height: auto; /* Cambiado a altura automática para adaptarse al contenido */
+  border-radius: 20px;
+  background: $newtoms-primary-color;
+  display: flex;
+  flex-direction: column; /* Cambiado a diseño de columna en pantallas más pequeñas */
+  justify-content: center;
+  padding: 20px; /* Añadido espaciado interior */
+}
+
+.labels-body {
+  width: 100%;
+  height: 46px;
+  background: rgba(191, 203, 211, 0.28);
+  display: flex; /* Agregado flexbox para alinear los elementos */
+  justify-content: space-between; /* Espaciado uniforme entre elementos */
+
+  .separation-label {
+    margin-left: 10px; /* Ajustado el margen para ahorrar espacio en pantallas pequeñas */
+  }
+}
+
+/* Estilos para pantallas pequeñas (ajusta el punto de quiebre según sea necesario) */
+@media (max-width: 768px) {
+  .section-body {
+    height: auto;
+    padding: 10px; /* Espaciado interior reducido para pantallas pequeñas */
+  }
+
+  .labels-body {
+    height: auto;
+    flex-direction: column; /* Diseño de columna en pantallas pequeñas */
+    align-items: center; /* Alineación centrada */
+
+    .separation-label {
+      margin-left: 0; /* Eliminado el margen izquierdo en pantallas pequeñas */
+      margin-top: 5px; /* Agregado un margen superior */
+    }
+  }
+}
+
+/* Estilos para evitar la superposición de botones en pantallas pequeñas */
+@media (max-width: 576px) {
+  .p-dialog .p-dialog-footer {
+    flex-direction: column; /* Botones uno debajo del otro en pantallas muy pequeñas */
+    align-items: center; /* Alineación centrada */
+
+    .p-button {
+      margin-top: 10px; /* Espaciado entre los botones */
+    }
+  }
+}
+

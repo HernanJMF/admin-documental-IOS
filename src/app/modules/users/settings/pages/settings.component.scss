@@ -1,0 +1,97 @@
+
+@import '../../../../../assets/styles/base/common-styles/tab-view/tabview.scss';
+@import '../../../../../assets/styles/base/common-styles/inputs/inputs.scss';
+@import '../../../../../assets/styles/constants/fonts.scss';
+@import '../../../../../assets/styles/constants/colors.scss';
+@import '../../../../../assets/styles/base/common-styles/buttons/buttons.scss';
+@import '../../../../../assets/styles/constants/labels.scss';
+
+
+.section-header{
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+
+
+}
+
+.subtitle{
+    color: $newtoms-primary-font-color;
+    text-align: center;
+    font-family: $newtoms-bold-fonts;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 14px;
+    margin-top: 14px;
+    padding-bottom: 20px;
+}
+
+label{
+    color: $newtoms-primary-font-color;
+    font-family: $newtoms-bold-fonts;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+}
+
+.submit{
+    text-align: end;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.message{
+    color: $newtoms-regular-font-color;
+    text-align: center;
+    font-family: $newtoms-regular-fonts;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    border-radius: 20px;
+    padding: 24px;
+    padding-right: 12%;
+    position: relative;
+    background: $newtoms-secondary-color;
+    .message-img{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+}
+
+::ng-deep{
+    .p-button {
+        font-size: 24px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+
+    .message{
+        padding-right: 18%;
+    }
+
+}
+@media only screen and (max-width: 768px) {
+
+    .message{
+        padding-right: 24%;
+        padding: 16px;
+    }
+
+}
+@media only screen and (max-width: 576px) {
+
+    .message{
+        padding-right: 24px;
+        .message-img{
+            display: none;
+        }
+    }
+
+}

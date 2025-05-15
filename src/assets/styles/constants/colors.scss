@@ -1,0 +1,79 @@
+//layout
+$newtoms-primary-color: var(--bs-newtoms-primary-color); //listo
+$newtoms-secondary-color: var(--bs-newtoms-secondary-color);
+$newtoms-complementary-color: var(--bs-newtoms-complementary-color);
+$newtoms-background-color: var(--bs-newtoms-background-color);//listo
+$newtoms-modal-background: var(--bs-newtoms-modal-background);
+$newtoms-copy-button-color: var(--bs-newtoms-copy-button-color); //color agregado para el boton de los promtps
+$newtoms-copy-button-active-color: var(--bs-newtoms-copy-button-active-color);//color agregado para el boton de los promtps
+$newtoms-circle-chat-color: var(--bs-newtoms-circle-chat-color); // color agregado para el circulos de el chat
+$newtoms-send-section-color: var(--bs-newtoms-send-section-color); //color agregado
+$newtoms-characters-color: var(--bs-newtoms-characters-color); ; //color agregado
+$newtoms-document-header-color: var(--bs-newtoms-document-header-color); //color agregado
+$newtoms-online-icon-color: var(--bs-newtoms-online-icon-color); //color agregado
+$newtoms-offline-icon-color: var(--bs-newtoms-offline-icon-color); //color agregado
+$newtoms-option-icon-color: var(--bs-newtoms-option-icon-color); //color agregado
+$newtoms-topic-chip-color: var(--bs-newtoms-topic-chip-color); //color agregado
+$newtoms-shared-chip-color: var(--bs-newtoms-shared-chip-color); //color agregado
+$newtoms-upload-box-color: var(--bs-newtoms-upload-box-color); //color agregado
+$newtoms-p-progressbar-color: var(--bs-newtoms-p-progressbar-color); //color agregado
+$newtoms-p-progressbar-value-color: var(--bs-newtoms-p-progressbar-value-color); //color agregado
+$newtoms-p-speeddial-action-color: var(--bs-newtoms-p-speeddial-action-color); //color agregado
+$newtoms-p-button-success-color: var(--bs-newtoms-p-button-success-color); //color agregado
+$newtoms-completed-chip-color: var(--bs-newtoms-completed-chip-color); //color agregado
+$newtoms-processing-chip-color: var(--bs-newtoms-processing-chip-color); //color agregado
+$newtoms-failed-chip-color: var(--bs-newtoms-failed-chip-color); //color agregado
+
+
+//fonts
+$newtoms-primary-font-color: var(--bs-newtoms-primary-font-color); //listo
+$newtoms-secondary-font-color: var(--bs-newtoms-secondary-font-color);
+$newtoms-tag-font-color: var(--bs-newtoms-tag-font-color);
+$newtoms-active-font-color: var(--bs-newtoms-active-font-color);
+$newtoms-disable-font-color: var(--bs-newtoms-disable-font-color);
+$newtoms-regular-font-color: var(--bs-newtoms-regular-font-color);
+$newtoms-success-font-color: var(--bs-newtoms-success-font-color);
+$newtoms-cancel-font-color: var(--bs-newtoms-cancel-font-color);
+$newtoms-error-font-color: var(--bs-newtoms-error-font-color);
+$newtoms-choose-font-color: var(--bs-newtoms-choose-font-color);
+$newtoms-formats-font-color: var(--bs-newtoms-formats-font-color);
+$newtoms-tab-title-inactive-font-color: var(--bs-newtoms-tab-title-inactive-font-color);
+$newtoms-p-datatable-font-color: var(--bs-newtoms-p-datatable-font-color);
+$newtoms-placeholder-font-color: var(--bs-newtoms-placeholder-font-color);
+$newtoms-copy-font-color: var(--bs-newtoms-copy-font-color);
+
+$newtoms-hover-background-buttons: var(--bs-newtoms-hover-background-buttons);
+$newtoms-background-buttons: var(--bs-newtoms-background-buttons);
+$newtoms-hover-border-buttons: var(--bs-newtoms-hover-border-buttons);
+$newtoms-background-card: var(--bs-newtoms-background-card);
+$newtoms-detail-background-card: var(--bs-newtoms-detail-background-card);
+$newtoms-hover-background-card: var(--bs-newtoms-hover-background-card);
+$newtoms-border-buttons: var(--bs-newtoms-border-buttons);
+$newtoms-upload-button-background: var(--bs-newtoms-upload-button-background);
+$newtoms-background-opacity-message: var(--bs-newtoms-background-opacity-message);
+$newtoms-table-background: var(--bs-newtoms-table-background);
+$newtoms-chat-border: var(--bs-newtoms-chat-border);
+$newtoms-chat-message-background: var(--bs-newtoms-chat-message-background);
+$newtoms-chat-user-message-background: var(--bs-newtoms-chat-user-message-background);
+
+$newtoms-table-primary-font-color: var(--bs-newtoms-table-primary-font-color);
+$newtoms-table-secondary-font-color: var(--bs-newtoms-table-secondary-font-color);
+$newtoms-table-hover-color: var(--bs-newtoms-table-hover-color);
+$newtoms-label-button-color: var(--bs-newtoms-label-button-color);
+$newtoms-alias-font-color: var(--bs-newtoms-alias-font-color);
+$newtoms-logo-font-color: var(--bs-newtoms-logo-font-color);
+$newtoms-upload-button-color: var(--bs-newtoms-upload-button-color);
+$newtoms-icon-input-color: var(--bs-newtoms-icon-input-color);
+$newtoms-sidebar-icon-color: var(--bs-newtoms-sidebar-icon-color);
+$newtoms-input-box-shadow: var(--bs-newtoms-input-box-shadow);
+$newtoms-input-hover: var(--bs-newtoms-input-hover);
+$newtoms-botton-focus: var(--bs-newtoms-botton-focus);
+$newtoms-botton-active: var(--bs-newtoms-botton-active);
+$newtoms-chat-detail-background: var(--bs-newtoms-chat-detail-background);
+$newtoms-chat-detail-background-hover: var(--bs-newtoms-chat-detail-background-hover);
+$newtoms-chat-detail-section-background: var(--bs-newtoms-chat-detail-section-background);
+$newtoms-input-icon-color: var(--bs-newtoms-input-icon-color);
+$newtoms-modal-success-button-selection-color: var(--bs-newtoms-modal-success-button-selection-color);
+
+
+

@@ -1,0 +1,73 @@
+<div class="subtitle">
+    <span >{{page.subtitle}}</span>
+</div>
+<!------------Expand logo section start------------>
+<div class="avatar-logo">
+    <div class="d-flex align-items-center my-3">
+        <span class="title m-0">{{page.expanded_logo}}</span>
+        <div class="custom-button">
+          <p-button [pTooltip]="page.recommended_size_expanded_logo" tooltipPosition="top" icon="pi pi-question-circle" rounded="true" text="true"></p-button>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="upload-box">
+            <input  #logoFile
+                    type="file"
+                    id="expand-logo-btn"
+                    hidden
+                    accept=".jpg,.jpeg,.png"
+                    onclick="value = null"
+                    (change)="onExpandFileSelected($event)"/>
+            <label for="expand-logo-btn" class="upload-button">
+              <img src="../../../../../../assets/icons/upload-icon.svg" class="upload-file-button-image" alt="upload-icon" width="32px"/>
+              <p class="upload-file-button-text">{{page.upload_your_logo}}</p>
+            </label>
+        </div>
+        <div class="preview-img">
+            <img [src]="formGroup.controls['expandLogo'].value.length == 0 ? 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + expandLogo : expandURL"
+                 alt="upload-icon"
+                 class="img">
+            <!--<img [src]="ragFormGroup.controls['avatarLogo'].value.length == 0 ? ragConfiguration.avatar_rag.rag_config.logo_reference : logoImageSrc"
+                alt="upload-icon"
+                class="img">-->
+        </div>
+    </div>
+
+</div>
+<!------------Expand logo section end------------>
+
+<!------------Reduce logo section start------------>
+<div class="avatar-logo">
+    <div class="d-flex align-items-center my-3">
+        <p class="title m-0">{{page.reduced_logo}}</p>
+        <div class="custom-button">
+          <p-button [pTooltip]="page.recommended_size_reduced_logo" tooltipPosition="top" icon="pi pi-question-circle" rounded="true" text="true"></p-button>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="upload-box">
+            <input  #logoFile
+                    type="file"
+                    id="reduce-logo-btn"
+                    hidden
+                    accept=".jpg,.jpeg,.png"
+                    onclick="value = null"
+                    (change)="onReduceFileSelected($event)"/>
+            <label for="reduce-logo-btn" class="upload-button">
+              <img src="../../../../../../assets/icons/upload-icon.svg" class="upload-file-button-image" alt="upload-icon" width="32px"/>
+              <p class="upload-file-button-text">{{page.upload_your_logo}}</p>
+
+            </label>
+        </div>
+        <div class="preview-img">
+            <img [src]="formGroup.controls['reduceLogo'].value.length == 0 ? 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + reduceLogo : reduceURL"
+                 alt="upload-icon" class="img">
+        </div>
+    </div>
+</div>
+<!------------Reduce logo section end------------>
+
+<div class="submit">
+    <p-button (click)="cancelLogos()" [label]="page.cancel_button" styleClass="p-button-text p-button-danger"></p-button>
+    <button pButton pRipple [label]="page.save_button" class="p-button-text" [disabled]="!isValid" (click)="submitLogos()"></button>
+</div>

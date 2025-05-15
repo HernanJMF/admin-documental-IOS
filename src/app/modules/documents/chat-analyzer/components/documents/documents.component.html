@@ -1,0 +1,91 @@
+<div class="sidebar">
+    <!------------RECENTS LIST SECTION START------------>
+    <div class="recents-section">
+        <div class="buttons-section">
+            <span class="subtitle">{{type == 'topic' ? page.document_list : page.recents}}</span>
+            <p-button   [label]="page.new_chat"
+                        styleClass="p-button-outlined small"
+                        *ngIf="type == 'document'"
+                        (click)="showDialog()">
+            </p-button>
+        </div>
+        <div *ngIf="type == 'document'">
+            <div class="option"
+                 *ngFor="let document of documentList | slice:0:5"
+                 (click)="openDocument(document.document_id)" [pTooltip]="document.alias">
+                <div class="option-row">
+                    <i class="newtoms-chat-logo"></i>
+                    <span class="text">{{document.alias}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="type == 'topic'">
+            <p-scrollPanel [style]="{ width: '100%', height: '400px'}">
+            <div class="option"
+                 (click)="openTopic()" [pTooltip]="document.alias">
+                <div class="option-row" >
+                    <i class="pi pi-hashtag"></i>
+                    <span class="text">{{topicValue.topic_name}}</span>
+                </div>
+            </div>
+            <div class="option"
+                 *ngFor="let document of topicDocumentList"
+                 (click)="openTopicDocumentPreview(document)" [pTooltip]="document.alias">
+                <div class="option-row" >
+                    <i class="newtoms-chat-logo"></i>
+                    <span class="text">{{document.alias}}</span>
+                </div>
+            </div>
+            </p-scrollPanel>
+
+        </div>
+
+    </div>
+    <!------------RECENTS LIST SECTION END------------>
+
+    <!------------DOCUMENT PREVIEW SECTION START------------>
+    <div class="document-section" *ngIf="showPreview"  [pTooltip]="document.chat_document">
+        <div class="document-section-title">
+            <i class="pi pi-refresh document-icon"
+               (click)="isVisible = false; topicDocumentUrl.length == 0 ? openFilePreview() : openTopicDocumentPreview(topicDocument)"></i>
+            <span>{{page.document}}</span>
+            <i class="pi pi-comments comment-chat-icon"
+               (click)="isVisible = false; chatTopicDocument()"
+               *ngIf="type == 'topic'" tooltipPosition="top" [pTooltip]="page.chat_document"></i>
+        </div>
+        <div class="preview pt-2" *ngIf="isVisible">
+            <div class="h-100" *ngIf="['docx','xlsx','xls','pdf','txt'].includes(topicDocumentUrl.length == 0 ? document.extension : topicDocument.extension)">
+                <iframe class="doc" [src]="safeUrl" frameborder="0" height="100%" width="100%"></iframe>
+            </div>
+            <div class="h-100" *ngIf="['jpeg','jpg','png'].includes(topicDocumentUrl.length == 0 ? document.extension : topicDocument.extension)">
+                <p-image [src]="document.preview"
+                         alt="preview-img"
+                         width="100%"
+                         [preview]="true">
+                </p-image>
+            </div>
+        </div>
+    </div>
+    <!------------DOCUMENT PREVIEW SECTION END------------>
+</div>
+
+<!------------DOCUMENT LIST MODAL START------------>
+<div>
+    <p-dialog   [(visible)]="visible"
+                [style]="{width: '90vw'}"
+                [breakpoints]="{ '768px': '90vw', '576px': '95vw'}"
+                class="modal-section"
+                [draggable]="false"
+                [resizable]="false"
+                [modal]="true">
+        <ng-template pTemplate="header">
+            <div class="d-flex justify-content-center w-100">
+                <span class="modal-header">{{page.documents}}</span>
+            </div>
+        </ng-template>
+        <div class="pb-3">
+            <app-documents-list [showUpload]="false" [getDocumentList]="loadDocumentList"></app-documents-list>
+        </div>
+    </p-dialog>
+</div>
+<!------------DOCUMENT LIST MODAL END------------>

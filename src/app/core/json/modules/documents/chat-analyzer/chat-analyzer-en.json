@@ -1,0 +1,68 @@
+{
+    "documents":{
+        "new_chat": "New Chat",
+        "recents": "Recents",
+        "document_list": "Topic documents",
+        "documents": "Select a document to start a new chat",
+        "document": "Document",
+        "chat_document": "Chat with document"
+    },
+    "chat":{
+        "topic_summary": "Hello! Welcome to Agrobot Documentary, I'm here to start a new conversation about topics related to you. Ask me!",
+        "copy": "Copy",
+        "copied": "Copied",
+        "sent": "Sent",
+        "you": "You",
+        "bot": "Agrobot",
+        "analyzing_document": "Analyzing Document",
+        "share_modal":{
+            "header": "Share this question",
+            "email":{
+                "label": "Email",
+                "placeholder": "Email",
+                "required_error": "Email is required."
+            },
+            "message": {
+                "label": "Add message (optional)"
+            }
+        },
+        "buttons":{
+            "cancel": "Cancel",
+            "send": "Send"
+        },
+        "copyQuestion": {
+          "title": "Share link copied to clipboard"
+        },
+
+        "shareQuestion": {
+          "title": "Email Send Successfully"
+        },
+
+        "loadDocumentList_error": {
+          "title": "Failed to load documents",
+          "content": "An unexpected Error has occured, plese try again later"
+        },
+        "empty_chat": "Empty chat",
+        "delete_messages": "Delete messages?",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "confirm_body": "Are you sure you want to empty these messages? you cannot undo this action.",
+        "message": "Welcome to Agrobot documentary! Increase your productivity and get instant answers from your most important documents with our powerful AI.",
+        "sub_message": "Create a repository of categorized documents and start using the chat!",
+        "new_chat": "New Chat",
+        "recents": "Recents",
+        "document_list": "Topic documents",
+        "documents": "Select a document to start a new chat",
+        "insufficient_credits":{
+            "title": "Insufficient Credits",
+            "message": "You don't have enough credits to generate a question, you can top up more credits in the profile section",
+            "back_button": "Back",
+            "recharge_button": "Recharge Credits"
+        },
+        "no_documents_error": {
+            "title": "You can't talk with this topic",
+            "content": "This topic has no related documents. Upload a new document and assign it to this topic to start a conversation."
+        },
+        "understood": "Understood"
+    }
+}

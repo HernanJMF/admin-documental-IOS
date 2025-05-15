@@ -1,0 +1,47 @@
+
+
+@import '../../../../../assets/styles/constants/fonts.scss';
+@import '../../../../../assets/styles/base/common-styles/tab-view/tabview.scss';
+@import '../../../../../assets/styles/base/common-styles/buttons/buttons.scss';
+@import '../../../../../assets/styles/base/common-styles/inputs/inputs.scss';
+@import '../../../../../assets/styles/base/common-styles/paginator/paginator.scss';
+@import '../../../../../assets/styles/constants/colors.scss';
+@import '../../../../../assets/styles/constants/labels.scss';
+
+.section-header{
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+
+    .upload-button{
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+}
+
+
+.topic-url{
+    margin-bottom: 16px !important;
+    display: inline-block;
+}
+
+.topic-chip{
+    cursor: pointer;
+    padding: 0px 8px;
+    margin-bottom: 24px;
+}
+
+.expired-plan{
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@media only screen and (max-width: 768px) {
+    .section-header .upload-button{
+        position: relative;
+        right: 0;
+        margin-top: 16px;
+    }
+
+}

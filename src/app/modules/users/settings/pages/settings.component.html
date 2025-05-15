@@ -1,0 +1,124 @@
+
+<div class="mt-3">
+    <p-tabView  (activeIndexChange)="changeIndex($event)">
+        <!------------Profile section start------------>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span [ngClass]="{'tab-title-inactive': activeIndex != 0, 'tab-title-active': activeIndex == 0}">{{page.profile.title}}</span>
+            </ng-template>
+            <div class="subtitle">
+                <span>{{page.profile.subtitle}}</span>
+            </div>
+            <!------------FORM section start------------>
+            <form [formGroup]="formGroup" >
+                <div class="row p-formgrid p-grid mt-0 mt-md-3 p-2 p-md-0">
+                    <div class="p-field col-md-6 col-12">
+                        <label for="First_name" class="mb-2">{{page.profile.first_name.label}}</label>
+                        <input  type="text"
+                                id="First_name"
+                                [maxlength]="30"
+                                [minlength]="3"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['first_name'].touched && formGroup.controls['first_name']!.errors?.['required']}"
+                                pInputText
+                                formControlName="first_name"
+                                required autofocus />
+                        <small class="p-error" *ngIf="formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.['required']">{{page.profile.first_name.required_error}}</small>
+                        <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.['minlength']">{{page.profile.first_name.minimun_error}}</small>
+                        <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.['numeric']">
+                          {{page.profile.first_name.required_error_number}}
+                        </small>
+                        <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.['whitespace']">
+                          {{page.profile.first_name.empty_field_error}}
+                        </small>
+                        <small class="p-error" *ngIf="formGroup.controls['first_name'].hasError('pattern')">{{page.profile.first_name.special_characters_error}}</small>
+                    </div>
+                    <div class="p-field col-md-6 col-12 mt-3 mt-md-0">
+                        <label for="Last_name" class="mb-2">{{page.profile.last_name.label}}</label>
+                        <input  type="text"
+                                id="Last_name"
+                                [maxlength]="30"
+                                [minlength]="3"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['last_name'].touched && formGroup.controls['last_name']!.errors?.['required']}"
+                                pInputText
+                                formControlName="last_name"
+                                required autofocus />
+                        <small class="p-error" *ngIf="formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.['required']">{{page.profile.last_name.required_error}}</small>
+                        <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.['minlength']">{{page.profile.last_name.minimun_error}}</small>
+                        <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.['numeric']">
+                          {{page.profile.last_name.required_error_number}}
+                        </small>
+                        <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.['whitespace']">
+                          {{page.profile.last_name.empty_field_error}}
+                        </small>
+                        <small class="p-error" *ngIf="formGroup.controls['last_name'].hasError('pattern')">{{page.profile.last_name.special_characters_error}}</small>
+                    </div>
+                </div>
+                <div class="row p-formgrid p-grid mt-0 mt-md-3 p-2 p-md-0">
+                    <div class="p-field col-md-6 col-12 ">
+                        <label for="Email" class="mb-2">{{page.profile.email.label}}</label>
+                        <input  type="text"
+                                id="Email"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['email'].touched && formGroup.controls['email']!.errors?.['required']}"
+                                pInputText
+                                formControlName="email"
+                                required autofocus />
+                   </div>
+                    <div class="p-field col-md-6 col-12 mt-3 mt-md-0">
+                        <label for="Role" class="mb-2">{{page.profile.role.label}}</label>
+                        <input  type="text"
+                                id="Role"
+                                [maxlength]="20"
+                                [minlength]="2"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['role'].touched && formGroup.controls['role']!.errors?.['required']}"
+                                pInputText
+                                formControlName="role"
+                                required autofocus />
+                    </div>
+                </div>
+                <div class="row p-formgrid p-grid mt-0 mt-md-3 p-2 p-md-0">
+                    <div class="p-field col-md-6 col-12">
+                        <label for="Language" class="mb-2">{{page.profile.language.label}}</label>
+                        <p-dropdown [options]="languageList"
+                                    optionLabel="label"
+                                    styleClass="w-100"
+                                    [placeholder]="page.profile.language.placeholder"
+                                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['language'].touched && formGroup.controls['language']!.errors?.['required']}"
+                                    formControlName="language">
+                        </p-dropdown>
+                        <small class="p-error" *ngIf="formGroup.controls['language'].touched && formGroup.controls['language'].errors?.['required']">{{page.profile.language.required_error}}</small>
+                   </div>
+                    <div class="p-field col-md-6 col-12 mt-3 mt-md-0">
+                        <label for="Topic" class="mb-2">{{page.profile.topic.label}}</label>
+                        <input  type="text"
+                                id="Topic"
+                                [maxlength]="20"
+                                [minlength]="2"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['topic'].touched && formGroup.controls['topic']!.errors?.['required']}"
+                                pInputText
+                                formControlName="topic"
+                                required autofocus />
+                    </div>
+                </div>
+            </form>
+            <!------------FORM section end------------>
+            <div class="submit">
+                <button pButton pRipple [label]="page.profile.save_button" class="p-button-text" [disabled]="!buttonIsEnabled" (click)="submitProfile()"></button>
+            </div>
+
+            <!------------change password section start------------>
+            <app-change-password [page]="page.password"></app-change-password>
+            <!------------change password section end------------>
+
+        </p-tabPanel>
+        <!------------Profile section end------------>
+        <!------------Logos section start------------>
+        <p-tabPanel *ngIf="role == 'ADMIN'">
+            <ng-template pTemplate="header">
+                <span [ngClass]="{'tab-title-inactive': activeIndex != 2, 'tab-title-active': activeIndex == 2}">{{page.business_config.title}}</span>
+            </ng-template>
+            <app-business-config [page]="page.business_config"></app-business-config>
+        </p-tabPanel>
+        <!------------Logos section start------------>
+
+    </p-tabView>
+</div>

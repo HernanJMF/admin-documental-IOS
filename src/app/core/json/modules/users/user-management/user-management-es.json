@@ -1,0 +1,139 @@
+{
+    "title": "Gestión de usuarios",
+    "headerList": [
+        { "field": "email", "header": "USUARIO" },
+        { "field": "topic_names", "header": "TÓPICO" },
+        { "field": "actions", "header": "ACCIONES" }
+    ],
+    "customButtons": [
+        { "buttonId": 3, "icon": "pi pi-file-word", "label": "Ver documentos", "iconClass": "card-menu-top"},
+        { "buttonId": 4, "icon": "pi pi-pencil", "label": "Editar", "iconClass": "card-menu-medium"},
+        { "buttonId": 2, "icon": "pi pi-trash", "label": "Borrar", "iconClass": "card-menu-bottom"}
+    ],
+    "headerButtons": [
+        { "buttonId": 0, "icon": "pi pi-hashtag", "label":"Tópicos", "iconClass": ""}
+    ],
+    "confirmation": {
+        "title": "Confirmación",
+        "cancel": "Cancelar",
+        "accept": "Eliminar"
+    },
+    "users_limit_confirmation":{
+        "title": "No puedes agregar más usuarios",
+        "message": "Has alcanzado el límite de miembros en tu cuenta",
+        "accept_button": "Entendido"
+    },
+    "add_header": "Agregar usuario",
+    "edit_header": "Editar usuario",
+    "buttons": {
+        "cancel": "Cancelar",
+        "save": "Guardar"
+    },
+    "confirm_delete_user": "¿Estás seguro de que deseas eliminar este usuario? No puedes deshacer esta acción.",
+    "topics": {
+        "header": "Gestión de tópicos",
+        "topic":{
+            "label": "Agregar tópico",
+            "placeholder": "Nuevo tópico",
+            "required_error": "El tópico es obligatorio",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "empty_field_error":"El campo no permite espacios vacíos"
+        },
+        "topic_search": "Buscar tópico",
+        "enabled_topics": "Tópicos habilitados",
+        "disabled_topics": "Tópicos deshabilitados",
+        "change_enable": "Habilitar tópico",
+        "change_disable": "Deshabilitar tópico",
+        "change_status": {
+            "header": "¿Deseas cambiar el estatus del tópico?",
+            "cancel": "Cancelar",
+            "change": "Cambiar"
+        },
+        "message": "Este cambio podría afectar tanto a usuarios como a los documentos asociados al tópico.",
+        "add_topic": {
+          "title": "Tópico añadido",
+          "content": "El nuevo tópico se ha añadido correctamente",
+          "content_error" : "No se ha podido añadir el tópico. Por favor, inténtalo de nuevo."
+        },
+        "duplicated_topic_error": {
+            "title": "El tópico ya existe",
+            "content": "Ya existe un tópico con este nombre"
+        },
+        "update_topic": {
+          "title": "Tópico actualizado",
+          "content": "El estado del tópico ha sido cambiado con éxito.",
+          "content_error" : "No se ha podido actualizar el estado del tópico. Por favor, inténtelo de nuevo."
+        }
+    },
+    "create_user": {
+        "first_name": {
+            "label": "Usuario",
+            "required_error": "El nombre es obligatorio.",
+            "required_error_number": "No se permiten caracteres numéricos.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "empty_field_error": "El campo no permite espacios vacíos",
+            "special_characters_error": "No se permiten caracteres especiales"
+        },
+        "last_name": {
+            "label": "Apellido",
+            "required_error": "El apellido es obligatorio.",
+            "required_error_number": "No se permiten caracteres numéricos.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "empty_field_error": "El campo no permite espacios vacíos",
+            "special_characters_error": "No se permiten caracteres especiales"
+        },
+        "email": {
+            "label": "Correo",
+            "placeholder": "xxxxx@xxxx.xxx",
+            "format_error": "El correo es obligatorio."
+        },
+        "language":{
+            "label": "Idioma",
+            "placeholder": "Seleccione el idioma",
+            "required_error": "El idioma es obligatorio."
+        },
+        "topic":{
+            "label": "Tópico",
+            "placeholder": "Seleccionar tópico(s)",
+            "required_error": "El tópico es obligatorio."
+        },
+
+        "add_user":{
+          "title": "Usuario agregado",
+          "content": "El nuevo usuario se ha añadido correctamente",
+          "content_error": "No se ha podido añadir el usuario. Por favor, inténtelo de nuevo."
+
+        },
+        "deleted_user":{
+          "title": "Usuario eliminado",
+          "content": "El usuario se ha eliminado correctamente",
+          "content_error": "No se ha podido eliminar el usuario. Por favor, inténtelo de nuevo."
+
+        },
+
+        "submitProfile":{
+            "title": "Guardado correctamente",
+            "content": "Los cambios de perfil se han guardado correctamente"
+        },
+
+        "submitProfile_error":{
+            "label": "Error inesperado",
+            "required_error": "No se ha podido actualizar el perfil, inténtelo más tarde"
+        },
+
+        "failed_load_users":{
+          "title": "Error al cargar los usuarios",
+          "content": "Se ha producido un error inesperado, inténtelo de nuevo más tarde."
+        },
+
+        "duplicated_user_error":{
+            "title": "Error al registrar usuario",
+            "content": "Ya existe un usuario asociado a este correo, inténtalo de nuevo con uno distinto."
+        }
+
+    },
+    "user_document":{
+        "title": "Documentos de [name]"
+    }
+
+}

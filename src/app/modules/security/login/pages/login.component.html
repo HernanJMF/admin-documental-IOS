@@ -1,0 +1,94 @@
+<div class="main-login">
+  <div class="row m-0">
+    <!------FORM SECTION------>
+    <div class="col-12 col-md-6 m-0 column">
+      <div class="header">
+        <div class="logo">
+          <img src="../../../../../assets/images/Agrobot-documental-logo.png"
+          class="img-fluid img-logo">
+        </div>
+        <h2 class="d-flex justify-content-center mt-2 mb-2 welcome logo">{{page.welcome_back}}</h2>
+      </div>
+      <!--LOGIN FORM-->
+      <form [formGroup]="loginForm">
+        <div class="body">
+          <div class="input-login">
+            <div class="flex flex-column gap-2">
+              <div>
+                <label class="mt-2 input-title"
+                       for="Username"
+                       htmlFor="username">
+                  {{page.user_name}}
+                </label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <input  formControlName="username"
+                        pInputText
+                        (keyup.enter)="onSubmit()"
+                        class="inputs"/>
+              </div>
+            </div>
+            <div class="flex flex-column gap-2 mt-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <label for="Password"
+                       htmlFor="password" class="input-title">
+                  {{page.password}}
+                </label>
+             <!-- <p-button pRipple
+                  label={{page.forgot_password}}
+                  class="forgot"
+                  styleClass="p-button-text forgot"
+                  (click)="showDialog()"></p-button> -->
+              </div>
+              <div class="d-flex justify-content-center">
+                <p-password formControlName="password" required
+                            [feedback]="false"
+                            [maxlength]="20"
+                            [minlength]="3"
+                            (keyup.enter)="onSubmit()"
+                            [toggleMask]="true"(click)="onPasswordInputClick()"
+                            (blur)="onPasswordInputBlur()"
+                            class="inputs w-100">
+              </p-password>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+       <!--LOGIN FORM END-->
+      <!--Button section-->
+      <div class="d-flex justify-content-center footer">
+        <p-button styleClass="mt-5 p-button-outlined login d-flex justify-content-center"
+                  (click)="onSubmit()"
+                  class="login-buttom w-100" >
+          {{page.login}}
+        </p-button>
+        <div class="mt-3">
+          <label class="mt-3 input-title" for=""></label>
+        </div>
+      <!-- <p-button styleClass="mt-3 p-button-outlined d-flex justify-content-center"
+                  (click)="accessCorporateEmail()"
+                  class="login-buttom w-100" >
+          <img width="44px" src="../../../../../assets/images/agroseguro-logo.png"
+          alt="loginimg"
+          class="access-logo">
+          Acceder con un correo corporativo
+        </p-button> -->
+      </div>
+      <!--Button section end-->
+    </div>
+    <!------FORM SECTION ENDS------>
+    <!------IMAGE SECTION------>
+    <div class="d-none d-md-block col-0 col-md-6 p-0">
+      <img src="../../../../../assets/images/agro-login-image.png"
+           alt="loginimg"
+           class=" imglogin img-fluid">
+    </div>
+  </div>
+  <!------IMAGE SECTION end------>
+</div>
+
+
+<app-password-recovery></app-password-recovery>
+
+

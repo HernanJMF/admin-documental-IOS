@@ -1,0 +1,211 @@
+{
+    "message": "Elevate your experience with our premium membership! Unlimited access, exclusive features, and more. Upgrade now to fully enjoy!",
+    "profile":{
+        "title": "Profile",
+        "subtitle": "Basic information",
+        "first_name": {
+            "label": "First Name",
+            "required_error": "First name is required.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "required_error_number": "Numeric characters are not allowed.",
+            "empty_field_error": "The field does not allow empty spaces",
+            "special_characters_error": "Special characters are not allowed"
+        },
+        "last_name": {
+            "label": "Last Name",
+            "required_error": "Last name is required.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "required_error_number": "Numeric characters are not allowed.",
+            "empty_field_error": "The field does not allow empty spaces",
+            "special_characters_error": "Special characters are not allowed"
+        },
+        "email": {
+            "label": "Email"
+        },
+        "role":{
+            "label": "Role"
+        },
+        "language":{
+            "label": "Language",
+            "placeholder": "Select the language",
+            "required_error": "Language is required."
+        },
+        "topic":{
+            "label": "Topic"
+        },
+        "save_button": "Save",
+
+        "submitProfile":{
+          "title": "Saved successfully",
+          "content": "Profile changes were saved successfully"
+      },
+
+      "submitProfile_error":{
+        "title": "Unexpected error",
+        "content": "Could not update profile, please try again later"
+      }
+    },
+    "password": {
+        "title": "Password",
+        "subtitle": "Update password",
+        "old_password":{
+            "label": "Current password",
+            "required_error": "Password is required.",
+            "minimun_error": "Must have a minimun of 3 characters."
+        },
+        "password":{
+            "label": "New password",
+            "required_error": "Password is required.",
+            "minimun_error": "Must have a minimun of 3 characters."
+        },
+        "confirm_password":{
+            "label": "Confirm password",
+            "required_error": "Confirm is required.",
+            "match_error": "Passwords do not match"
+        },
+        "save_button": "Save",
+
+        "submitPassword":{
+          "title": "Your password has been updated",
+          "content": "You can now use your credentials to sign-in"
+      },
+
+      "submitPassword_error":{
+        "title": "Unexpected error",
+        "content": "Could not update password, please try again later"
+      },
+      "submitPassword_oldPassword_error":{
+        "title": "The current password is incorrect",
+        "content": "Could not update password because the current password is incorrect"
+      }
+    },
+    "membership": {
+        "title": "Membership",
+        "per_month": "per month",
+        "renew": "renew ",
+        "current_plan": "Current Plan",
+        "renews": "renews",
+        "cancel_button": "Cancel",
+        "top_up_button": "Top up credits",
+        "recharge": "Top Up",
+        "credits": "Credits",
+        "plan_label": {
+            "renew": "Renew",
+            "upgrade": "Upgrade",
+            "complete": "Complete"
+        },
+        "bullets": [
+            "You make a one-time payment for extra credits, without any monthly fees.",
+            "One credit equals One Question.",
+            "Use these credits to ask questions to your documents"
+        ],
+        "open_billing_history": "Open Billing History",
+        "pricing": {
+            "title": "Choose your plan",
+            "subtitle": "We believe that <span class=\"chat2dox-span\"><b>Chat2Dox</b></span> should be affordable for you and your company, get to know our plans for every budget",
+            "mo": "/mo",
+            "free":{
+                "title": "FREE",
+                "price": "$0",
+                "detail": "Best option just getting started",
+                "bullets": [
+                    "50 credits",
+                    "1 user",
+                    "Document analysis and automatic summary with AI chat",
+                    "20 MB file upload limit"
+                ]
+            },
+            "pro":{
+                "title": "PRO",
+                "price": "$12,99",
+                "detail": "Best option for personal use",
+                "bullets": [
+                    "1000 credits",
+                    "1 user",
+                    "Document analysis and automatic summary with AI chat including context history",
+                    "20MB file upload limit"
+                ]
+            },
+            "teams":{
+                "title": "TEAMS",
+                "price": "$109,99",
+                "detail": "Best option for complex projects",
+                "bullets": [
+                    "10000 credits",
+                    "10 users",
+                    "Document analysis and automatic summary with AI chat including context history",
+                    "20MB file upload limit",
+                    "Topic management to group and talk with documents",
+                    "Administration panel to manage users and documents"
+                ]
+            },
+            "most_popular": "MOST POPULAR",
+            "curent_plan": "Current plan",
+            "select_plan": "Select plan",
+            "message": {
+                "title": "Do you need a custom plan?",
+                "subtitle": "Unleash your potential with a personalized Chat2Dox. Connect with us to explore the possibilities.",
+                "contact_us": "Contact us"
+            }
+        },
+        "cancel_modal":{
+            "cancel_title": "Cancel subscription?",
+            "cancel_message": "Are you sure you want to cancel your subscription? You will be able to see your old conversations, but you will not be able to upload files or chat with your documents after your next renewal date",
+            "cancel_button": "Cancel Subscription",
+            "back_button": "Back"
+        },
+        "messages": {
+            "success_cancel_plan": {
+                "title": "The plan has been successfully cancelled",
+                "content": "Membership changes have been saved successfully"
+            },
+            "upgrade_plan_generic_error": {
+                "title": "Error changing plans",
+                "content": "An unexpected error occurred that prevented stripe from being opened, please try again later"
+            },
+            "renew_plan_generic_error": {
+                "title": "Error renewing plan",
+                "content": "An unexpected error occurred that prevented stripe from being opened, please try again later"
+            },
+            "complete_plan_generic_error": {
+                "title": "Error completing plan",
+                "content": "An unexpected error occurred that prevented stripe from being opened, please try again later"
+            },
+            "cancel_plan_generic_error": {
+                "title": "Error canceling plan",
+                "content": "An unexpected error occurred that did not allow you to cancel the plan, please try again later"
+            },
+            "buy_credits_generic_error": {
+                "title": "Error purchasing credits",
+                "content": "An unexpected error occurred that prevented stripe from being opened, please try again later"
+            },
+            "billing_history_generic_error": {
+                "title": "Error opening billing history",
+                "content": "An unexpected error occurred that prevented stripe from being opened, please try again later"
+            }
+        }
+        
+    },
+
+    "business_config": {
+        "title": "Personalization",
+        "subtitle": "Change web logos",
+        "expanded_logo": "Expanded logo",
+        "reduced_logo": "Reduced logo",
+        "upload_your_logo": "Upload your logo",
+        "recommended_size_expanded_logo" : "Recommended dimensions: Minimum: 250x80 Maximum: 750x240",
+        "recommended_size_reduced_logo" : "Recommended dimensions: Minimum: 50x50 Maximum: 150x150",
+        "recommended_size_expanded_logo_error_message" : "Image dimensions should be in the range of 250x80 to 750x240.",
+        "recommended_size_reduced_logo_error_message" : "Image dimensions should be in the range of 50x50 to 150x150.",
+        "save_button": "Save",
+        "cancel_button": "Cancel",
+        "submit_image":{
+            "title": "The image has been uploaded successfully",
+            "content": "You can now view the new logos on your platform"
+        },
+        "upload_image_error": {
+            "title": "Unexpected error",
+            "content": "Could not upload image, please try again later."
+        }
+    }
+}

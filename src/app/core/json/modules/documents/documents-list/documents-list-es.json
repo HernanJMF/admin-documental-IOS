@@ -1,0 +1,93 @@
+{
+    "title": "Documentos",
+    "subtitle": "Carga, chatea y gestiona tus principales documentos o tópicos",
+    "upload": "Subir archivo",
+    "my_document": "Mis documentos",
+    "shared_documents": "Documentos compartidos",
+    "document_search": "Buscar documentos",
+    "sort_by": "Ordenar por",
+    "paginator": "de",
+    "topic": "Tópicos",
+    "topic_search": "Buscar tópicos",
+    "sort_list": [
+        { "name": "Alias ↑", "code": "aliasAsc" },
+        { "name": "Alias ↓", "code": "aliasDesc" },
+        { "name": "Nombre de archivo ↑", "code": "nameAsc" },
+        { "name": "Nombre de archivo ↓", "code": "nameDesc" },
+        { "name": "Fecha ↑", "code": "dateAsc" },
+        { "name": "Fecha ↓", "code": "dateDesc" }
+    ],
+    "sort_topic_list": [
+        { "name": "Nombre ↑", "code": "nameAsc" },
+        { "name": "Nombre ↓", "code": "nameDesc" }
+    ],
+    "document_upload": {
+        "header": "Cargar nuevo documento",
+        "drag_and_drop": "Arrastra y suelta o ",
+        "choose_file": "Elige el archivo",
+        "to_upload": " para cargar",
+        "extension": "pdf, docx, txt, xls, xlsx, png, jpg, jpeg",
+        "alias": {
+            "label": "Alias",
+            "placeholder": "Alias",
+            "required_error": "El alias es obligatorio.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "maximun_error": "Debe tener un máximo de 50 caracteres.",
+            "empty_field_error": "El campo no permite espacios vacíos",
+            "only_special_characters": "El alias no puede contener sólo caracteres especiales",
+            "only_numeric_characters": "El alias no puede contener sólo caracteres numericos",
+            "alias_patter_error": "Sólo se admiten caracteres especiales como: - _ * & # : ."
+        },
+        "topic": {
+            "label": "Tópico (opcional)",
+            "placeholder": "Seleccione un tópico",
+            "required_error": "El tópico es obligatorio."
+        },
+        "description": {
+            "label": "Descripción",
+            "placeholder": "Descripción",
+            "required_error": "La descripción es obligatoria.",
+            "minimun_error": "Debe tener un mínimo de 3 caracteres.",
+            "maximun_error": "Debe tener un máximo de 50 caracteres."
+        },
+        "buttons":{
+            "close": "Cerrar",
+            "upload": "Subir"
+        },
+
+        "unsupported_extension":{
+          "title": "Extensión no compatible",
+          "content": "Extensiones permitidas: .xlsx, .xls, .docx, .pdf, .txt, .png, .jpeg, .jpg"
+        },
+
+        "document_uploaded":{
+          "title": "Documento cargado",
+          "content": "El documento se ha creado correctamente, podrás verlo en tus documentos cuando esté listo"
+        },
+
+        "document_edited": {
+          "title": "Documento editado",
+          "content": "La información del documento se ha editado correctamente, puede verla en Mis documentos"
+        },
+
+        "Failed_load_documents": {
+          "title": "Error al cargar documentos",
+          "content": "Se ha producido un error inesperado, inténtelo de nuevo más tarde."
+        },
+
+        "duplicated_alias_error": {
+          "title": "El alias ya existe",
+          "content": "Ya existe un documento con este alias"
+        },
+
+        "maximun_mb_limit":{
+          "title": "Se excedió el límite máximo de tamaño de archivo de 25 MB",
+          "content": "Intente cargar un archivo de menor tamaño."
+        },
+
+        "Unexpected_error": {
+          "title": "Error inesperado",
+          "content": "Se ha producido un error inesperado, inténtelo de nuevo más tarde."
+        }
+    }
+}

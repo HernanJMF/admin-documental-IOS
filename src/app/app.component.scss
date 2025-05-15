@@ -1,0 +1,39 @@
+@import "../assets/styles/constants/colors.scss";
+
+
+.main-layout{
+    display: flex;
+    color: $newtoms-primary-font-color;
+    .main{
+        padding-left: 80px;
+        width: 100%;
+        min-height: 100vh;
+        .navbar{
+            height: 80px;
+            width: 100%;
+            background-color: $newtoms-primary-color;
+            padding: 0px;
+        }
+        .content{
+            padding: 24px;
+            background-color: $newtoms-background-color;
+            min-height: calc(100vh - 80px);
+        }
+    }
+
+}
+.main-disconnect{
+  padding: 0px !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .main-layout .main{
+        padding-left: 0px;
+        .content{
+            padding: 16px;
+        }
+    }
+
+}

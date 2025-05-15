@@ -1,0 +1,141 @@
+{
+    "title": "Users Management",
+    "headerList": [
+        { "field": "first_name", "header": "FIRST NAME" },
+        { "field": "last_name", "header": "LAST NAME" },
+        { "field": "email", "header": "EMAIL" },
+        { "field": "role", "header": "ROLE" },
+        { "field": "topic_names", "header": "TOPIC" },
+        { "field": "actions", "header": "ACTIONS" }
+    ],
+    "customButtons": [
+        { "buttonId": 3, "icon": "pi pi-file-word", "label": "See documents", "iconClass": "card-menu-top"},
+        { "buttonId": 4, "icon": "pi pi-pencil", "label": "Edit", "iconClass": "card-menu-medium"},
+        { "buttonId": 2, "icon": "pi pi-trash", "label": "Delete", "iconClass": "card-menu-bottom card-menu-full"}
+    ],
+    "headerButtons": [
+        { "buttonId": 0, "icon": "pi pi-hashtag", "label":"TOPICS", "iconClass": ""},
+        { "buttonId": 1, "icon": "pi pi-plus-circle", "label":"ADD USER", "iconClass": "add"}
+    ],
+    "confirmation": {
+        "title": "Confirmation",
+        "cancel": "Cancel",
+        "accept": "Delete"
+    },
+    "users_limit_confirmation":{
+        "title": "You cannot add more users",
+        "message": "You have reached the member limit on your account",
+        "accept_button": "Entendido"
+    },
+    "add_header": "Add user profile",
+    "edit_header": "Edit user profile",
+    "buttons": {
+        "cancel": "Cancel",
+        "save": "Save"
+    },
+    "topics": {
+        "header": "Topic management",
+        "topic":{
+            "label": "Add topic",
+            "placeholder": "New topic",
+            "required_error": "The topic name is required.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "empty_field_error":"The field does not allow empty spaces"
+        },
+        "topic_search": "Topic search",
+        "enabled_topics": "Enable topics",
+        "disabled_topics": "Disabled topics",
+        "change_status": {
+            "header": "Change topic status?",
+            "cancel": "Cancel",
+            "change": "Change",
+            "change_disable": "Disable topic",
+            "change_enable": "Enable topic"
+        },
+        "message": "- It could affect the users linked to this topic.<br> - It could affect the documents linked to this topic.",
+        "add_topic": {
+          "title": "Topic added",
+          "content": "The new topic has been added successfully",
+          "content_error" : "Failed to add the topic. Please try again."
+        },
+        "duplicated_topic_error": {
+            "title": "Topic already exists",
+            "content": "A topic with this name already exists"
+        },
+        "update_topic": {
+          "title": "Topic updated",
+          "content": "Topic status has been successfully changed.",
+          "content_error" : "The topic status could not be updated. Please try again."
+        }
+    },
+    "confirm_delete_user": "Are you sure you want to delete this user? you cannot undo this action.",
+    "create_user": {
+        "first_name": {
+            "label": "First Name",
+            "required_error": "First name is required.",
+            "required_error_number": "Numeric characters are not allowed.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "empty_field_error": "The field does not allow empty spaces",
+            "special_characters_error": "Special characters are not allowed"
+        },
+        "last_name": {
+            "label": "Last Name",
+            "required_error": "Last name is required.",
+            "required_error_number": "Numeric characters are not allowed.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "empty_field_error": "The field does not allow empty spaces",
+            "special_characters_error": "Special characters are not allowed"
+        },
+        "email": {
+            "label": "Email",
+            "placeholder": "xxxxx@xxxx.xxx",
+            "format_error": "The email does not match the format xxxxx@xxxx.xxx"
+        },
+        "language":{
+            "label": "Language",
+            "placeholder": "Select the language",
+            "required_error": "Language is required."
+        },
+        "topic":{
+            "label": "Topic",
+            "placeholder": "Select topic(s)",
+            "required_error": "Topic is required."
+        },
+        "add_user":{
+          "title": "User added",
+          "content": "The new user has been added successfully",
+          "content_error": "Failed to add the user. Please try again."
+
+        },
+        "deleted_user":{
+          "title": "User deleted",
+          "content": "The user has been successfully deleted",
+          "content_error": "The user could not be deleted. Please try again."
+        },
+
+        "submitProfile":{
+            "title": "Saved successfully",
+            "content": "Profile changes were saved successfully"
+        },
+
+        "submitProfile_error":{
+          "label": "Unexpected error",
+          "required_error": "Could not update profile, please try again later"
+        },
+
+
+        "failed_load_users":{
+          "title": "Failed to load users",
+          "content": "An unexpected Error has occured, plese try again later"
+        },
+
+        "duplicated_user_error":{
+            "title": "Error registering user",
+            "content": "There is already a user associated with this email, try again with a different one."
+        }
+    },
+    "user_document":{
+        "title": "[name] documents"
+    }
+
+}

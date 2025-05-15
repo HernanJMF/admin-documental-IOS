@@ -1,0 +1,11 @@
+{
+    "home": "Home",
+    "my_documents": "My documents",
+    "chat_analyzer": "Chat analyzer",
+    "metrics": "Metrics",
+    "user_management": "Users management",
+    "topics": "Topic management",
+    "settings": "Settings",
+    "support": "Support",
+    "logout": "Log out"
+}

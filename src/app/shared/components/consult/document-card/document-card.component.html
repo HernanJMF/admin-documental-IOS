@@ -1,0 +1,103 @@
+<div class="card-col">
+    <div  class="document-card" tabindex="0"
+          (dblclick)="document.pinecone_process_status == 'ENDED' ? openDocument(document.document_id) : '' " 
+          [ngClass]="{'active': document.pinecone_process_status == 'ENDED'}">
+        <div class="document-header">
+            <div class="d-flex align-items-center overflow-hidden">
+                <span [pTooltip]="document.alias" tooltipPosition="top" class="alias">{{document.alias}}</span>
+                <div [ngClass]="{'online-icon': document.has_chat, 'offline-icon': !document.has_chat}"></div>
+            </div>
+            <i class="pi pi-ellipsis-v option-icon" (click)="op.toggle($event)" *ngIf="showOptions && (document.pinecone_process_status == 'ENDED' || document.pinecone_process_status == 'ERROR' || document.pinecone_process_status == 'CREATED')"></i>
+        </div>
+        <div class="document-details">
+            <div>
+                <div class="name">
+                    <img    width="18px"
+                            [src]="translateDocumentExtension(document.extension)"
+                            alt="extension-icon"
+                            class="icon">
+                    <div class="filename">
+                        <span [pTooltip]="document.filename + document.extension" tooltipPosition="top">{{document.filename}}</span>
+                    </div>
+                    <div>
+                        <span>{{'.' + document.extension}}</span>
+                    </div>
+                </div>
+                <div class="info">
+                    <span>
+                        {{(document.upload_date | slice:0:10)}}
+                    </span>
+                    <span>
+                        {{document.file_size}}
+                    </span>
+                </div>
+                <div>
+                    <p  [pTooltip]="document.summary" tooltipPosition="top" class="description">
+                        {{validateLenght(document.summary)}}
+                    </p>
+                </div>
+            </div>
+            <div class="chips">
+                <div [ngClass]="{'completed-chip': document.pinecone_process_status == 'ENDED',
+                                 'processing-chip': document.pinecone_process_status == 'PROCESSING' || document.pinecone_process_status == 'CREATED',
+                                 'failed-chip': document.pinecone_process_status == 'ERROR'}">
+                    <div class="custom-loader" *ngIf="document.pinecone_process_status == 'PROCESSING' || document.pinecone_process_status == 'CREATED'"></div>
+                    <span [pTooltip]="page.status.label" *ngIf="document.pinecone_process_status == 'ENDED'">
+                        {{page.status.completed}}
+                    </span>
+                    <span *ngIf="document.pinecone_process_status == 'PROCESSING'">
+                        {{page.status.processing}}
+                    </span>
+                    <span *ngIf="document.pinecone_process_status == 'CREATED'">
+                        {{page.status.created}}
+                    </span>
+                    <span *ngIf="document.pinecone_process_status == 'ERROR'">
+                        {{page.status.error}}
+                    </span>
+                </div>
+                <div [pTooltip]="page.status.topic" class="topic-chip" *ngIf="document.topic != null"><span>{{document.topic}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-overlayPanel #op>
+    <ng-template pTemplate="content">
+        <div [ngClass]="{'card-menu-body-dark': this.userService.theme == 'dark','card-menu-body-light': this.userService.theme == 'light'}">
+            <div class="card-menu-top" (click)="openDocumentNewTab(document.document_id)" *ngIf="document.pinecone_process_status == 'ENDED'">
+                <div class="icon mr-3">
+                    <i class="pi pi-window-maximize"></i>
+                </div>
+                <span class="label p-0">
+                    {{page.open_window}}
+                </span>
+            </div>
+            <div class="card-menu-medium" (click)="EditButton.emit()" *ngIf="document.pinecone_process_status == 'ENDED'">
+                <div class="icon mr-3">
+                    <i class="pi pi-pencil"></i>
+                </div>
+                <span class="label p-0">
+                    {{page.edit}}
+                </span>
+            </div>
+            <div class="card-menu-bottom" (click)="confirmDelete()">
+                <div class="icon mr-3">
+                    <i class="pi pi-trash"></i>
+                </div>
+                <span class="label p-0">
+                    {{page.delete}}
+                </span>
+            </div>
+        </div>
+    </ng-template>
+</p-overlayPanel>
+
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>{{page.confirm_header}}</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" class="p-button-text" pButton icon="" [label]="page.cancel_button" (click)="cd.reject()"></button>
+        <button type="button" class="p-button-text p-button-danger" pButton icon="" [label]="page.delete_button" (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>

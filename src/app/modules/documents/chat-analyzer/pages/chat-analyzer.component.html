@@ -1,0 +1,56 @@
+<!------------PANEL START------------>
+<div class="panel-body" [ngClass]="{'topic': typeParamMap == 'topic' }">
+    <!------------DOCUMENTS SECTION START------------>
+    <div class="left-panel" [ngClass]="{'left-panel-active': innerWidth < 992 && selectedPanel == 1, 'topic': typeParamMap == 'topic' }">
+        <app-documents  class="documents-section"
+                        [page]="page.documents"
+                        [documentList]="documentList"
+                        [type]="typeParamMap"
+                        [topicDocumentList]="topicDocumentList"
+                        [document]="document"
+                        [topicValue]="topic"
+                        [subDocument]="subDocumentParamMap"
+                        (openTopicDocument)="openDocument($event)"
+                        (openTopicChat)="openTopic()" >
+        </app-documents>
+    </div>
+    <!------------DOCUMENTS SECTION END------------>
+    <div class="center-panel" [ngClass]="{'center-panel-active': innerWidth < 576 && selectedPanel == 2, 'topic': typeParamMap == 'topic'}">
+        <!------------CHAT SECTION START------------>
+        <app-chat [changingMessages]="messages"
+                  [document]="document"
+                  [innerWidth]="innerWidth"
+                  [documentList]="documentList"
+                  [type]="typeParamMap"
+                  [topicValue]="topic"
+                  [userEmail]="emailParamMap"
+                  [topicDocumentList]="topicDocumentList"
+                  class="chat-section"
+                  [page]="page.chat"
+                  (openTopicDocument)="openDocument($event)"
+                  (openTopicChat)="openTopic()"
+                  [documentTopicSelected]="documentTopicSelected">
+        </app-chat>
+        <!------------CHAT SECTION END------------>
+    </div>
+</div>
+<!------------PANEL END------------>
+
+<!------------CONFIRM MODAL START------------>
+<div class="confirm-dialog-size">
+    <p-confirmDialog #cd [style]="{width: '50vw'}" [breakpoints]="{ '768px': '90vw', '576px': '95vw'}" >
+        <ng-template pTemplate="header">
+            <h3>{{page.chat.no_documents_error.title}}</h3>
+        </ng-template>
+        <ng-template pTemplate="footer">
+
+            <button type="button" 
+                class="p-button-text p-button-danger" 
+                pButton icon="pi pi-check" 
+                [label]="page.chat.understood" 
+                (click)="cd.accept()" icon="">
+            </button>
+        </ng-template>
+    </p-confirmDialog>
+</div>
+<!------------CONFIRM MODAL END------------>

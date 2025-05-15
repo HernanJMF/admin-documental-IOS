@@ -1,0 +1,25 @@
+{
+    "status":{
+        "completed": "Completed",
+        "processing": "Processing",
+        "created": "Created",
+        "error": "Error",
+        "label": "Status",
+        "topic": "Topic"
+    },
+    "open_window": "Open chat in another window",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm_header": "Delete document?",
+    "confirm_body": "Are you sure you want to delete this document? you cannot undo this action.",
+    "cancel_button": "Cancel",
+    "delete_button": "Delete",
+    "document_deleted": {
+        "title": "Document deleted",
+        "content": "The document was deleted successfully"
+    },
+    "Unexpected_error": {
+        "title": "Unexpected error",
+        "content": "An unexpected error occurred while trying to delete the document, please try again later."
+    }
+}

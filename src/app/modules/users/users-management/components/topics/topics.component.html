@@ -1,0 +1,119 @@
+<div class="topics-body">
+  <p-dialog [(visible)]="visible"
+            [draggable]="false"
+            [style]="{width: '80vw'}"
+            [breakpoints]="{ '992px': '90vw', '576px': '95vw'}"
+            [modal]="true"
+            [resizable]="false"
+            (onHide)="closeModal()">
+
+    <ng-template pTemplate="header">
+      <span class="header-title">{{page.header}}</span>
+  </ng-template>
+    <form [formGroup]="topicForm">
+      <div class="d-flex justify-content-center row">
+        <div class="new-topic">
+          <label for="newTopic">{{page.topic.label}}</label>
+        </div>
+        <div class="new-topic p-inputgroup mt-2">
+          <input  pInputText
+                  type="text"
+                  formControlName="newTopic"
+                  id= "newTopic"
+                  [placeholder]="page.topic.placeholder"
+                  [maxlength]="40"
+                  [ngClass]="{'ng-dirty ng-invalid': isInputFocused && topicForm.controls['newTopic'].touched && topicForm.controls['newTopic'].errors?.['required']}"
+                  required autofocus
+                  (keydown.enter)="addTopic()"
+                  class="input-with-button"
+                  (keyup.space)="topicNoSpaces()"
+                  (input)="topicNoSpecialChars()"
+                  (focus)="isInputFocused = true"
+                  (blur)="isInputFocused = false" />
+            <button type="button"
+                    pButton
+                    icon="pi pi-plus"
+                    styleClass="p-button-warn"
+                    (click)="addTopic()"
+                    class="button-next-to-input"
+                    [disabled]="topicForm.invalid">
+            </button>
+        </div>
+        <div class="new-topic">
+          <small class="p-error" *ngIf="isInputFocused && topicForm.controls['newTopic'].touched && topicForm.controls['newTopic'].errors?.['required']">{{page.topic.required_error}}</small>
+          <small class="p-error" *ngIf="topicForm.controls['newTopic'].errors?.['minlength']">{{page.topic.minimun_error}}</small>
+          <small class="p-error" *ngIf="topicForm.controls['newTopic'].errors?.['pattern']">
+            {{page.topic.empty_field_error}}
+          </small>
+        </div>
+        <div class="mt-4 row d-flex justify-content-center p-0 p-sm-2">
+          <!-- Aquí vamos a mostrar los topics creados -->
+          <div class="col-12 mt-2 mb-4 p-0 p-sm-2">
+            <p-tabView [(activeIndex)]="activeIndex" (activeIndexChange)="changeIndex($event);">
+              <div class="d-flex justify-content-center">
+                <div class="col-11 col-md-6">
+                  <div class="p-inputgroup">
+                    <input  pInputText
+                            [placeholder]="page.topic_search"
+                            type="text"
+                            [formControl]="searchControl"
+                            (keyup)="searchTopics()"
+
+                    />
+                    <button type="button"
+                            pButton icon="pi pi-search"
+                            styleClass="p-button-warn"
+                            (click)="searchTopics()"
+                    >
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <p-tabPanel >
+                <ng-template pTemplate="header">
+                  <span [ngClass]="{'tab-title-inactive': activeIndex, 'tab-title-active': !activeIndex}">{{page.enabled_topics}}</span>
+                </ng-template>
+
+                <div class="mt-2 chip-container">
+                  <p-chip *ngFor="let topic of topicsListEnable" [label]="topic.topic_name"
+                          [removable]="true"
+                          removeIcon="pi pi-minus-circle"
+                          (click)="confirmChangeStatusTopic(topic);"
+                          [pTooltip]="page.change_disable"
+                          tooltipPosition="top">
+
+                  </p-chip>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel>
+                <ng-template pTemplate="header">
+                  <span [ngClass]="{'tab-title-inactive': !activeIndex, 'tab-title-active': activeIndex}">{{page.disabled_topics}}</span>
+                </ng-template>
+                <div class="mt-2 chip-container" >
+                  <p-chip *ngFor="let topic of topicsListDisable"
+                          [label]="topic.topic_name"
+                          [removable]="true"
+                          removeIcon="pi pi-check-circle"
+                          [pTooltip]="page.change_enable" tooltipPosition="top"
+                          (click)="confirmChangeStatusTopic(topic);">
+                  </p-chip>
+                </div>
+              </p-tabPanel>
+          </p-tabView>
+          </div>
+        </div>
+      </div>
+    </form>
+  </p-dialog>
+</div>
+
+<p-confirmDialog #cd [style]="{ width: '50vw' }" [breakpoints]="{ '768px': '90vw', '576px': '95vw'}">
+  <ng-template pTemplate="header">
+      <h3>{{page.change_status.header}}</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <button type="button" class="p-button-text" pButton icon="" [label]="page.change_status.cancel" (click)="cd.reject()"></button>
+      <button type="button" class="p-button-text p-button-danger" pButton icon="" [label]="page.change_status.change" (click)="cd.accept()"></button>
+  </ng-template>
+</p-confirmDialog>

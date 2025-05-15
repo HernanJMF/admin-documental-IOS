@@ -1,0 +1,96 @@
+@import '../../../../../../assets/styles/base/common-styles/modal/modal.scss';
+@import '../../../../../../assets/styles/base/common-styles/inputs/inputs.scss';
+@import '../../../../../../assets/styles/base/common-styles/buttons/buttons.scss';
+@import '../../../../../../assets/styles/base/common-styles/tab-view/tabview.scss';
+@import '../../../../../../assets/styles/constants/colors.scss';
+
+.topics-body{
+width: 80%;
+height: 50% !important;
+flex-shrink: 0;
+  .new-topic{
+    width: 75%;
+
+    display: flex; /* Usa flexbox para alinear elementos horizontalmente */
+    align-items: center; /* Alinea elementos verticalmente al centro */
+}
+
+/* Define una clase CSS para el input */
+.input-with-button {
+    flex: 1; /* Hace que el input ocupe todo el espacio disponible */
+}
+
+  .header-title{
+    color: $newtoms-primary-font-color;
+    text-align: center;
+    font-family: $newtoms-bold-fonts;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .body-topics{
+    width: 85vh;
+    height: 50vh;
+    border-radius: 20px;
+    border: 2px solid $newtoms-success-font-color;
+    background: rgba(182, 185, 185, 0);
+    overflow-y: auto; /* Habilitar el desbordamiento vertical con scrollbar si es necesario */
+    display: flex; /* Utilizar Flexbox para los temas */
+    flex-wrap: wrap; /* Permitir el ajuste de temas en varias líneas */
+    justify-content: flex-start; /* Alinear los temas al principio (izquierda) */
+    align-content: flex-start;
+    .chip-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+
+  }
+
+  .tab-title-active {
+    text-align: center;
+    color: white;
+    font-family: $newtoms-bold-fonts;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .tab-title-inactive {
+    text-align: center;
+    color: $newtoms-disable-font-color;
+    font-family: $newtoms-bold-fonts;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+}
+
+:host ::ng-deep {
+
+  .p-chip {
+    margin-right: 15px;
+    margin-top: 15px;
+  }
+
+  /* Media query para pantallas de tablet o dispositivos con un ancho máximo de 768px */
+  @media (max-width: 768px) {
+
+    .p-chip {
+      margin-right: 15px;
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .topics-body .new-topic{
+    width: 100%;
+  }
+}
+

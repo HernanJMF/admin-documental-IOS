@@ -1,0 +1,172 @@
+@import "/src/assets/styles/constants/fonts.scss";
+@import "/src/assets/styles/constants/colors.scss";
+@import "/src/assets/styles/base/common-styles/inputs/inputs.scss";
+@import "/src/assets/styles/base/common-styles/buttons/buttons.scss";
+@import "/src/assets/styles/constants/labels.scss";
+
+.main-login{
+  width: 100%;
+  height: 100vh;
+
+  .logo{
+    text-align: center;
+    .img-logo{
+      width: 50%;
+    }
+  }
+
+  .title{
+    text-align: center;
+
+    font-size: 100px;
+    color: $newtoms-primary-font-color;
+    margin: 0;
+    line-height: normal;
+    font-style: unset;
+    .number{
+
+      color: $newtoms-success-font-color;
+      font-size: 110px;
+      line-height: normal;
+      font-style: normal;
+    }
+  }
+
+  .imglogin{
+    //padding: 10% 15% 0%; para version producto
+    //background: rgb(17,195,254);
+    //background: linear-gradient(180deg, rgba(17,195,254,1) 0%, rgba(41,121,227,1) 100%);
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+    object-position: 75% 0px; //para version agro
+  }
+
+  .column{
+    .header{
+      height: 30%;
+    }
+    .body{
+      height: 45%;
+      width: 100%;
+      padding-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .footer{
+      flex-direction: column;
+      align-items: center; /* Opcional: para centrar horizontalmente el contenido */
+      justify-content: center;
+      .login-buttom{
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+      .access-logo{
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .inputs-title {
+    margin-left: 10%;
+  }
+
+  .inputs{
+    margin-top: 8px;
+  }
+
+  .link{
+    text-decoration: none;
+    color:$newtoms-primary-font-color;
+    font-family: $newtoms-semibold-fonts;
+  }
+  .input-login{
+    width: 80%;
+  }
+
+  .input-title{
+    font-family: $newtoms-regular-fonts;
+    color: $newtoms-primary-font-color;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+}
+:host ::ng-deep{
+
+  .p-button.p-button-outlined {
+    width: 100%;
+  }
+
+  .p-button:disabled {
+    cursor: default;
+    text-align: center;
+    display: block;
+  }
+
+  .p-inputtext {
+    height: 40px;
+    font-family: $newtoms-regular-fonts;
+  }
+
+  .transparent-button {
+    background-color: transparent;
+    border: none;
+    color: transparent; /* Color del texto */
+    text-decoration: underline; /* Otra personalización de estilo que desees */
+    margin-bottom: -10px; /* Ajusta el margen inferior para alinear con el texto */
+    padding: 0; /* Elimina el relleno para que el botón tenga el mismo tamaño vertical que el texto */
+
+  }
+
+  .forgot .p-button-text{
+    padding: 4px;
+    font-size: 14px;
+    text-align: end;
+    height: 30px;
+  }
+
+  .p-button.p-button-outlined.login {
+    color: var(--bs-newtoms-option-icon-color);
+    border: var(--bs-newtoms-border-buttons);
+    background-color: var(--bs-newtoms-success-font-color);
+}
+
+}
+
+
+/*@media only screen and (max-width: 1600px) {
+
+  .main-login .imglogin{
+    padding: 20% 10% 0%;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+
+  .main-login .imglogin{
+    padding: 35% 5% 0%;
+  }
+
+}
+
+@media only screen and (max-width: 992px) {
+
+  .main-login .imglogin{
+    padding: 45% 2% 0%;
+  }
+
+}*/
+
+@media only screen and (max-width: 768px) {
+
+  .sidebar{
+      padding-left: 0px;
+      width: 0px;
+      display: none;
+  }
+
+}

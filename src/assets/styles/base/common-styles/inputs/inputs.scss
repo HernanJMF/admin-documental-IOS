@@ -1,0 +1,136 @@
+@import "../../../constants/fonts.scss";
+@import "../../../constants/colors.scss";
+
+::ng-deep{
+    //input
+    .p-inputtext {
+        width: 100%;
+        height: 40px;
+        font-family: $newtoms-regular-fonts;
+        border-radius: 10px;
+    }
+    .p-inputtext::placeholder {
+        color: $newtoms-placeholder-font-color;
+        font-family: $newtoms-regular-fonts;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .p-inputtext:enabled:focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: $newtoms-input-box-shadow;
+        border-color: transparent;
+    }
+
+    .p-inputtext:enabled:hover{
+        border-color: $newtoms-input-hover;
+    }
+
+    .p-button-icon-right {
+        color: $newtoms-alias-font-color !important;
+        font-size: 18px;
+    }
+
+    .p-button.p-button-icon-only {
+        height: 40px;
+        color: $newtoms-icon-input-color;
+    }
+
+    //dropdown
+    .p-dropdown {
+        width: 100%;
+        height: 40px;
+        align-items: center;
+        border-radius: 10px;
+    }
+    .p-dropdown .p-dropdown-label.p-placeholder {
+        color: $newtoms-placeholder-font-color;
+        font-family: $newtoms-regular-fonts;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .p-dropdown:not(.p-disabled).p-focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0 0 0 0.2rem $newtoms-secondary-color;
+        border-color: transparent;
+    }
+
+    .p-dropdown .p-dropdown-label {
+        background: transparent;
+        border: 0 none;
+        align-items: center;
+        display: flex;
+    }
+    .p-dropdown:not(.p-disabled):hover {
+        border-color: $newtoms-input-hover;
+    }
+
+    //multiselect
+    .p-multiselect {
+        border-radius: 10px;
+    }
+
+    //password
+    .p-password {
+        position: relative;
+        display: inline-flex;
+        width: 100%;
+    }
+
+    //textarea
+    .newtoms-textarea.p-inputtext {
+        height: 100% !important;
+    }
+
+    //chat textarea
+    .chat-textarea.p-inputtextarea-resizable {
+        border-radius: 0px;
+        border: 1px solid #0B6377;
+        background: $newtoms-send-section-color;
+        width: 100%;
+        color: #F5F5F5;
+        border-bottom: 18px solid $newtoms-send-section-color !important;
+        border-top: 0px solid $newtoms-send-section-color !important;
+        border-left: 0px solid $newtoms-send-section-color !important;
+        max-height: 200px;
+        border-right: 0px solid #0B6377;
+        margin-top: 8px;
+    }
+    .scroll-active .chat-textarea.p-inputtextarea-resizable{
+        overflow: auto !important;
+    }
+    .chat-textarea.p-inputtextarea {
+        border-radius: 0px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border: 1px solid #060b0c;
+        background: $newtoms-send-section-color;
+        width: 100%;
+        color: $newtoms-primary-font-color;
+        padding-bottom: 22px;
+        border-right: 0px solid #0B6377;
+        margin-top: 8px;
+    }
+    .chat-textarea.p-inputtext:enabled:focus {
+        box-shadow: 0 0 0 0rem $newtoms-secondary-color;
+    }
+
+    //chat dropdown
+    .chat-dropdown .p-dropdown {
+        border-radius: 20px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border: 1px solid $newtoms-secondary-color;
+        background: rgba(103, 100, 100, 0.10);
+        width: 100%;
+        color: #F5F5F5;
+        height: 100%;
+    }
+    .chat-dropdown .p-dropdown:enabled:focus {
+        box-shadow: 0 0 0 0.2rem $newtoms-secondary-color;
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "welcome_back": "Welcome back, ",
+    "upload_new_document": "Upload new document",
+    "talk_to_your_topic": "Chat with your topics",
+    "talk_to_your_document": "Chat with your documents",
+    "last_activity": "Recent activity",
+    "message": "Welcome to Agrobot documentary! increase your productivity and get instant answers from your most important documents with our powerful AI.",
+    "sub_message": "Create a repository of categorized documents and start using the chat!",
+    "title": "Failed to load documents",
+    "content": "An unexpected error has occured, plese try again later"
+}

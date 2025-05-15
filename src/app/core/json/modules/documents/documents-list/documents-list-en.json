@@ -1,0 +1,94 @@
+{
+    "title": "Documents",
+    "subtitle": "Upload, chat and manage documents or topics important to you",
+    "upload": "Upload",
+    "my_document": "My documents",
+    "shared_documents": "Shared documents",
+    "document_search": "Document Search",
+    "sort_by": "Sort by",
+    "paginator": "of",
+    "topic": "Topics",
+    "topic_search": "Topic Search",
+    "sort_list": [
+        { "name": "Alias ↑", "code": "aliasAsc" },
+        { "name": "Alias ↓", "code": "aliasDesc" },
+        { "name": "File name ↑", "code": "nameAsc" },
+        { "name": "File name ↓", "code": "nameDesc" },
+        { "name": "Date ↑", "code": "dateAsc" },
+        { "name": "Date ↓", "code": "dateDesc" },
+        { "name": "Topic ↑", "code": "topicAsc" },
+        { "name": "Topic ↓", "code": "topicDesc" }
+    ],
+    "sort_topic_list": [
+        { "name": "Name ↑", "code": "nameAsc" },
+        { "name": "Name ↓", "code": "nameDesc" }
+    ],
+    "document_upload": {
+        "header": "Upload New Document",
+        "drag_and_drop": "Drag & Drop or ",
+        "choose_file": "Choose file",
+        "to_upload": " to upload",
+        "extension": "pdf, docx, txt, xls, xlsx, png, jpg, jpeg",
+        "alias": {
+            "label": "Alias",
+            "placeholder": "Alias",
+            "required_error": "Alias is required.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "maximun_error": "Must have a maximum of 50 characters.",
+            "empty_field_error": "The field does not allow empty spaces",
+            "only_special_characters": "The alias cannot contain only special characters",
+            "only_numeric_characters": "The alias cannot contain only numeric characters",
+            "alias_patter_error": "Only special characters are allowed such as: - _ * & # : ."
+        },
+        "topic": {
+            "label": "Topic (optional)",
+            "placeholder": "Select a topic",
+            "required_error": "Topic is required."
+        },
+        "description": {
+            "label": "Description",
+            "placeholder": "Description",
+            "required_error": "Description is required.",
+            "minimun_error": "Must have a minimun of 3 characters.",
+            "maximun_error": "Must have a maximum of 400 characters."
+        },
+        "buttons":{
+            "close": "Close",
+            "upload": "Upload"
+        },
+        "unsupported_extension":{
+          "title": "Unsupported extension",
+          "content": "Allowed extensions: .xlsx, .xls, .docx, .pdf, .txt, .png, .jpeg, .jpg"
+        },
+
+        "document_uploaded":{
+          "title": "Document uploaded",
+          "content": "The document was created successfully, you can see it in your documents when it is ready"
+        },
+
+        "document_edited": {
+          "title": "Document edited",
+          "content": "The document information was edited successfully, you can see it in My documents"
+        },
+
+        "Failed_load_documents": {
+          "title": "Failed to load documents",
+          "content": "An unexpected Error has occured, plese try again later"
+        },
+
+        "duplicated_alias_error": {
+          "title": "Alias already exists",
+          "content": "A document with this alias already exists"
+        },
+
+        "maximun_mb_limit":{
+          "title": "Maximum upload size limit of 20 MB per document exceeded",
+          "content": "Please upload smaller file(s)."
+        },
+
+        "Unexpected_error": {
+          "title": "Unexpected error",
+          "content": "An unexpected error has occurred, please try again later"
+        }
+    }
+}

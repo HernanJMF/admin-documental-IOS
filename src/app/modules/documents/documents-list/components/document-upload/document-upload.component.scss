@@ -1,0 +1,189 @@
+@import "../../../../../../assets/styles/base/common-styles/modal/modal.scss";
+@import "../../../../../../assets/styles/base/common-styles/inputs/inputs.scss";
+@import '../../../../../../assets/styles/base/common-styles/scroll/scroll.scss';
+@import '../../../../../../assets/styles/constants/colors.scss';
+@import '../../../../../../assets/styles/constants/labels.scss';
+
+.modal-content {
+  padding: 0px 64px;
+
+  .upload-box{
+    display: inline-table;
+    border-radius: 10px;
+    border: 2px dashed $newtoms-alias-font-color;
+    background: $newtoms-upload-button-background !important;
+    text-align: center;
+    padding: 32px;
+    cursor: pointer;
+
+    .formats{
+      color: $newtoms-upload-button-color;
+      text-align: center;
+      font-family: $newtoms-semibold-fonts;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  .selected-document{
+    border-radius: 10px;
+    border: 2px solid $newtoms-primary-font-color; // se uso color de font
+    background: $newtoms-upload-button-background;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 450px;
+    .filename{
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .size{
+        color: $newtoms-secondary-font-color;
+        text-align: center;
+        font-family: $newtoms-semibold-fonts;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+
+    .icon{
+      padding-left: 16px;
+      cursor: pointer
+    }
+  }
+
+  .document-info {
+    width: 100%; /* Ancho del 100% para que se ajuste al contenedor */
+    margin-top: 24px;
+
+    .document-form {
+      width: 100%;
+      margin-bottom: 24px;
+      label{
+        color: $newtoms-primary-font-color;
+        font-family: $newtoms-semibold-fonts;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+}
+
+
+.upload-area {
+  display: flex;
+  flex-direction: column; /* Diseño de columna para colocar elementos debajo */
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.upload-box1 {
+  width: 100%; /* Ancho del 100% para que se ajuste al contenedor */
+  max-width: 400px; /* Ancho máximo para evitar que sea demasiado ancho */
+  height: 150px;
+  border-radius: 10px;
+  border: 2px solid $newtoms-primary-font-color;
+  background: $newtoms-upload-button-background;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; /* Margen inferior agregado */
+}
+
+.upload-box-inner {
+  text-align: center;
+}
+
+.upload-box1 img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.upload-box1 p {
+  color: $newtoms-primary-font-color;
+}
+
+.custom-image {
+  width: 25px !important;
+  height: 25px !important;
+  margin-top: 20px;
+}
+
+
+
+
+
+.custom-file-input {
+  visibility: hidden;
+  position: absolute;
+}
+
+.custom-file-label {
+  color: $newtoms-primary-font-color;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Estilo para cuando se selecciona un archivo */
+.custom-file-input:focus + .custom-file-label,
+.custom-file-input:valid + .custom-file-label {
+  background-color: #28a745; /* Color de fondo cuando se selecciona un archivo */
+}
+
+/* Media query para hacerlo responsive en pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    padding: 0px;
+    .upload-box .title{
+      font-size: 18px;
+    }
+  }
+
+  .modal-content .selected-document{
+    max-width: 100%;
+}
+
+  .upload-area {
+    max-width: 100%; /* Ancho máximo del 100% en pantallas pequeñas */
+
+  }
+
+  .upload-box {
+    max-width: 100%; /* Ancho máximo del 100% en pantallas pequeñas */
+    height: 150px;
+  }
+
+  .document-info {
+    max-width: 100%; /* Ancho máximo del 100% en pantallas pequeñas */
+
+  }
+
+  
+
+}
+
+
+.newtoms-upload-document {
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-image: url("../../../../../../assets/icons/upload-document.svg");
+  mask-image: url('../../../../../../assets/icons/upload-document.svg');
+  background-color: $newtoms-alias-font-color; /* Or any color of your choice. */
+  width: 70px;
+  height: 60px;
+  display: inline-flex;
+}

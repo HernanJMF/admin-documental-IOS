@@ -1,0 +1,103 @@
+@import '../../../../../../assets/styles/constants/fonts.scss';
+@import '../../../../../../assets/styles/constants/colors.scss';
+
+.avatar-logo{
+    margin-bottom: 16px;
+
+    .upload-box{
+        padding-right: 24px;
+        .upload-button{
+            border: 2px dashed $newtoms-upload-button-color;
+            border-radius: 5px;
+            background-color: $newtoms-upload-button-background; //#e7eefa
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 130px !important;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            padding: 16px;
+            .upload-file-button-image {
+                height: 35px;
+                margin-bottom: 5px;
+            }
+            .upload-file-button-text {
+                margin: 0 !important;
+                font-size: 0.75rem;
+                font-weight: 400;
+                color: $newtoms-upload-button-color;
+            }
+        }
+    }
+
+    .preview-img{
+        border-radius: 6px;
+        border: 1px solid #E7E7E7;
+        display: flex;
+        align-items: center;
+        height: 110px;
+        width: 100%;
+        .img{
+            width: 100%;
+            height: 108px;
+            border-radius: 6px;
+            object-fit: contain;
+            padding: 8px;
+            background: $newtoms-primary-color;
+        }
+    }
+    .upload-file-button-text-size {
+      margin: 0 !important;
+      font-size: 10px;
+      font-weight: 400;
+      color: $newtoms-upload-button-color;
+  }
+  ::ng-deep{
+  .custom-button {
+    .p-button {
+      border: none; /* Eliminar el borde del botón */
+      border-radius: 0; /* Eliminar la esquina redondeada (si se había establecido) */
+      background-color: transparent; /* Establecer el fondo transparente o del color deseado */
+      color: $newtoms-primary-font-color; /* Establecer el color del texto según sea necesario */
+
+      &:hover {
+        background-color:none /* Cambiar el color de fondo al pasar el ratón si es necesario */
+      }
+    }
+
+  }
+  }
+}
+
+.subtitle{
+    color: $newtoms-primary-font-color;
+    text-align: center;
+    font-family: $newtoms-bold-fonts;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 14px;
+    margin-top: 14px;
+    padding-bottom: 20px;
+}
+
+.submit{
+    text-align: end;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.title{
+    color: $newtoms-primary-font-color;
+    font-family: $newtoms-bold-fonts;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+}
+

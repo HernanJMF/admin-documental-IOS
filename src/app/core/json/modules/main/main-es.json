@@ -1,0 +1,11 @@
+{
+    "welcome_back": "¡Bienvenido de nuevo",
+    "upload_new_document": "Subir nuevo documento",
+    "talk_to_your_topic": "Conversa con tus tópicos",
+    "talk_to_your_document": "Conversa con tus documentos",
+    "last_activity": "Actividad reciente",
+    "message": "¡Bienvenido a Agrobot documental! Aumenta tu productividad y obtén respuestas instantáneas de tus documentos con nuestra IA.",
+    "sub_message": "¡Crea un repositorio de documentos categorizados y comienza a usar el chat!",
+    "title": "Error al cargar documentos",
+    "content": "Se ha producido un error inesperado, inténtelo de nuevo más tarde."
+}

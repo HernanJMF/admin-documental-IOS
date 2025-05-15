@@ -1,0 +1,181 @@
+
+<div>
+  <p-dialog [(visible)]="visible"
+            [breakpoints]="{ '768px': '80vw', '576px': '95vw'}"
+            [style]="{width: 'fit-content'}"
+            [modal]="true"
+            [draggable]="false"
+            [resizable]="false"
+            (onHide)="closeDialog()">
+    <!------------header section start------------>
+    <ng-template pTemplate="header">
+      <div class="d-flex justify-content-center w-100">
+        <span class="modal-header">{{page.header}}</span>
+      </div>
+    </ng-template>
+    <!------------header section end------------>
+
+    <!------------content section start------------>
+    <ng-template pTemplate="content">
+        <div class="modal-content">
+          <!------------form section start------------>
+          <form [formGroup]="formGroup">
+            <!------------Document section start------------>
+            <div *ngIf="!editActive" class="d-flex justify-content-center mt-2" >
+              <input
+                      type="file"
+                      id="document-file-box"
+                      hidden
+                      accept=".jpg, .jpeg, .png, .xlsx, .xls, .docx, .pdf, .txt, .JPG, .JPEG, .PNG "
+                      onclick="value = null"
+                      (change)="onFileSelected($event.target)" />
+              <label for="document-file-box" class="upload-box" *ngIf="!fileUploaded" appDragDrop (files)="filesDropped($any($event))">
+                <div class="mb-3">
+                  <i class="newtoms-upload-document"></i>
+                </div>
+                <div class="mt-1 d-block">
+                    <span class="upload-title">{{page.drag_and_drop}}<span class="choose">{{page.choose_file}}</span>{{page.to_upload}}</span>
+                    <span class="formats">{{page.extension}}</span>
+                </div>
+              </label>
+
+              <div *ngIf="fileUploaded" class="w-100">
+                <div class="selected-document">
+                  <div class="filename">
+                    <div>
+                      <img [src]="translateDocumentExtension(getFileExtension(selectedFile.name))" alt="document-logo" width="40">
+                    </div>
+                    <div class="px-3">
+                      <span class="filename-title">{{ selectedFile.name }}</span>
+                      <span class="size">{{ formatFileSize(selectedFile.size) }}</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <i class="pi pi-times icon" (click)="cancelDocument()"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!------------document section end------------>
+
+            <!------------document edit section start------------>
+            <div *ngIf="editActive" class="d-flex justify-content-center mt-2">
+              <div class="w-100">
+                <div class="selected-document">
+                  <div class="filename">
+                    <div>
+                      <img [src]="translateDocumentExtension(getFileExtension(document.extension))" alt="document-logo" width="40">
+                    </div>
+                    <div class="px-3">
+                      <span class="filename-title">{{ document.filename + '.' + document.extension}}</span>
+                      <span class="size">{{ document.file_size }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!------------document edit section end------------>
+
+            <!------------inputs section start------------>
+            <div class="document-info">
+              <div class="document-form">
+                <div>
+                  <label>{{page.alias.label}}</label>
+                  <input  pInputText
+                          formControlName="alias"
+                          [placeholder]="page.alias.placeholder"
+                          [maxlength]="50"
+                          type="text"
+                          />
+                </div>
+                <div class="d-flex justify-content-start">
+                    <span *ngIf="formGroup.controls['alias'].touched && formGroup.controls['alias'].errors?.['required']" class="p-error">
+                      {{page.alias.required_error}}
+                    </span>
+                    <span *ngIf="(formGroup.controls['alias'].touched && formGroup.get('alias').errors?.['minlength'])" class="p-error">
+                      {{page.alias.minimun_error}}
+                    </span>
+                    <span *ngIf="(formGroup.controls['alias'].touched && formGroup.get('alias').errors?.['maxlength'])" class="p-error">
+                      {{page.alias.maximun_error}}
+                    </span>
+                    <span *ngIf="( formGroup.get('alias').errors?.['pattern']?.requiredPattern == '/^[^$%@=,;?¿¡!+|¨°¬<>]*$/')" class="p-error">
+                      {{page.alias.alias_patter_error}}
+                    </span>
+                </div>
+                <div>
+                  <small class="p-error" *ngIf="formGroup.controls['alias'].touched && formGroup.controls['alias'].errors?.['pattern']?.requiredPattern == '/^[^\\s]+(\\s+[^\\s]+)*$/'">
+                    {{page.alias.empty_field_error}}
+                  </small>
+                  <span *ngIf="formGroup.controls['alias'].touched && formGroup.controls['alias'] && formGroup.controls['alias'].errors?.['invalidAlias']" class="p-error">
+                    {{page.alias.only_special_characters}}
+                  </span>
+                  <span *ngIf="formGroup.controls['alias'].touched && formGroup.controls['alias'] && formGroup.controls['alias'].hasError('numericAlias')" class="p-error">
+                    {{page.alias.only_numeric_characters}}
+                  </span>
+                </div>
+              </div>
+              <div class="document-form" *ngIf="role=='ADMIN' && topicActive">
+                <div>
+                  <label>{{page.topic.label}}</label>
+                  <p-dropdown formControlName="topic"
+                              [options]="!editActive ? TopicList : documentTopic"
+                              optionLabel="topic_name"
+                              appendTo="body"
+                              [showClear]="true"
+                              [filter]="true"
+                              [placeholder]="page.topic.placeholder"
+                              >
+                  </p-dropdown>
+                </div>
+                <div class="d-flex justify-content-start">
+                    <span *ngIf="formGroup.controls['topic'].touched && formGroup.controls['topic'].errors?.['required']" class="p-error">
+                      {{page.topic.required_error}}
+                    </span>
+                </div>
+              </div>
+              <div class="document-form">
+                <div>
+                  <label>{{page.description.label}}</label>
+                  <textarea formControlName="description"
+                            pInputTextarea
+                            [placeholder]="page.description.placeholder"
+                            [maxlength]="200"
+                            class="newtoms-textarea"
+                            rows="5" cols="30"
+                            >
+                  </textarea>
+                </div>
+                <div class="d-flex justify-content-start">
+                    <span *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.['required']" class="p-error">
+                      {{page.description.required_error}}
+                    </span>
+                    <span *ngIf="(formGroup.controls['description'].touched && formGroup.get('description').errors?.['minlength'])" class="p-error">
+                      {{page.description.minimun_error}}
+                    </span>
+                    <span *ngIf="(formGroup.controls['description'].touched && formGroup.get('description').errors?.['maxlength'])" class="p-error">
+                      {{page.description.maximun_error}}
+                    </span>
+                </div>
+              </div>
+            </div>
+            <!------------inputs section end------------>
+
+          </form>
+          <!------------form section end------------>
+        </div>
+
+    </ng-template>
+    <!------------content section end------------>
+
+    <!------------footer section start------------>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end w-100">
+        <p-button (click)="closeDialog()" [label]="page.buttons.close" styleClass="p-button-text p-button-danger"></p-button>
+        <p-button (click)="isValid ? uploadButton() : ''" [disabled]="!isValid"  [label]="page.buttons.upload" styleClass="p-button-text"></p-button>
+      </div>
+    </ng-template>
+    <!------------footer section end------------>
+  </p-dialog>
+</div>
+
