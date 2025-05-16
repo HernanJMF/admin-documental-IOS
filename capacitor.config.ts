@@ -1,11 +1,18 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.agroseguro.admindocumental',
-  appName: 'agrobot-juridico',
+  appId: 'com.agroseguro.chatdocumental',
+  appName: 'Agroseguro Chatbot',
   webDir: 'dist',
-  bundledWebRuntime: false
-
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 0
+    },
+    BackgroundMode: {
+      enabled: true
+    },
+    CapacitorBrowser: {}
+  }
 };
 
 export default config;
