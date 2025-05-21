@@ -1,4 +1,4 @@
-package com.agroseguro.admindocumental;
+package com.agroseguro.chatdocumental;
 
 import com.getcapacitor.BridgeActivity;
 
