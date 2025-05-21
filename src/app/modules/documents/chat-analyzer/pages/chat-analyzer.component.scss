@@ -64,6 +64,17 @@
     }
 }
 
+@media only screen and (max-width: 992px) and (orientation: landscape) {
+    .panel-body.topic .left-panel {
+        display: none !important;
+        width: 0 !important;
+        padding: 0 !important;
+    }
+    .panel-body.topic .center-panel {
+        width: 100% !important;
+        padding: 8px !important;
+    }
+}
 
 @media only screen and (max-width: 768px) {
     .panel-body{
