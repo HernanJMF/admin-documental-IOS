@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">agrobot-juridico</string>
-    <string name="title_activity_main">agrobot-juridico</string>
+    <string name="app_name">agrobot-documental</string>
+    <string name="title_activity_main">agrobot-documental</string>
     <string name="package_name">com.agroseguro.admindocumental</string>
     <string name="custom_url_scheme">com.agroseguro.admindocumental</string>
 </resources>
