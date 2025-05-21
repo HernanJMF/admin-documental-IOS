@@ -4,11 +4,11 @@
         <div class="sidebar-body">
             <div class="logo">
                 <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');" *ngIf="!displaySidebar">
-                    <img [src]="'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + reduceLogo"
+                    <img [src]="'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + reduceLogo"
                          width="50px" class="reduced-logo img-fluid" alt="">
                 </a>
                 <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');" *ngIf="displaySidebar">
-                    <img [src]="'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + expandLogo"
+                    <img [src]="'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + expandLogo"
                          width="250px" class="expanded-logo img-fluid" style="padding-left: 16px;" alt="">
                 </a>
             </div>

@@ -305,25 +305,26 @@
     }
 
     ::ng-deep{
-      .bot-message-box table {
-        max-width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        overflow-x: auto;
-        display: block;
+      .bot-message-box {
+        overflow-x: unset !important;
       }
-
+      .bot-message-box table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        box-sizing: border-box;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
       .bot-message-box th,
       .bot-message-box td {
-        border: 2px solid #f4f4f4;
         padding: 8px;
         text-align: left;
+        border: 1px solid #e0e0e0;
+        word-break: break-word;
+        white-space: nowrap;
       }
-
-      .bot-message-box th {
-        background-color: #f4f4f4;
-      }
-
     }
 
 }
@@ -736,6 +737,146 @@ a{
 }
 
 @media only screen and (max-width: 768px) {
+    .chat-body {
+        padding-bottom: 0 !important;
+    }
+    .input-section {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        background: $newtoms-send-section-color;
+        z-index: 100;
+        padding: 8px 0 12px 0;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+        display: flex;
+        justify-content: center;
+
+        .input-container {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: transparent;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: none;
+            padding: 0;
+            position: relative;
+            margin-top: -8px !important;
+            padding-top: 0 !important;
+        }
+
+        .chat-textarea {
+            width: 100%;
+            min-height: 44px;
+            max-height: 100px;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            padding: 8px 12px 6px 12px;
+            resize: none;
+            background: #fff;
+            box-sizing: border-box;
+            outline: none;
+            margin-bottom: 0;
+            margin-top: 0 !important;
+            display: block;
+        }
+
+        .input-actions {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 4px 0 4px;
+            min-height: 28px;
+            background: transparent;
+
+            .chat-dropdown {
+                min-width: 80px;
+                max-width: 120px;
+                font-size: 15px;
+                height: 28px;
+                border: none !important;
+                border-radius: 16px !important;
+                border-top-right-radius: 16px !important;
+                border-bottom-right-radius: 16px !important;
+                border-top-left-radius: 16px !important;
+                border-bottom-left-radius: 16px !important;
+                padding: 0 4px !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                display: flex;
+                align-items: center;
+
+                .p-dropdown-label {
+                    font-size: 15px;
+                    padding: 0 4px !important;
+                    color: $newtoms-success-font-color;
+                    text-align: center;
+                    width: auto;
+                    min-width: 32px;
+                }
+                .p-dropdown-trigger {
+                    font-size: 15px;
+                    color: $newtoms-success-font-color;
+                    border-left: none !important;
+                    margin-left: 2px;
+                    padding: 0 !important;
+                }
+            }
+
+            .characters {
+                flex: 1 1 auto;
+                text-align: center;
+                font-size: 12px;
+                color: $newtoms-characters-color;
+                min-width: 60px;
+            }
+
+            .send-section {
+                border-radius: 50%;
+                width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                color: $newtoms-success-font-color;
+                font-size: 16px;
+                border: none;
+                margin-left: 4px;
+                margin-right: 8px;
+                box-shadow: none;
+                cursor: pointer;
+                padding: 0;
+                transition: background 0.2s;
+
+                i {
+                    font-size: 16px;
+                    color: $newtoms-success-font-color;
+                    transition: color 0.2s;
+                }
+
+                &:hover:not(:disabled) {
+                    background: rgba(0,0,0,0.04);
+                }
+
+                &:disabled {
+                    background: #eee;
+                    color: #aaa;
+                    cursor: not-allowed;
+                    i {
+                        color: #aaa;
+                    }
+                }
+            }
+        }
+    }
     :host ::ng-deep .box-chat .user-details.bot-message {
         display: flex !important;
         flex-direction: column !important;
@@ -826,6 +967,24 @@ a{
         }
     }
 
+    ::ng-deep .bot-message-box {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    ::ng-deep .bot-message-box table {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: unset !important;
+    }
+
+    // Redondear solo el dropdown principal
+    ::ng-deep .chat-dropdown .p-dropdown {
+        border-radius: 16px !important;
+    }
+
+    .send-section {
+        margin-right: 8px !important;
+    }
 }
 
 
@@ -875,6 +1034,7 @@ a{
     background-color: $newtoms-secondary-color; /* Or any color of your choice. */
     width: 30px;
     height: 24px;
+    margin-right: -8px;
 }
 
 // Limita el ancho de los mensajes y fuerza el salto de línea
@@ -901,4 +1061,12 @@ a{
 .user-message-box span,
 .bot-message-box span {
   white-space: normal;
+}
+
+:host ::ng-deep textarea.chat-textarea {
+  overflow-y: auto !important;
+  min-height: 2.5rem !important;   // 1 línea aprox.
+  max-height: 5.5rem !important;   // 3 líneas aprox.
+  resize: none !important;
+  box-sizing: border-box;
 }

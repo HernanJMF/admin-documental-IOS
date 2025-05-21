@@ -91,33 +91,41 @@
       </p-scrollPanel>
       <!------------Input Question start------------>
       <div class="input-section" *ngIf="userEmail == null" [ngClass]="{'expired-plan': (topicDocumentList.length == 0 && type == 'topic')}">
-        <p-dropdown [options]="LanguageList"
-                    [(ngModel)]="selectedLanguage"
-                    placeholder="Select language"
-                    optionLabel="name"
-                    class="chat-dropdown"
-                    [disabled]="isWaitingForResponse || isSummaryActive">
-        </p-dropdown>
-        <div class="message-textarea" [ngClass]="{'scroll-active': chatMessage.length > 200}">
-            <textarea   [(ngModel)]="chatMessage"
-                        rows="1"
-                        cols="30"
-                        [maxlength]="2000"
-                        class="chat-textarea"
-                        pInputTextarea
-                        (keydown.enter)="onKeydown($event)"
-                        (keyup.enter)="chatMessage.length > 0 ? sendMessage() : ''"
-                        [autoResize]="true"
-                        [disabled]="isWaitingForResponse || isSummaryActive"></textarea>
+        <div class="input-container">
+          <textarea
+            [(ngModel)]="chatMessage"
+            rows="2"
+            [maxlength]="2000"
+            class="chat-textarea"
+            pInputTextarea
+            (keydown.enter)="onKeydown($event)"
+            (keyup.enter)="chatMessage.length > 0 ? sendMessage() : ''"
+            [autoResize]="true"
+            [disabled]="isWaitingForResponse || isSummaryActive"
+            #chatInput
+            placeholder="Escribe tu mensaje..."
+          ></textarea>
+          <div class="input-actions">
+            <p-dropdown
+              [options]="LanguageList"
+              [(ngModel)]="selectedLanguage"
+              placeholder="Es"
+              optionLabel="name"
+              class="chat-dropdown"
+              [disabled]="isWaitingForResponse || isSummaryActive"
+            ></p-dropdown>
             <span class="characters">{{chatMessage.length}} / 2000</span>
+            <button
+              class="send-section"
+              [disabled]="isWaitingForResponse || isSummaryActive || chatMessage.length === 0"
+              (click)="(!isWaitingForResponse && !isSummaryActive && chatMessage.length > 0) ? sendMessage() : ''"
+              type="button"
+            >
+              <i class="newtoms-icon-message"></i>
+            </button>
+          </div>
         </div>
-        <div class="send-section">
-            <i  class="newtoms-icon-message"
-                (click)="chatMessage.length > 0 ? sendMessage() : ''"
-                [ngClass]="{'disabled': isWaitingForResponse}">
-            </i>
-        </div>
-    </div>
+      </div>
       <!------------Input Question end------------>
   </div>
   <!------------body chat section end------------>
@@ -170,7 +178,7 @@
 
           <div class="document-preview">
               <a [href]="fileUrl" target=”_blank”>
-                  See document preview
+                    Ver documento
                   <i class="pi pi-external-link external-icon"></i>
               </a>
           </div>

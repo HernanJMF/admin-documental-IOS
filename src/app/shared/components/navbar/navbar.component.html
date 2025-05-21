@@ -6,7 +6,7 @@
         <ng-template pTemplate="header">
                 <div class="logo">
                         <a class="nav-link"  href="/home" (click)="router.navigateByUrl('/home');">
-                                <img src="../../../../assets/images/newtoms-sidebar-logo.png" width="250px" class="img-fluid" alt="">
+                                <img src="../../../../assets/images/agrobot-documental-b.png" width="250px" class="img-fluid" alt="">
                         </a>
                 </div>
         </ng-template>
@@ -54,12 +54,12 @@
                                                         </div>
                                                 </a>
 
-                                                <a class="nav-link"  href="/settings" (click)="router.navigateByUrl('/settings');">
+                                                <!--<a class="nav-link"  href="/settings" (click)="router.navigateByUrl('/settings');">
                                                         <div class="option">
                                                                 <i class="newtoms-cog"></i>
                                                                 <span class="text">{{page.settings}}</span>
                                                         </div>
-                                                </a>
+                                                </a> -->
 
                                                 <div class="switch-light">
                                                         <i class="newtoms-sun"></i>
@@ -73,7 +73,8 @@
                                                         </div>
                                                 </a>-->
                                                 <div class="option" (click)="logout();">
-                                                        <img src="../../../../assets/icons/signout.svg" width="24px" alt="">
+                                                        <i class="newtoms-signout"></i>
+                                                        
                                                         <span class="text">{{page.logout}}</span>
                                                 </div>
 

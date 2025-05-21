@@ -94,3 +94,15 @@ flex-shrink: 0;
   }
 }
 
+::ng-deep .chip-container .p-chip {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+}
+
+@media (max-width: 768px) {
+  ::ng-deep .chip-container .p-chip {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+

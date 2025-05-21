@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   @Input() page: any = '';
   @ViewChild(PasswordRecoveryComponent) uploadChild;
   innerWidth: number;
+  rememberMe = false;
 
   constructor(
     private fb: FormBuilder,
@@ -72,25 +73,38 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const savedCredentials = localStorage.getItem('savedCredentials');
+    if (savedCredentials) {
+      const credentials = JSON.parse(savedCredentials);
+      this.loginForm.patchValue({
+        username: credentials.username,
+        password: credentials.password
+      });
+    }
+  }
 
   onSubmit() {
-    let loginBody = new LoginRequest(
+    const loginBody = new LoginRequest(
       this.loginForm.controls['username'].value,
       this.loginForm.controls['password'].value
     );
+
+    // Guardar SIEMPRE las credenciales
+    const credentials = {
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password
+    };
+    localStorage.setItem('savedCredentials', JSON.stringify(credentials));
+
     this.userService.login(loginBody).subscribe({
       next: () => {
-        this.router.navigate(['/home']).then(() => {
-          // window.location.reload();
-        });
+        this.router.navigate(['/home']);
       },
       error: (err) => {
-        // Aquí puedes manejar errores si ocurren
         const notification: ToastNotification = {
           title: 'Credenciales no válidas',
-          content:
-            '¡Uy! Parece que tus datos de acceso son incorrectos. Compruebe su nombre de usuario y contraseña e inténtelo de nuevo.',
+          content: '¡Uy! Parece que tus datos de acceso son incorrectos. Compruebe su nombre de usuario y contraseña e inténtelo de nuevo.',
           success_status: false,
         };
         this.messageService.Notify(notification);

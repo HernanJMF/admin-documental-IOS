@@ -15,7 +15,7 @@
     color: $newtoms-primary-font-color;
     text-align: center;
     font-family: $newtoms-bold-fonts;
-    font-size: 40px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
@@ -40,10 +40,20 @@
   height: 46px;
   background: rgba(191, 203, 211, 0.28);
   display: flex; /* Agregado flexbox para alinear los elementos */
-  justify-content: space-between; /* Espaciado uniforme entre elementos */
+ // justify-content: space-between; /* Espaciado uniforme entre elementos */
 
   .separation-label {
     margin-left: 10px; /* Ajustado el margen para ahorrar espacio en pantallas pequeñas */
+  }
+}
+
+@media screen and (max-width: 960px) {
+  #pr_id_2-table > .p-datatable-tbody > tr > td {
+      display: flex
+;
+      width: 100% !important;
+      align-items: center;
+      justify-content: flex-start;
   }
 }
 

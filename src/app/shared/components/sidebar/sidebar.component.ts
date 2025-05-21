@@ -90,12 +90,12 @@ export class SidebarComponent {
   generatelogoUrl(expanded: boolean) {
     if (expanded) {
       let expandedUrl =
-        'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' +
+        'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' +
         encodeURIComponent(this.expandLogo);
       return expandedUrl;
     } else {
       let reduceddUrl =
-        'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' +
+        'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' +
         encodeURIComponent(this.reduceLogo);
       return reduceddUrl;
     }

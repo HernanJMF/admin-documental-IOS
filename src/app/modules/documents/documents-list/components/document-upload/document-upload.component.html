@@ -124,8 +124,10 @@
                               appendTo="body"
                               [showClear]="true"
                               [filter]="true"
-                              [placeholder]="page.topic.placeholder"
-                              >
+                              [autofocusFilter]="false"
+                              [dropdownIcon]="'pi pi-chevron-up'"
+                              [panelStyle]="{ bottom: '100%', top: 'auto' }"
+                              [placeholder]="page.topic.placeholder">
                   </p-dropdown>
                 </div>
                 <div class="d-flex justify-content-start">

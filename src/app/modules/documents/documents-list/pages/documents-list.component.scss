@@ -45,3 +45,13 @@
     }
 
 }
+::ng-deep {
+    .p-confirm-dialog .p-dialog {
+        width: 80vw !important;
+        min-width: 0 !important;
+        max-width: 95vw !important;
+    }
+}
+
+
+

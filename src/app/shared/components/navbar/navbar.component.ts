@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  version: string = '1.1.3'; //environment.version;
+  version: string = '1.0.8'; //environment.version;
   page: any;
   sidebarVisible: boolean = false;
   documentID: string = '';

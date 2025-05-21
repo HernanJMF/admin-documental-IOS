@@ -48,8 +48,8 @@ export class ChatComponent implements OnInit, OnChanges {
   isVisible: boolean = false;
   showTopicDocument: boolean = false;
   LanguageList = [
-    { name: 'English', code: 'english' },
-    { name: 'Español', code: 'spanish' }
+    { name: 'En', code: 'english' },
+    { name: 'Es', code: 'spanish' }
   ]
   copySelected: boolean[] = [false,false,false]
   loadDocumentList: boolean = false; //se usa para que no recargue la lista cada vez que se abre

@@ -69,6 +69,7 @@
     .panel-body{
         border-top-right-radius: 0px !important;
         border-top-left-radius: 0px !important;
+        border: none !important;
         &.topic{
             border-top-right-radius: 0px !important;
             border-top-left-radius: 0px !important;
@@ -86,6 +87,7 @@
         .center-panel{
             width: 100% !important;
             display:flex;
+            border-left: none !important;
         }
     }
 }
