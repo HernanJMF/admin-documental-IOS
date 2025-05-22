@@ -60,3 +60,7 @@ a {
         left: 8px
     }
 }
+
+.sidebarButton {
+  margin-top: calc(1.5rem + env(safe-area-inset-top, 0px)) !important;
+}
