@@ -81,7 +81,7 @@ export class ChatAnalyzerComponent {
       (res) => {
         if(this.typeParamMap == 'document'){ //En caso de ser documento se ingresa la información
           this.document = {
-              preview: 'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(res.extension) ? res.S3_directory : encodeURIComponent(res.S3_directory)),
+              preview: 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(res.extension) ? res.S3_directory : encodeURIComponent(res.S3_directory)),
               alias: res.alias,
               status: res.has_chat,
               filename: res.filename,
@@ -227,7 +227,7 @@ export class ChatAnalyzerComponent {
     this.ChatComponent.changeDocument();
     this.documentTopicSelected = true;
     this.document = {
-      preview: 'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(document.extension) ? document.S3_directory : encodeURIComponent(document.S3_directory)),
+      preview: 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(document.extension) ? document.S3_directory : encodeURIComponent(document.S3_directory)),
       alias: document.alias,
       status: document.has_chat,
       filename: document.filename,

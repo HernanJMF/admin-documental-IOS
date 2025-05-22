@@ -100,7 +100,7 @@ export class DocumentsComponent implements OnChanges{
   openTopicDocumentPreview(document: any){ //Abre el preview del documento de un topico
     this.showPreview = false;
     this.topicDocument = document
-    this.topicDocumentUrl = 'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(document.extension) ? document.S3_directory : encodeURIComponent(document.S3_directory));
+    this.topicDocumentUrl = 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(document.extension) ? document.S3_directory : encodeURIComponent(document.S3_directory));
     this.openFilePreview();
     this.showPreview = true;
   }

@@ -24,7 +24,7 @@
             </label>
         </div>
         <div class="preview-img">
-            <img [src]="formGroup.controls['expandLogo'].value.length == 0 ? 'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + expandLogo : expandURL"
+            <img [src]="formGroup.controls['expandLogo'].value.length == 0 ? 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + expandLogo : expandURL"
                  alt="upload-icon"
                  class="img">
             <!--<img [src]="ragFormGroup.controls['avatarLogo'].value.length == 0 ? ragConfiguration.avatar_rag.rag_config.logo_reference : logoImageSrc"
@@ -60,7 +60,7 @@
             </label>
         </div>
         <div class="preview-img">
-            <img [src]="formGroup.controls['reduceLogo'].value.length == 0 ? 'https://preprod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + reduceLogo : reduceURL"
+            <img [src]="formGroup.controls['reduceLogo'].value.length == 0 ? 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + reduceLogo : reduceURL"
                  alt="upload-icon" class="img">
         </div>
     </div>
