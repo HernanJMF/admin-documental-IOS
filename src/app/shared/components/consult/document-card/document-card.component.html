@@ -64,7 +64,7 @@
 <p-overlayPanel #op>
     <ng-template pTemplate="content">
         <div [ngClass]="{'card-menu-body-dark': this.userService.theme == 'dark','card-menu-body-light': this.userService.theme == 'light'}">
-            <div class="card-menu-top" (click)="openDocumentNewTab(document.document_id)" *ngIf="document.pinecone_process_status == 'ENDED'">
+            <div class="card-menu-top" (click)="openDocumentNewTab(document.document_id)" *ngIf="document.pinecone_process_status == 'ENDED' && !isMobile">
                 <div class="icon mr-3">
                     <i class="pi pi-window-maximize"></i>
                 </div>

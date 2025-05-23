@@ -30,6 +30,8 @@ export class DocumentCardComponent {
     txt: '../../../../assets/icons/txt-icon.svg',
   };
 
+  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   @Input() document: any = {};
   @Input() showOptions: boolean = false;
   @Input() isAdmin: string = '';
