@@ -9,6 +9,7 @@ export class WebsocketService {
   //Este servicio contiene todos los metodos necesarios para crear una conexion con el websocket y se puedan hablar mediante chat
 
   private subject: Rx.Subject<MessageEvent>;
+  public connectionLost$ = new Rx.Subject<void>();
 
   constructor() { }
 
@@ -28,8 +29,14 @@ export class WebsocketService {
     let observable = Rx.Observable.create(
       (obs: Rx.Subject<MessageEvent>) =>{
         ws.onmessage = obs.next.bind(obs);
-        ws.onerror = obs.error.bind(obs);
-        ws.onclose = obs.complete.bind(obs);
+        ws.onerror = (err) => {
+          obs.error(err);
+          this.connectionLost$.next();
+        };
+        ws.onclose = () => {
+          obs.complete();
+          this.connectionLost$.next();
+        };
         return ws.close.bind(ws)
       }
     )/*.pipe(

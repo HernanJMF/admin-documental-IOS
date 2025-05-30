@@ -199,19 +199,12 @@ export class UserService {
   }
 
   logout() {
-    const logoutUrl = 'https://prod-agrobot-chat2dox.auth.eu-west-1.amazoncognito.com/logout';
-    const clientId = 'bs7g287gho70r6ri1i97udlfi';
-    const logoutUri = 'https://agrobot.agroseguro.es/login';
-    const params = new URLSearchParams({
-      client_id: clientId,
-      logout_uri: logoutUri
-    });
-
-    // Limpia el localStorage antes de redirigir
+    // Limpia el localStorage antes de cerrar sesión
     this.localStorageService.clearLocalStorage();
 
-    //Aqui se redirige directamente al endpoint de logout que tenemos en cognito
-    window.location.href = `${logoutUrl}?${params.toString()}`;
+    // Opcional: navega a la pantalla de login interna de tu app
+    // Si usas Angular Router, descomenta la siguiente línea:
+     this.router.navigate(['/login']);
   }
 
 

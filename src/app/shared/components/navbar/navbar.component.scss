@@ -6,7 +6,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 80px;
     padding: 8px;
     .chat2dox-logo{
         font-family: $newtoms-regular-fonts;
@@ -47,7 +47,7 @@ a {
   }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     nav .sidebarButton{
         display: block;
         position: absolute;
@@ -59,8 +59,4 @@ a {
     nav .sidebarButton{
         left: 8px
     }
-}
-
-.sidebarButton {
-  margin-top: calc(2rem + env(safe-area-inset-top, 0px)) !important;
 }

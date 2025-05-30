@@ -13,3 +13,36 @@
         </div>
     </div>
 </div>
+
+<p-dialog [(visible)]="showReconnectModal"
+  [style]="{width: '50vw'}"
+  class="modal-section"
+  [breakpoints]="{ '768px': '80vw', '576px': '95vw'}"
+  [draggable]="false"
+  [modal]="true"
+  [resizable]="false"
+  [closeOnEscape]="false"
+  [closable]="false">
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <span class="modal-section-title">
+        {{ language === 'english' ? 'Reconnect' : 'Reconectar' }}
+      </span>
+    </div>
+  </ng-template>
+  <div class="p-3 text-center">
+    <p>
+      {{ language === 'english'
+        ? 'The connection has been lost. Please reload the application to continue.'
+        : 'Se ha perdido la conexión. Por favor, recarga la aplicación para continuar.'
+      }}
+    </p>
+  </div>
+  <ng-template pTemplate="footer">
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="reconnect-btn" (click)="reloadApp()">
+        {{ language === 'english' ? 'Reload' : 'Recargar' }}
+      </button>
+    </div>
+  </ng-template>
+</p-dialog>

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators/map';
@@ -11,7 +11,7 @@ import { ChatAnalyzerService } from 'src/app/core/services/chat-analyzer/chat-an
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent implements OnChanges{
+export class DocumentsComponent implements OnChanges, OnInit {
 
   visible: boolean = false;
   expand: boolean = true;
@@ -80,6 +80,16 @@ export class DocumentsComponent implements OnChanges{
     }
   }
 
+  ngOnInit() {
+    const selectedId = localStorage.getItem('selectedDocumentId');
+    if (selectedId && this.topicDocumentList?.length) {
+      const doc = this.topicDocumentList.find(d => d.document_id === selectedId);
+      if (doc) {
+        this.openTopicDocumentPreview(doc);
+      }
+    }
+  }
+
   showDialog() {
     if(!this.loadDocumentList){
       this.documentListChild.loadList();
@@ -103,6 +113,7 @@ export class DocumentsComponent implements OnChanges{
     this.topicDocumentUrl = 'https://prod-agrobot-chat2dox-main-bucket.s3.eu-west-1.amazonaws.com/' + (['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'].includes(document.extension) ? document.S3_directory : encodeURIComponent(document.S3_directory));
     this.openFilePreview();
     this.showPreview = true;
+    this.chatTopicDocument();
   }
 
   openTopic(){ //abre nuevamente un topico
@@ -175,9 +186,5 @@ export class DocumentsComponent implements OnChanges{
       }
     })
   }
-
-
-
-
 
 }

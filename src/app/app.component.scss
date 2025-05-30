@@ -9,7 +9,7 @@
         width: 100%;
         min-height: 100vh;
         .navbar{
-            height: 100px;
+            height: 80px;
             width: 100%;
             background-color: $newtoms-primary-color;
             padding: 0px;
@@ -26,13 +26,29 @@
   padding: 0px !important;
 }
 
+.reconnect-btn {
+  background: transparent !important;
+  border: 2px solid #00923f !important;
+  color: #00923f !important;
+  font-weight: bold;
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 12px !important;
+  transition: background 0.2s, color 0.2s;
 
-@media only screen and (max-width: 768px) {
+  &:hover, &:focus {
+    background: #00923f !important;
+    color: #fff !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
 
     .main-layout .main{
         padding-left: 0px;
         .content{
-            padding: 6px;
+            padding: 16px 16px 0 16px !important;
         }
     }
 

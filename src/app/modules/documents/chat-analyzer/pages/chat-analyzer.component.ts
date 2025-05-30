@@ -118,20 +118,20 @@ export class ChatAnalyzerComponent {
     this.innerWidth = window.innerWidth;
 
     //Calcula los valores del panel a mostrar
-    if(this.innerWidth < 576 && this.typeParamMap == 'document'){
+    if(this.innerWidth <= 1024 && this.typeParamMap == 'document'){
       this.panelOptions = [
         { name: 'Documents', value: 1 },
         { name: 'Chat', value: 2 },
         { name: 'Details', value: 3 }
       ];
       this.selectedPanel = 2;
-    }else if(this.innerWidth < 576 && this.typeParamMap == 'topic'){
+    }else if(this.innerWidth <= 1024 && this.typeParamMap == 'topic'){
       this.panelOptions = [
         { name: 'Documents', value: 1 },
         { name: 'Chat', value: 2 }
       ];
       this.selectedPanel = 2;
-    } else if(this.innerWidth >= 576 && this.typeParamMap == 'document') {
+    } else if(this.innerWidth > 1024 && this.typeParamMap == 'document') {
       this.panelOptions = [
         { name: 'Documents', value: 1 },
         { name: 'Details', value: 3 }
@@ -151,20 +151,20 @@ export class ChatAnalyzerComponent {
   @HostListener('window:resize', ['$event'])
     onResize() {
         this.innerWidth = window.innerWidth;
-        if(this.innerWidth < 576 && this.typeParamMap == 'document'){
+        if(this.innerWidth <= 1024 && this.typeParamMap == 'document'){
           this.panelOptions = [
             { name: 'Documents', value: 1 },
             { name: 'Chat', value: 2 },
             { name: 'Details', value: 3 }
           ];
           this.selectedPanel = 2;
-        }else if(this.innerWidth < 576 && this.typeParamMap == 'topic'){
+        }else if(this.innerWidth <= 1024 && this.typeParamMap == 'topic'){
           this.panelOptions = [
             { name: 'Documents', value: 1 },
             { name: 'Chat', value: 2 }
           ];
           this.selectedPanel = 2;
-        }else if(this.innerWidth >= 576 && this.typeParamMap == 'document') {
+        }else if(this.innerWidth > 1024 && this.typeParamMap == 'document') {
           this.panelOptions = [
             { name: 'Documents', value: 1 },
             { name: 'Details', value: 3 }

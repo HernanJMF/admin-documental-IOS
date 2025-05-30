@@ -1,4 +1,3 @@
-
 @import '../../../../../assets/styles/base/common-styles/tab-view/tabview.scss';
 @import '../../../../../assets/styles/base/common-styles/inputs/inputs.scss';
 @import '../../../../../assets/styles/constants/fonts.scss';
@@ -77,11 +76,10 @@ label{
     }
 
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
 
     .message{
-        padding-right: 24%;
-        padding: 16px;
+        padding-right: 18%;
     }
 
 }

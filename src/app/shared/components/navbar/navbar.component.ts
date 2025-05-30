@@ -18,6 +18,7 @@ export class NavbarComponent {
   documentID: string = '';
   role: string = '';
   theme: boolean = false;
+
   @Output() changeTheme: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
@@ -31,6 +32,8 @@ export class NavbarComponent {
     this.page = this.page.default;
     this.role = this.userService.role;
     this.theme = this.userService.theme == 'light' ? true : false;
+    this.getChatID();
+
   }
 
   getChatID() {

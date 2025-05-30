@@ -1,7 +1,7 @@
 {
     "title": "Gestión de usuarios",
     "headerList": [
-        { "field": "email", "header": "USUARIO" },
+        { "field": "email", "header": "USUARIO " },
         { "field": "topic_names", "header": "TÓPICO" },
         { "field": "actions", "header": "ACCIONES" }
     ],

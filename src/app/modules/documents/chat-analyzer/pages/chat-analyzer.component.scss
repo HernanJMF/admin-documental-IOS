@@ -76,33 +76,6 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .panel-body{
-        border-top-right-radius: 0px !important;
-        border-top-left-radius: 0px !important;
-        border: none !important;
-        &.topic{
-            border-top-right-radius: 0px !important;
-            border-top-left-radius: 0px !important;
-        }
-        .left-panel{
-            width: 0px;
-            padding: 8px !important;
-            display: none;
-            &-active{
-                width: 100% !important;
-                display:flex;
-                height:80vh;
-            }
-        }
-        .center-panel{
-            width: 100% !important;
-            display:flex;
-            border-left: none !important;
-        }
-    }
-}
-
 @media only screen and (max-width: 1024px) {
   .panel-body {
     flex-direction: column !important;

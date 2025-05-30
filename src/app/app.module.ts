@@ -16,6 +16,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './core/http-interceptors/auth/auth.interceptor';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { AuthInterceptor } from './core/http-interceptors/auth/auth.interceptor'
     ButtonModule,
     ProgressSpinnerModule,
     InputSwitchModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    ButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

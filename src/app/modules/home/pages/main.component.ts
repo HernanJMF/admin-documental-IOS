@@ -55,12 +55,12 @@ export class MainComponent implements OnInit {
   }
 
   loadDocumentList(){ //obtiene la lista de documentos recientes
-    this.documentsListService.GetDocumentList().subscribe({
+    this.documentsListService.GetRecentDocument().subscribe({
       next: (res) => {
+          
         this.documentList = res.sort((a, b) => {
           const dateA = new Date(a.last_interaction).getTime();
           const dateB = new Date(b.last_interaction).getTime();
-          return dateB - dateA; // Orden DESCENDENTE (más reciente primero)
         });
       },
       error: () => {

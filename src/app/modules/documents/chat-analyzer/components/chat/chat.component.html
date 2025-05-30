@@ -9,7 +9,20 @@
               <div class="d-flex align-items-center" >
                   <div class="circle"><i class="newtoms-bot-icon"></i></div>
                   <div class="name">
-                      {{type == 'topic' ? (document.vector.length > 0 ? document.alias: topicValue.topic_name) : document.alias}}
+                      {{
+                        (type == 'topic'
+                          ? (document.vector.length > 0 ? document.alias : topicValue.topic_name)
+                          : document.alias
+                        )?.length > 18
+                          ? ((type == 'topic'
+                              ? (document.vector.length > 0 ? document.alias : topicValue.topic_name)
+                              : document.alias
+                            ) | slice:0:18) + '...'
+                          : (type == 'topic'
+                              ? (document.vector.length > 0 ? document.alias : topicValue.topic_name)
+                              : document.alias
+                            )
+                      }}
                   </div>
               </div>
               <!--<div class="d-flex align-items-end h-100 pb-2">
@@ -185,34 +198,66 @@
       </div>
   </div>
    <!------------document Details section end------------>
-
+   <!------------Info del documento seleccionado y botón solo si hay documento------------>
+   <div class="document-information" *ngIf="innerWidth <= 768 && type == 'topic' && document?.documentID">
+    <div class="document-header">
+      <div class="d-flex align-items-center overflow-hidden">
+        <span class="alias">{{document.alias}}</span>
+      </div>
+    </div>
+    <div class="document-details">
+      <div class="name">
+        <span>{{document.filename + '.' + document.extension}}</span>
+      </div>
+      <div class="info">
+        <span>{{(document.date | slice:0:10)}}</span>
+        <span>{{document.size}}</span>
+      </div>
+      <div>
+        <p class="description">{{document.description}}</p>
+        <div class="chips" *ngIf="document.topic">
+          <div class="topic-chip"><span>{{document.topic}}</span></div>
+        </div>
+      </div>
+      <div class="document-preview">
+        <a [href]="fileUrl" target="_blank">
+          Ver documento
+          <i class="pi pi-external-link external-icon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
    <!------------Topic document list responsive start------------>
+   
   <div class="document-information" *ngIf="innerWidth <= 768 && this.type == 'topic'">
-      <div class="buttons-section">
-          <span class="subtitle">{{page.document_list}}</span>
-      </div>
-      <div class="row m-0">
-          <div class="option col-12 col-sm-6 col-md-4" *ngFor="let document of topicDocumentList">
-              <div class="option-row" (click)="openDocument(document.document_id)">
-                  <i class="newtoms-chat-logo"></i>
-                  <span [pTooltip]="document.alias" class="text">{{document.alias}}</span>
-              </div>
-          </div>
-      </div>
 
+    <app-documents
+      *ngIf="innerWidth <= 768 && type == 'topic'"
+      [page]="page.documents"
+      [documentList]="documentList"
+      [type]="type"
+      [topicDocumentList]="topicDocumentList"
+      [document]="document"
+      [topicValue]="topicValue"
+      (openTopicDocument)="openTopicDocumentHandler($event)"
+      (openTopicChat)="openTopicChatHandler()">
+    </app-documents>
   </div>
    <!------------Topic Document list responsive end------------>
 
    <!------------Recent list responsive start------------>
+   <div class="recents-section" *ngIf="innerWidth <= 768 || this.type == 'topic'">
+    <div class="buttons-section d-flex justify-content-center">
+        <p-button   [label]="page.new_chat"
+                    styleClass="p-button-outlined small"
+                    (click)="showDocumentList()">
+        </p-button>
+    </div> 
+  </div>
   <div class="recents-section" *ngIf="innerWidth <= 768 || this.type == 'topic'">
-      <div class="buttons-section">
-          <span class="subtitle">{{page.recents}}</span>
-          <p-button   [label]="page.new_chat"
-                      styleClass="p-button-outlined small"
-                      (click)="showDocumentList()">
-          </p-button>
-      </div>
-      <div class="row m-0">
+ 
+    <div class="row m-0">
+        <span>Documentos recientes</span>
           <div class="option col-12 col-sm-6 col-md-4" *ngFor="let document of documentList | slice:0:6">
               <div class="option-row" (click)="openDocument(document.document_id)">
                   <i class="newtoms-chat-logo"></i>

@@ -116,8 +116,10 @@ export class ChatComponent implements OnInit, OnChanges {
         }
 
         this.changeDetector.detectChanges();
-        this.scrollPanel.refresh();
-        this.scrollPanel.scrollTop(10000000);
+        if (this.scrollPanel) {
+          this.scrollPanel.refresh();
+          this.scrollPanel.scrollTop(10000000);
+        }
 
         if (msg.action == 'stop_sequence_2' || msg.action == 'error') {
           this.lastMessage = "";
@@ -129,6 +131,10 @@ export class ChatComponent implements OnInit, OnChanges {
           this.isWaitingForResponse = false; // ✅ Desbloquear input solo cuando la respuesta terminó
           this.chatMessage = ""; // ✅ Limpiar el input
           this.changeDetector.detectChanges();
+          if (this.scrollPanel) {
+            this.scrollPanel.refresh();
+            this.scrollPanel.scrollTop(10000000);
+          }
         }
       },
       error: (err) => {
@@ -136,6 +142,10 @@ export class ChatComponent implements OnInit, OnChanges {
         this.isWaitingForResponse = false; // ✅ Desbloquear input en caso de error
         this.chatMessage = ""; // ✅ Limpiar input en caso de error
         this.changeDetector.detectChanges();
+        if (this.scrollPanel) {
+          this.scrollPanel.refresh();
+          this.scrollPanel.scrollTop(10000000);
+        }
       },
       complete: () => {
         const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
@@ -154,13 +164,17 @@ export class ChatComponent implements OnInit, OnChanges {
   //en el ngonInit se aplica la deteccion de cambios para detectar correctamente el espacio disponible en el scroll
   ngOnInit(): void {
     this.changeDetector.detectChanges();
-    this.scrollPanel.refresh()
-    this.scrollPanel.scrollTop(10000000) //las ultimas 3 lineas de codigo sirven para el scroll de la lista de mensaje ya que si no baja el scroll completamente
+    if (this.scrollPanel) {
+      this.scrollPanel.refresh();
+      this.scrollPanel.scrollTop(10000000);
+    }
     this.changingMessages.subscribe((v:any) => { //obtiene las respuestas de conversaciones anteriores con el documento
       this.messages = v;
       this.changeDetector.detectChanges();
-      this.scrollPanel.refresh()
-      this.scrollPanel.scrollTop(10000000)
+      if (this.scrollPanel) {
+        this.scrollPanel.refresh();
+        this.scrollPanel.scrollTop(10000000);
+      }
     });
 
   }
@@ -175,8 +189,10 @@ export class ChatComponent implements OnInit, OnChanges {
         this.changeDetector.detectChanges(); // Forzamos la detección de cambios en Angular.
 
         // Validamos que 'scrollPanel' esté definido antes de usarlo.
-        this.scrollPanel?.refresh(); // Refrescamos el estado del scroll.
-        this.scrollPanel?.scrollTop(10000000); // Movemos el scroll al final.
+        if (this.scrollPanel) {
+          this.scrollPanel.refresh(); // Refrescamos el estado del scroll.
+          this.scrollPanel.scrollTop(10000000); // Movemos el scroll al final.
+        }
       });
     }
 
@@ -228,8 +244,10 @@ export class ChatComponent implements OnInit, OnChanges {
     this.visibleDetails = value;
     if(!value){
       this.changeDetector.detectChanges();
-      this.scrollPanel.refresh()
-      this.scrollPanel.scrollTop(10000000000000000000000)
+      if (this.scrollPanel) {
+        this.scrollPanel.refresh();
+        this.scrollPanel.scrollTop(10000000000000000000000);
+      }
     }
   }
 
@@ -306,8 +324,10 @@ export class ChatComponent implements OnInit, OnChanges {
 
       this.chatMessage = this.language === 'english' ? "Generating answer..." : "Generando respuesta...";
       this.changeDetector.detectChanges();
-      this.scrollPanel.refresh();
-      this.scrollPanel.scrollTop(10000000);
+      if (this.scrollPanel) {
+        this.scrollPanel.refresh();
+        this.scrollPanel.scrollTop(10000000);
+      }
 
 
       // Se envía la información de la pregunta al backend
@@ -391,8 +411,10 @@ export class ChatComponent implements OnInit, OnChanges {
         this.promptsList = res
         this.showPrompts = true; // se activa para mostrar la lista de prompts
         this.changeDetector.detectChanges();
-        this.scrollPanel.refresh();
-        this.scrollPanel.scrollTop(10000000);
+        if (this.scrollPanel) {
+          this.scrollPanel.refresh();
+          this.scrollPanel.scrollTop(10000000);
+        }
 
       },
       error: err => {
@@ -688,5 +710,12 @@ export class ChatComponent implements OnInit, OnChanges {
     this.openTopicChat.emit();
   }
 
+  openTopicDocumentHandler(event: any) {
+    this.openTopicDocument.emit(event);
+  }
+
+  openTopicChatHandler() {
+    this.openTopicChat.emit();
+  }
 
 }
