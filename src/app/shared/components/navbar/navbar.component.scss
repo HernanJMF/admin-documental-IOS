@@ -6,8 +6,14 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
-    padding: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: $newtoms-primary-color;
+    height: 100px;
+    padding: 16px 8px 8px 8px;
     .chat2dox-logo{
         font-family: $newtoms-regular-fonts;
         font-size: 45px;
@@ -62,5 +68,5 @@ a {
 }
 
 .sidebarButton {
-  margin-top: calc(1rem + env(safe-area-inset-top, 0px)) !important;
+  margin-top: calc(2rem + env(safe-area-inset-top, 0px)) !important;
 }
