@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ScrollPanel } from 'primeng/scrollpanel';
-import { Subject } from 'rxjs';
+import { Subject, firstValueFrom } from 'rxjs';
 import { UserService } from 'src/app/core/services/users/user.service';
 import { ToastNotification } from 'src/app/shared/types/ToastNotification';
 import { MessageService } from 'src/app/core/services/messages/message.service';
@@ -28,6 +29,9 @@ export class ChatComponent implements OnInit, OnChanges {
   fileUrl: any = ""; //url del documento con el que se esta conversando
   visible: boolean = false; //se usa para abrir o cerrar el modal de compartir un mensaje
   documentListVisible: boolean = false; //se usa para abrir o cerrar el modal de la lista de documentos
+  documentViewerVisible: boolean = false; //se usa para abrir o cerrar el modal del visor de documentos
+  documentViewerUrl: any = ""; //URL segura para el iframe del visor
+  isDocumentLoading: boolean = false; //indica si el documento se está cargando en el modal
   isValid: boolean;
   lastMessage: string = "";
   scrollLarge: number = 10;
@@ -55,6 +59,7 @@ export class ChatComponent implements OnInit, OnChanges {
   loadDocumentList: boolean = false; //se usa para que no recargue la lista cada vez que se abre
   deleteMessage: boolean = true; //valida que mensaje se debe mostrar en el overlay de alerta
   private originalChatMessage: string = "";
+  isImagePreview: boolean = false;
 
   @Input() page: any = "";
   @Input() documentList: any[] = [];
@@ -86,6 +91,7 @@ export class ChatComponent implements OnInit, OnChanges {
     private _clipboardService: ClipboardService,
     private router: Router,
     private datePipe: DatePipe,
+    private sanitizer: DomSanitizer
 
   ){
     this.userRole = userService.role;
@@ -162,7 +168,7 @@ export class ChatComponent implements OnInit, OnChanges {
   }
 
   //en el ngonInit se aplica la deteccion de cambios para detectar correctamente el espacio disponible en el scroll
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.changeDetector.detectChanges();
     if (this.scrollPanel) {
       this.scrollPanel.refresh();
@@ -177,10 +183,15 @@ export class ChatComponent implements OnInit, OnChanges {
       }
     });
 
+    // Inicializar presigned URL si el documento ya está cargado
+    if (this.document && this.document.preview) {
+      await this.openFilePreview();
+    }
+
   }
 
   //se activa cada vez que detecta cambios del resto de componentes
-  ngOnChanges(): void {
+  async ngOnChanges(): Promise<void> {
     // Verificamos si el observable 'changingMessages' está definido para evitar errores.
     if (this.changingMessages) {
       // Nos suscribimos al observable para obtener mensajes actualizados.
@@ -213,8 +224,13 @@ export class ChatComponent implements OnInit, OnChanges {
     // Verificamos si 'this.document.extension' está definido antes de usarlo.
     if (this.document && this.document.extension) {
       // Abrimos la vista previa del documento si la extensión está disponible.
-      this.openFilePreview();
+      await this.openFilePreview();
       this.isVisible = true; // Marcamos la vista previa como visible.
+    }
+
+    // También ejecutar si el documento cambia y tiene preview
+    if (this.document && this.document.preview && !this.fileUrl) {
+      await this.openFilePreview();
     }
   }
 
@@ -583,14 +599,30 @@ export class ChatComponent implements OnInit, OnChanges {
   //DETAILS LOGIC
   //esta seccion de detalles del chat (la que se activa al tocar el nombre del bot en la barra azul)
 
-  //inicializa el valor del preview
-  openFilePreview() {
+  //inicializa el valor del preview con presigned URL
+  async openFilePreview() {
     if (!this.document || !this.document.preview) {
       console.error("Documento no disponible o no inicializado.");
       return;
     }
 
-    this.fileUrl = `https://docs.google.com/gview?url=${this.document.preview}&embedded=true`;
+    try {
+      // Obtener el presigned URL del backend
+      const response = await firstValueFrom(this.chatAnalyzerService.getPresignedUrl(this.document.preview));
+      
+      if (response && response.presigned_url) {
+        // Usar el presigned URL para el enlace directo
+        this.fileUrl = response.presigned_url;
+      } else {
+        console.error("No se pudo obtener el presigned URL, usando URL original");
+        this.fileUrl = this.document.preview;
+      }
+    } catch (error) {
+      console.error("Error al obtener el presigned URL:", error);
+      // Fallback: usar la URL original si falla el presigned URL
+      this.fileUrl = this.document.preview;
+    }
+
     this.isVisible = true;
   }
 
@@ -691,12 +723,12 @@ export class ChatComponent implements OnInit, OnChanges {
   }
 
   //abre una conversacion con el documento de un topico
-  chatTopicDocument(document: any){
+  async chatTopicDocument(document: any){
     this.chatAnalyzerService.chatTopicDocument(document.document_id, document.doc_owner).subscribe({
-      next: (res) => {
+      next: async (res) => {
         this.visibleDetails = false;
         this.openTopicDocument.emit(res);
-        this.openFilePreview();
+        await this.openFilePreview();
       },
       error: () => {
 
@@ -716,6 +748,99 @@ export class ChatComponent implements OnInit, OnChanges {
 
   openTopicChatHandler() {
     this.openTopicChat.emit();
+  }
+
+  // Métodos para el modal del visor de documentos
+  async openDocumentViewer() {
+    if (!this.document || !this.document.preview) {
+      console.error('Documento no disponible para mostrar en el visor');
+      return;
+    }
+
+    this.isDocumentLoading = true;
+    this.documentViewerVisible = true;
+    this.isImagePreview = false;
+
+    try {
+      // Detectar si es imagen
+      if (this.isImageFile(this.document.extension)) {
+        // Mostrar la imagen directamente
+        const response = await firstValueFrom(this.chatAnalyzerService.getPresignedUrl(this.document.preview));
+        this.documentViewerUrl = response?.presigned_url || this.document.preview;
+        this.isImagePreview = true;
+      } else {
+        // Obtener el presigned URL del backend
+        const response = await firstValueFrom(this.chatAnalyzerService.getPresignedUrl(this.document.preview));
+        let urlToUse: string;
+        if (response && response.presigned_url) {
+          urlToUse = response.presigned_url;
+        } else {
+          console.error('No se pudo obtener el presigned URL, usando URL original');
+          urlToUse = this.document.preview;
+        }
+        // Construir la URL para Google Docs viewer
+        const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(urlToUse)}&embedded=true`;
+        // Generar una URL segura para el iframe
+        this.documentViewerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(viewerUrl);
+        this.isImagePreview = false;
+      }
+    } catch (error) {
+      console.error('Error al obtener el presigned URL para el visor:', error);
+      // Fallback: usar la URL original si falla el presigned URL
+      try {
+        if (this.isImageFile(this.document.extension)) {
+          this.documentViewerUrl = this.document.preview;
+          this.isImagePreview = true;
+        } else {
+          const fallbackViewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(this.document.preview)}&embedded=true`;
+          this.documentViewerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(fallbackViewerUrl);
+          this.isImagePreview = false;
+        }
+      } catch (fallbackError) {
+        console.error('Error en el fallback del visor:', fallbackError);
+      }
+    } finally {
+      this.isDocumentLoading = false;
+    }
+  }
+
+  async reloadDocumentViewer() {
+    if (this.isDocumentLoading) {
+      return; // Evitar múltiples recargas simultáneas
+    }
+    
+    this.isDocumentLoading = true;
+    
+    try {
+      // Limpiar URL anterior
+      this.documentViewerUrl = null;
+      
+      // Forzar detección de cambios para mostrar el estado de loading
+      this.changeDetector.detectChanges();
+      
+      // Esperar un poco para que el usuario vea que algo está pasando
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Recargar el documento
+      await this.openDocumentViewer();
+      
+    } catch (error) {
+      console.error('Error al recargar el documento en el visor:', error);
+    } finally {
+      this.isDocumentLoading = false;
+      this.changeDetector.detectChanges();
+    }
+  }
+
+  closeDocumentViewer() {
+    this.documentViewerVisible = false;
+    this.documentViewerUrl = null;
+    this.isDocumentLoading = false;
+  }
+
+  isImageFile(extension: string): boolean {
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    return imageExtensions.includes((extension || '').toLowerCase());
   }
 
 }

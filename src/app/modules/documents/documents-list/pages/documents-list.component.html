@@ -115,8 +115,8 @@
                     <a class="topic-url" [href]="'/chat-analyzer/topic/'+topic.topic_id" *ngFor="let topic of topicList"
                        (click)="router.navigateByUrl('/chat-analyzer/topic/'+topic.topic_id);">
                         <p-chip class="topic-chip">
-                            <div class="p-2" [title]="topic.topic_name">{{topic.topic_name}}</div>
-                            <i class="pi pi-comments"></i>
+                          <div class="p-2" [title]="topic.topic_name">{{topic.topic_name}}</div>
+                           <i class="pi pi-comments"></i>
                         </p-chip>
                     </a>
                 </div>

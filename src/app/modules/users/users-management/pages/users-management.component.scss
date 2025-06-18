@@ -58,7 +58,7 @@
 }
 
 /* Estilos para pantallas pequeñas (ajusta el punto de quiebre según sea necesario) */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .section-body {
     height: auto;
     padding: 10px; /* Espaciado interior reducido para pantallas pequeñas */

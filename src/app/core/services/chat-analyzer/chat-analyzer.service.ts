@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs';
 import { HttpService } from 'src/app/core/http/http.service';
@@ -173,4 +173,28 @@ export class ChatAnalyzerService {
         })
       );
   }
+
+    //peticion que obtiene el presigned URL para acceder de forma segura a un documento
+  getPresignedUrl(objectUrl: string): Observable<any> {
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+
+    const body = {
+      object_url: objectUrl
+    };
+
+    return this.httpService
+      .post(
+        `${this.configService.config.endpoints.presigned_url}`,
+        body,
+        headers
+      )
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
+
 }

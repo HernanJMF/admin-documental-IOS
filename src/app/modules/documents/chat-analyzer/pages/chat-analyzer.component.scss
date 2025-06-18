@@ -77,33 +77,28 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .panel-body {
-    flex-direction: column !important;
-    display: block !important;
-    border: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .left-panel {
-    display: none !important;
-    width: 0 !important;
-    padding: 0 !important;
-  }
-  .center-panel, .chat-section, .chat-section > * {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  .input-section, .input-container, textarea, .chat-textarea {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-  }
+    .panel-body{
+        border-top-right-radius: 0px !important;
+        border-top-left-radius: 0px !important;
+        border: none !important;
+        &.topic{
+            border-top-right-radius: 0px !important;
+            border-top-left-radius: 0px !important;
+        }
+        .left-panel{
+            width: 0px;
+            padding: 8px !important;
+            display: none;
+            &-active{
+                width: 100% !important;
+                display:flex;
+                height:80vh;
+            }
+        }
+        .center-panel{
+            width: 100% !important;
+            display:flex;
+            border-left: none !important;
+        }
+    }
 }

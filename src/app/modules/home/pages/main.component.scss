@@ -151,14 +151,12 @@
 }
 
 @media only screen and (max-width: 1024px) {
-    ::ng-deep{
-        #pr_id_1 .p-carousel-item {
-            flex: 0 0 auto;
-            width: 33.33333333%;
-        }
-    }
-}
 
+    .message{
+        padding-right: 24%;
+    }
+
+}
 @media only screen and (max-width: 576px) {
     ::ng-deep{
         #pr_id_1 .p-carousel-item {

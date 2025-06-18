@@ -68,19 +68,54 @@
     height: 100%;
     position: relative;
 
-    .document-icon{
-        position: absolute;
-        left: 0;
-        margin-left: 16px;
-        font-size: 20px;
-        cursor: pointer;
-    }
-    .comment-chat-icon{
-        position: absolute;
-        right: 0;
-        margin-right: 16px;
-        font-size: 20px;
-        cursor: pointer;
+    .document-section-title{
+        text-align: center;
+        position: relative;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            color: $newtoms-primary-font-color;
+            font-family: $newtoms-regular-fonts;
+            flex: 1;
+        }
+
+        .document-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            
+            .reload-icon {
+                font-size: 16px;
+                cursor: pointer;
+                color: $newtoms-primary-font-color;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    color: $newtoms-success-font-color;
+                    transform: scale(1.1);
+                }
+                
+                &.loading {
+                    animation: spin 1s linear infinite;
+                    color: $newtoms-success-font-color;
+                }
+            }
+            
+            .comment-chat-icon {
+                font-size: 20px;
+                cursor: pointer;
+                color: $newtoms-primary-font-color;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    color: $newtoms-success-font-color;
+                    transform: scale(1.1);
+                }
+            }
+        }
     }
 
     .preview{
@@ -141,4 +176,16 @@
     .p-tooltip {
         max-width: 16.5rem;
     }
+}
+
+.preview-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Animación para el icono de recarga
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

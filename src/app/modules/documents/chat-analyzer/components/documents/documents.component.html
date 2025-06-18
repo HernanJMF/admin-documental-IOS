@@ -47,7 +47,16 @@
 <div class="document-section" *ngIf="showPreview"  [pTooltip]="document.chat_document">
     <div class="document-section-title">
         <span>{{page.document}}</span>
-
+        <div class="document-controls">
+            <i class="pi pi-refresh reload-icon" 
+               (click)="reloadDocument()"
+               [pTooltip]="'Recargar documento'"
+               [class.loading]="isReloading"></i>
+            <i class="pi pi-comments comment-chat-icon" 
+               (click)="chatTopicDocument()"
+               *ngIf="type == 'topic'"  
+               [pTooltip]="page.chat_document"></i>
+        </div>
     </div>
     <div class="preview pt-2" *ngIf="isVisible">
         <div class="h-100" *ngIf="['jpeg','jpg','png'].includes(topicDocumentUrl.length == 0 ? document.extension : topicDocument.extension)">
@@ -56,6 +65,15 @@
                      width="100%"
                      [preview]="true">
             </p-image>
+        </div>
+        <div *ngIf="type == 'document' && document.preview && safeUrl && isVisible" class="preview-container">
+            <iframe [src]="safeUrl"
+                    [ngStyle]="{
+                      width: '100%',
+                      height: (innerWidth <= 1400 ? '180px' : '370px'),
+                      border: 'none'
+                    }">
+            </iframe>
         </div>
     </div>
 </div>

@@ -190,10 +190,10 @@
           </div>
 
           <div class="document-preview">
-              <a [href]="fileUrl" target=”_blank”>
+              <button class="document-viewer-button" (click)="openDocumentViewer()">
                     Ver documento
-                  <i class="pi pi-external-link external-icon"></i>
-              </a>
+                  <i class="pi pi-eye view-icon"></i>
+              </button>
           </div>
       </div>
   </div>
@@ -219,12 +219,12 @@
           <div class="topic-chip"><span>{{document.topic}}</span></div>
         </div>
       </div>
-      <div class="document-preview">
-        <a [href]="fileUrl" target="_blank">
-          Ver documento
-          <i class="pi pi-external-link external-icon"></i>
-        </a>
-      </div>
+                <div class="document-preview">
+              <button class="document-viewer-button" (click)="openDocumentViewer()">
+                    Ver documento
+                  <i class="pi pi-eye view-icon"></i>
+              </button>
+          </div>
     </div>
   </div>
    <!------------Topic document list responsive start------------>
@@ -396,3 +396,60 @@
   </p-dialog>
 </div>
 <!------------DOCUMENT LIST END------------>
+
+<!------------DOCUMENT VIEWER MODAL START------------>
+<div>
+  <p-dialog   [(visible)]="documentViewerVisible"
+              [style]="{width: '95vw', height: '85vh'}"
+              [breakpoints]="{ '768px': '98vw', '576px': '98vw'}"
+              class="modal-section document-viewer-modal"
+              [draggable]="false"
+              [resizable]="false"
+              [modal]="true"
+              [maximizable]="true"
+              [closable]="true"
+              (onHide)="closeDocumentViewer()">
+      <ng-template pTemplate="header">
+          <div class="d-flex justify-content-between align-items-center w-100">
+              <span class="modal-header">{{document?.alias || 'Documento'}}</span>
+              <div class="document-viewer-controls">
+                  <i class="pi pi-refresh reload-icon" 
+                     (click)="reloadDocumentViewer()"
+                     [pTooltip]="'Recargar documento'"
+                     [class.loading]="isDocumentLoading"></i>
+              </div>
+          </div>
+      </ng-template>
+      <div class="document-viewer-content">
+          <div *ngIf="isDocumentLoading" class="loading-container">
+              <div class="loading-spinner">
+                  <i class="pi pi-spin pi-spinner" style="font-size: 2rem;"></i>
+                  <p>Cargando documento...</p>
+              </div>
+          </div>
+          <!-- Mostrar imagen si es preview de imagen -->
+          <img *ngIf="!isDocumentLoading && isImagePreview && documentViewerUrl"
+               [src]="documentViewerUrl"
+               alt="Vista previa de la imagen"
+               style="max-width: 100%; max-height: 80vh; display: block; margin: 0 auto;"
+               ngOptimizedImage />
+          <!-- Mostrar iframe solo si no es imagen -->
+          <iframe *ngIf="!isDocumentLoading && !isImagePreview && documentViewerUrl"
+                  [src]="documentViewerUrl"
+                  class="document-iframe"
+                  frameborder="0">
+          </iframe>
+          <div *ngIf="!isDocumentLoading && !documentViewerUrl" class="error-container">
+              <div class="error-message">
+                  <i class="pi pi-exclamation-triangle" style="font-size: 2rem; color: #ff6b6b;"></i>
+                  <p>No se pudo cargar el documento</p>
+                  <button class="p-button p-button-outlined" (click)="reloadDocumentViewer()">
+                      <i class="pi pi-refresh"></i>
+                      Intentar de nuevo
+                  </button>
+              </div>
+          </div>
+      </div>
+  </p-dialog>
+</div>
+<!------------DOCUMENT VIEWER MODAL END------------>

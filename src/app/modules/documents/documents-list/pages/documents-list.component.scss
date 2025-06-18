@@ -19,14 +19,22 @@
 }
 
 
+.topic-url,
+.topic-url:visited,
+.topic-url:active,
+.topic-url:focus,
+.topic-url:hover {
+    text-decoration: none !important;
+}
+
 .topic-url{
     margin-bottom: 16px !important;
     display: inline-block;
-    text-decoration: none !important;
 }
 
 .topic-chip{
     cursor: pointer;
+    padding: 0px 8px;
     padding: 0 8px;
     margin-bottom: 24px;
     max-width: 260px;
