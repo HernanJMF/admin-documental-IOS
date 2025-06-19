@@ -257,52 +257,125 @@
         position: relative;
         margin-top: 8px;
         display: flex;
-        .send-section{
+
+        .input-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ::ng-deep {
+            .p-inputtextarea {
+                width: 100% !important;
+                min-height: 44px !important;
+                max-height: 120px !important; // aproximadamente 4 líneas
+                border: 1px solid $newtoms-send-section-color !important;
+                border-radius: 16px !important;
+                font-size: 16px !important;
+                line-height: 24px !important;
+                padding: 12px 16px 8px !important;
+                resize: none !important;
+                background: none !important;
+                color: $newtoms-primary-font-color !important;
+                margin-bottom: 8px !important;
+
+                &::-webkit-scrollbar {
+                    width: 6px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background-color: #e4e4e4;
+                    border-radius: 100px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 100px;
+                    background-color: #676464;
+                    border: 2px solid transparent;
+                    background-clip: padding-box;
+                }
+
+                &:focus {
+                    border: 1px solid $newtoms-send-section-color !important;
+
+                    box-shadow: 0 0 0 2px rgba($newtoms-success-font-color, 0.1) !important;
+                }
+
+                &:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .input-actions {
             display: flex;
             align-items: center;
-            cursor: pointer;
-            border-radius: 20px;
-            border-top-left-radius: 0px;
-            border-bottom-left-radius: 0px;
-            border: 1px solid $newtoms-copy-button-active-color;
-            background: $newtoms-send-section-color;
-            padding: 0px 16px;
-            border-left: 0px solid $newtoms-copy-button-active-color;
-        }
-        .message-textarea{
-            position: relative;
-            display: flex;
-            width: 100%;
-            border-bottom: 1px solid $newtoms-copy-button-active-color;
-            border-top: 1px solid $newtoms-copy-button-active-color;
-            background: $newtoms-send-section-color;
+            justify-content: space-between;
+            padding: 0 4px;
+
+            .chat-dropdown {
+                min-width: 80px;
+            }
+
             .characters {
-                position: absolute;
+                flex: 1;
+                text-align: center;
                 color: $newtoms-characters-color;
-                bottom: 2px;
-                left: 12px;
-                font-size: 11px
-            }
-            ::-webkit-scrollbar {
-                width: 10px;
+                font-size: 12px;
+                margin: 0 8px;
             }
 
-            ::-webkit-scrollbar-track {
-                background-color: #e4e4e4;
-                border-radius: 100px;
-            }
-
-            ::-webkit-scrollbar-thumb {
-                border-radius: 100px;
-                border: 3px solid transparent;
-                background-clip: content-box;
-                background-color: #676464;
-                padding-right: 24px;
+            .send-section {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                border: none;
+                background: transparent;
+                color: $newtoms-success-font-color;
                 cursor: pointer;
+
+                &:hover:not(:disabled) {
+                    background: rgba(0,0,0,0.04);
+                }
+
+                &:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
+
+                i {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .input-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: $newtoms-send-section-color;
+            padding: 8px;
+            margin: 0;
+            z-index: 1000;
+            border-top: 1px solid rgba(0,0,0,0.1);
+
+            .input-container {
+                max-width: 100%;
+
             }
 
+            ::ng-deep .p-inputtextarea {
+                margin-bottom: 4px !important;
+            }
         }
-
     }
 
     ::ng-deep{
@@ -1064,11 +1137,15 @@ a{
 }
 
 :host ::ng-deep textarea.chat-textarea {
-  overflow-y: auto !important;
-  min-height: 2.5rem !important;   // 1 línea aprox.
-  max-height: 5.5rem !important;   // 3 líneas aprox.
+  overflow-y: hidden !important;
+  min-height: 2.5rem !important;
+  max-height: 5.5rem !important;
   resize: none !important;
   box-sizing: border-box;
+}
+
+:host ::ng-deep textarea.chat-textarea.p-filled {
+  overflow-y: auto !important;
 }
 
 // Estilos para el botón "Ver documento"
@@ -1101,7 +1178,7 @@ a{
   .p-dialog {
     max-width: 95vw;
     max-height: 90vh;
-    
+
     .p-dialog-content {
       padding: 0;
       height: calc(90vh - 120px);
@@ -1111,23 +1188,23 @@ a{
     .p-dialog-header {
       padding: 1rem;
       border-bottom: 1px solid $newtoms-chat-border;
-      
+
       .document-viewer-controls {
         display: flex;
         align-items: center;
         gap: 16px;
-        
+
         .reload-icon {
           font-size: 18px;
           cursor: pointer;
           color: $newtoms-primary-font-color;
           transition: all 0.3s ease;
-          
+
           &:hover {
             color: $newtoms-success-font-color;
             transform: scale(1.1);
           }
-          
+
           &.loading {
             animation: spin 1s linear infinite;
             color: $newtoms-success-font-color;
@@ -1158,11 +1235,11 @@ a{
     align-items: center;
     height: 100%;
     flex-direction: column;
-    
+
     .loading-spinner {
       text-align: center;
       color: $newtoms-primary-font-color;
-      
+
       p {
         margin-top: 16px;
         font-family: $newtoms-regular-fonts;
@@ -1176,17 +1253,17 @@ a{
     justify-content: center;
     align-items: center;
     height: 100%;
-    
+
     .error-message {
       text-align: center;
       color: $newtoms-primary-font-color;
-      
+
       p {
         margin: 16px 0;
         font-family: $newtoms-regular-fonts;
         font-size: 16px;
       }
-      
+
       button {
         margin-top: 16px;
         display: flex;
@@ -1212,18 +1289,18 @@ a{
       max-width: 98vw;
       max-height: 95vh;
       margin: 1vh auto;
-      
+
       .p-dialog-content {
         height: calc(95vh - 100px);
       }
-      
+
       .p-dialog-header {
         padding: 0.75rem;
-        
+
         .modal-header {
           font-size: 16px;
         }
-        
+
         .document-viewer-controls .reload-icon {
           font-size: 16px;
         }
@@ -1237,5 +1314,72 @@ a{
     justify-content: center;
     padding: 10px 16px;
     font-size: 15px;
+  }
+}
+
+::ng-deep .p-inputtextarea.chat-textarea {
+  min-height: 2.5rem;
+  max-height: 5.5rem;
+  resize: none;
+  box-sizing: border-box;
+  border: 1px solid #e9ecef !important;
+
+  /* Hacer el scrollbar invisible en todos los dispositivos */
+  overflow-y: auto !important;
+  scrollbar-width: none !important;  /* Firefox */
+  -ms-overflow-style: none !important;  /* IE y Edge */
+  -webkit-overflow-scrolling: touch;  /* iOS momentum scrolling */
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+    background-color: transparent !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Estilos específicos para móviles */
+  @media (max-width: 768px) {
+    &::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    overflow: hidden auto !important;
+    -webkit-appearance: none;
+  }
+
+  /* Quitar bordes al enfocar */
+  &:focus {
+    box-shadow: none !important;
+    border-color: #e9ecef !important;
+    outline: none !important;
+  }
+}
+
+::ng-deep .p-scrollpanel {
+  .p-scrollpanel-wrapper {
+    /* Hacer el scrollbar invisible pero mantener funcionalidad */
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE y Edge */
+  }
+
+  .p-scrollpanel-bar {
+    background: transparent !important;
+    opacity: 0 !important;
   }
 }

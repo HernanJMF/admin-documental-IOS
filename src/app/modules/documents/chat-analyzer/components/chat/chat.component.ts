@@ -609,7 +609,7 @@ export class ChatComponent implements OnInit, OnChanges {
     try {
       // Obtener el presigned URL del backend
       const response = await firstValueFrom(this.chatAnalyzerService.getPresignedUrl(this.document.preview));
-      
+
       if (response && response.presigned_url) {
         // Usar el presigned URL para el enlace directo
         this.fileUrl = response.presigned_url;
@@ -711,8 +711,13 @@ export class ChatComponent implements OnInit, OnChanges {
   }
 
   //se usa para reiniciarlizar las interacciones del input y no ocurran errores de interaccion
-  onKeydown(event){
-    event.preventDefault();
+  onKeydown(event: any) {
+    if (event && event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      if (this.chatMessage && this.chatMessage.trim().length > 0 && !this.isWaitingForResponse && !this.isSummaryActive) {
+        this.sendMessage();
+      }
+    }
   }
 
   //metodo utilizado para reiniciar las variables al seleccionar un nuevo documento en la conversacion con un topico
@@ -808,22 +813,22 @@ export class ChatComponent implements OnInit, OnChanges {
     if (this.isDocumentLoading) {
       return; // Evitar múltiples recargas simultáneas
     }
-    
+
     this.isDocumentLoading = true;
-    
+
     try {
       // Limpiar URL anterior
       this.documentViewerUrl = null;
-      
+
       // Forzar detección de cambios para mostrar el estado de loading
       this.changeDetector.detectChanges();
-      
+
       // Esperar un poco para que el usuario vea que algo está pasando
       await new Promise(resolve => setTimeout(resolve, 500));
-      
+
       // Recargar el documento
       await this.openDocumentViewer();
-      
+
     } catch (error) {
       console.error('Error al recargar el documento en el visor:', error);
     } finally {
