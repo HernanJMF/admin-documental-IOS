@@ -37,7 +37,7 @@
   <!------------Chat navbar section end------------>
   <!------------body chat section start------------>
   <div class="chat-body">
-
+    <div class="messages-container">
       <p-scrollPanel #sp [style]="{ width: '100%', height: innerWidth < 768 ? 'calc(95vh - 240px)' : 'calc(95vh - 300px)' }">
 
           <div class="summary" *ngIf="type == 'topic'"> <!------------summary of topic document------------>
@@ -102,6 +102,7 @@
           </div>
           <!------------Messages Section end------------>
       </p-scrollPanel>
+    </div>
       <!------------Input Question start------------>
       <div class="input-section" *ngIf="userEmail == null" [ngClass]="{'expired-plan': (topicDocumentList.length == 0 && type == 'topic')}">
         <div class="input-container">

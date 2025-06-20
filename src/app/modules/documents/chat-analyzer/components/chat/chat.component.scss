@@ -356,16 +356,15 @@
 
     @media (max-width: 768px) {
         .input-section {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
+            position: sticky;
+            bottom: 10px;
+            margin: 0 10px 10px 10px;
+            width: auto;
             background: $newtoms-send-section-color;
-            padding: 8px;
-            margin: 0;
+            padding: 8px 12px;
             z-index: 1000;
-            border-top: 1px solid rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 
             .input-container {
                 max-width: 100%;
@@ -813,18 +812,28 @@ a{
 @media only screen and (max-width: 1024px) {
     .chat-body {
         padding-bottom: 0 !important;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
+
+    .messages-container {
+        flex: 1;
+        overflow-y: auto;
+        padding-bottom: 120px;
+    }
+
     .input-section {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        position: sticky;
+        bottom: 10px;
+        margin: 0 10px;
+        width: auto;
         max-width: 100%;
         background: $newtoms-send-section-color;
         z-index: 100;
-        padding: 8px 0 12px 0;
-        border-radius: 20px 20px 0 0;
-        box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+        padding: 8px 12px;
+        border-radius: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.1);
         display: flex;
         justify-content: center;
 
